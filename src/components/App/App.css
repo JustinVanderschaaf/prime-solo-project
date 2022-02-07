@@ -7,6 +7,11 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background-image: url(../../../public/zeo.jpeg);
+  background-repeat:repeat-y;
+  background-size: 100%;
+  background-attachment: fixed;
+  
 }
 
 img {

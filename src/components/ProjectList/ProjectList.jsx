@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import ProjectList from "../ProjectList";
+import ProjectList from "./ProjectListCards";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -13,7 +13,7 @@ const AddProject = () => {
 
   // a local state to store the currently selected file.
   const [selectedFile, setSelectedFile] = React.useState(null);
-  const [selectedDescription, setSelectedDescription] = React.useState('');
+  const [selectedDescription, setSelectedDescription] = React.useState("");
 
   // display all projects on DOm upon app load
   useEffect(() => {
@@ -30,29 +30,30 @@ const AddProject = () => {
   const handleSubtitle = (event) => {
     setSelectedDescription(event.target.value);
   };
-//End event handlers
-const itemToSend = {
-  subTitle: selectedDescription,
-  
-}
+  //End event handlers
+  const itemToSend = {
+    subTitle: selectedDescription,
+  };
 
   async function handleSubmit(event) {
     event.preventDefault();
-    
-    const formData = new FormData();
-    formData.append("description", selectedDescription)
-    formData.append("selectedFile", selectedFile);
-    
 
-   console.log("item to send with selected file is", itemToSend);
+    const formData = new FormData();
+    formData.append("description", selectedDescription);
+    formData.append("selectedFile", selectedFile);
+
+    console.log("item to send with selected file is", itemToSend);
     console.log("form data is,", formData);
 
     dispatch({
       type: "SEND_FILE",
-      payload: formData
+      payload: formData,
     });
   }
 
+  const newProject = (event) => {
+    history.push('/newProject');
+  };
   return (
     <>
       <div className="container">
@@ -79,8 +80,10 @@ const itemToSend = {
 
           <input type="submit" value="Upload File" />
         </div>
-        <ProjectList />
+        
       </form>
+      <ProjectList />
+      <button on onClick={newProject}>Create New Project</button>
       <LogOutButton className="btn" />
     </>
   );
