@@ -23,7 +23,7 @@ function AddProject() {
         <h2>Welcome, {user.username}!</h2>
         <p>Your ID is: {user.id}</p>
       </div>
-      <form action="/api/images" encType="multipart/form-data" method="post">
+      <form action="/api/images" encType="multipart/form-data" method="post" >
         <div className="form-group">
           <input
             type="file"
