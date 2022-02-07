@@ -63,7 +63,7 @@ router.post(
 
     pool
       .query(queryText, queryParams)
-      .then(() => res.sendStatus(201))
+      .then(() => res.redirect("/user"))
       .catch((err) => {
         console.log("Add item failed: ", err);
         res.sendStatus(500);
