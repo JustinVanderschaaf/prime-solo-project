@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+
 const app = express();
 
 const sessionMiddleware = require('./modules/session-middleware');
@@ -9,6 +10,8 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const imageListRouter = require('./routes/images.router');
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -23,6 +26,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/images', imageListRouter);
+
 
 // Serve static files
 app.use(express.static('build'));
