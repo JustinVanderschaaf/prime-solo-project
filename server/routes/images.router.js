@@ -48,11 +48,12 @@ router.get("/", (req, res) => {
  */
 router.post(
   "/",
-  upload.single("uploaded_file"),
+  upload.single("selectedFile"),
   rejectUnauthenticated,
   (req, res, next) => {
     console.log("req.body is", req.body);
     console.log("req.file is", req.file);
+    
 
     const queryText = `
       INSERT INTO "image"(url,subtitle)
@@ -63,7 +64,7 @@ router.post(
 
     pool
       .query(queryText, queryParams)
-      .then(() => res.redirect('/user'))
+      .then(() => res.sendStatus(201))
       .catch((err) => {
         console.log("Add item failed: ", err);
         res.sendStatus(500);

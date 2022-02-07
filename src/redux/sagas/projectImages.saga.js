@@ -25,4 +25,4 @@ function* getProjectPhotosSaga() {
   yield takeLatest("GET_PROJECT_PHOTOS", getProjectImages);
 }
 
-export default getProjectImages;
+export default getProjectPhotosSaga;
