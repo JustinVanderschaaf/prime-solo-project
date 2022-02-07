@@ -8,4 +8,8 @@ footer {
   height: 2.5rem;
   background-color: black;
   color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  bottom: -400px;
 }

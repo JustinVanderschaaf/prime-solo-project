@@ -17,9 +17,8 @@ const AddProject = () => {
 
   // display all projects on DOm upon app load
   useEffect(() => {
-    dispatch({
-      type: "GET_PROJECT_PHOTOS",
-    });
+    dispatch({type: "GET_PROJECT_PHOTOS",});
+    dispatch({type:"FETCH_CATEGORIES"});
   }, []);
 
   //Event handlers

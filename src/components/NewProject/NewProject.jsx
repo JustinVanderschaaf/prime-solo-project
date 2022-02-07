@@ -6,9 +6,11 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const NewProject = () => {
-    const dispatch = useDispatch();
-  const [budget, setBudget] = useState("");
-  const [title, setTitle] = useState("");
+  const dispatch = useDispatch();
+  const categories = useSelector((store) => store.categories);
+  let [budget, setBudget] = useState("");
+  let [title, setTitle] = useState("");
+  let [category_id, setCategory_id] = useState(0);
   //Save budget/title data to object on submit/dispatch
   const projectData = {
     budget: budget,
@@ -16,7 +18,7 @@ const NewProject = () => {
   };
   const saveProjectInformation = (event) => {
     event.preventDefault();
-    console.log('Current project', projectData );
+    console.log("Current project", projectData);
 
     dispatch({
       type: "NEW_PROJECT",
@@ -59,9 +61,26 @@ const NewProject = () => {
         <input type="date" placeholder="Date"></input>
         {/* end date inpu */}
         <br />
-        {/* category input */}
-        <input type="dropdown" placeholder="Catagory" />
-        {/* end category input */}
+        {/* category input dropdown with cat names */}
+        
+      <select
+        id="select"
+        value={category_id}
+        onChange={(evt) => setCategory_id(evt.target.value)}
+      >
+        <option disabled value="0">
+          Pick One!
+        </option>
+        {categories.map((category) => {
+          return (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          );
+        })}
+      </select>
+      {/* end drop down with cat names */}
+        
         <button className="newProjectBtn" type="submit">
           Create Project
         </button>
