@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 //limit file size "dont trust user"
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1000000 },
+  limits: { fileSize: 10000000 },
 });
 
 const {

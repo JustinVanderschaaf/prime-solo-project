@@ -3,9 +3,11 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ProjectList from "../ProjectList";
+import { useHistory } from "react-router-dom";
 
 function AddProject() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((store) => store.user);
 
   // display all projects on DOm upon app load

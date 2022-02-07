@@ -38,9 +38,9 @@ function ProjectList() {
           justifyContent="space-evenly"
         >
           {projectImages.map((photo) => (
-            <Grid item xs>
+            <Grid key={photo.id} item md>
               <Item>
-                <Card id="cards" key={photo.url} sx={{ maxWidth: 200 }}>
+                <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
                     <Button size="small">Learn More</Button>
                     <Button size="small">Share</Button>
