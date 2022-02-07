@@ -15,23 +15,6 @@ function AddProject() {
     });
   }, []);
 
-  // const itemToAdd = {
-  //     description: description,
-  //     image_url: image,
-  //     user_id: user.id
-  // }
-
-  // const onAddItem = (evt) => {
-  //     evt.preventDefault();
-  //     console.log('itemToAdd is:', itemToAdd);
-
-  //     dispatch({
-  //         type: 'ADD_ITEM',
-  //         payload: itemToAdd
-  //     });
-
-  // };
-
   return (
     <>
       <div className="container">
