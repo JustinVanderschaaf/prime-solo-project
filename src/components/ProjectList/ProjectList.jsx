@@ -83,7 +83,7 @@ const AddProject = () => {
         
       </form>
       <ProjectList />
-      <button on onClick={newProject}>Create New Project</button>
+      <button onClick={newProject}>Create New Project</button>
       <LogOutButton className="btn" />
     </>
   );
