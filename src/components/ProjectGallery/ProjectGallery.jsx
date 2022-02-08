@@ -50,8 +50,9 @@ const projectGallery = () => {
     });
   }
 
-  const newProject = (event) => {
-    history.push("/newProject");
+  const summeryPage = (event) => {
+    history.push("/summery");
+    
   };
   return (
     <>
@@ -80,6 +81,7 @@ const projectGallery = () => {
           <input type="submit" value="Upload File" />
         </div>
       </form>
+      <button onClick={summeryPage}>Summery</button>
       <ProjectGalleryCards />
       <LogOutButton className="btn" />
     </>

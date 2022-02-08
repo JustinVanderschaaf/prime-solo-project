@@ -21,6 +21,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import NewProject from "../NewProject/NewProject";
 import ProjectList from "../ProjectList/ProjectList";
+import ProjectSummery from "../ProjectSummery/ProjectSummery"
 
 import "./App.css";
 
@@ -76,6 +77,14 @@ function App() {
             path="/projectGallery"
           >
             <ProjectGallery />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/summery"
+          >
+            <ProjectSummery />
           </ProtectedRoute>
 
           <ProtectedRoute
