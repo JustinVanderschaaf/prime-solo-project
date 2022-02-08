@@ -5,8 +5,19 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-  // GET route code here
+ router.get("/", (req, res) => {
+  pool
+    .query(
+      `
+    SELECT * FROM project
+    `
+    )
+    .then((dbRes) => {
+      res.send(dbRes.rows);
+    })
+    .catch((err) => {
+      console.error("err in get project", err);
+    });
 });
 
 
