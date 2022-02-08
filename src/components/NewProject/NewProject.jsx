@@ -8,22 +8,30 @@ import axios from "axios";
 const NewProject = () => {
   const dispatch = useDispatch();
   const categories = useSelector((store) => store.projectCategoriesReducer);
+  const user = useSelector((store) => store.user);
   let [budget, setBudget] = useState("");
   let [title, setTitle] = useState("");
-  let [category_id, setCategory_id] = useState(0);
-  //Save budget/title data to object on submit/dispatch
+  let [categoryId, setCategoryId] = useState(0);
+
+
+  useEffect(() => {
+    dispatch({type:"FETCH_CATEGORIES"});
+  }, []);
+  //Save budget/title/categoryId/userId data to object on submit/dispatch
   const projectData = {
     budget: budget,
     title: title,
+    categoryId: categoryId,
+    user:user.id,
   };
   const saveProjectInformation = (event) => {
     event.preventDefault();
     console.log("Current project", projectData);
 
-    dispatch({
-      type: "NEW_PROJECT",
-      payload: budget,
-    });
+    // dispatch({
+    //   type: "NEW_PROJECT",
+    //   payload: projectData,
+    // });
 
     setBudget("");
   };
@@ -65,8 +73,8 @@ const NewProject = () => {
         
       <select
         id="select"
-        value={category_id}
-        onChange={(evt) => setCategory_id(evt.target.value)}
+        value={categoryId}
+        onChange={(evt) => setCategoryId(evt.target.value)}
       >
         <option disabled value="0">
           Pick One!
