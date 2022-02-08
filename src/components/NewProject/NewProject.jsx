@@ -13,6 +13,8 @@ const NewProject = () => {
   let [title, setTitle] = useState("");
   let [categoryId, setCategoryId] = useState(0);
   let [projectDate, setProjectDate] = useState("");
+  const history = useHistory();
+  
 
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORIES" });
@@ -37,8 +39,12 @@ const NewProject = () => {
     setBudget("");
     setTitle("");
     setCategoryId(0);
+    history.push("/projectGallery")
   };
-
+  const summeryPage = (event) => {
+    history.push("/summery");
+    
+  };
   return (
     <>
       <h1>Hello</h1>

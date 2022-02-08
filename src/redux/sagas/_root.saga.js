@@ -7,6 +7,7 @@ import addSaga from "./addphoto.saga";
 import getCategoriesSaga from "./categories.saga";
 import addProjectSaga from "./newProject.saga";
 import getProjectsSaga from "./getProject.saga";
+import getMaterialsSaga from "./getMaterials.saga"
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     getCategoriesSaga(),
     addProjectSaga(),
     getProjectsSaga(),
+    getMaterialsSaga(),
   ]);
 }

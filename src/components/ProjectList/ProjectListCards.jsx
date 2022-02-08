@@ -51,8 +51,8 @@ function ProjectListCards() {
                 <Item>
                   <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                     <CardActions>
-                      <Button size="small">Learn More</Button>
-                      <Button size="small">Share</Button>
+                      <Button size="small">After</Button>
+                      <Button size="small">Before</Button>
                     </CardActions>
                     <CardMedia
                       component="img"
