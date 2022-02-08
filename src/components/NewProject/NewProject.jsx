@@ -34,6 +34,9 @@ const NewProject = () => {
     // });
 
     setBudget("");
+    setTitle("")
+    setCategoryId(0)
+    
   };
 
   return (
