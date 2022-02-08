@@ -30,10 +30,10 @@ const NewProject = () => {
     event.preventDefault();
     console.log("Current project", projectData);
 
-    // dispatch({
-    //   type: "NEW_PROJECT",
-    //   payload: projectData,
-    // });
+    dispatch({
+      type: "NEW_PROJECT",
+      payload: projectData,
+    });
 
     setBudget("");
     setTitle("")
