@@ -17,8 +17,8 @@ const projectGallery = () => {
 
   // display all projects on DOm upon app load
   useEffect(() => {
-    dispatch({type: "GET_PROJECT_PHOTOS",});
-    dispatch({type:"FETCH_CATEGORIES"});
+    dispatch({ type: "GET_PROJECT_PHOTOS" });
+    dispatch({ type: "FETCH_CATEGORIES" });
   }, []);
 
   //Event handlers
@@ -51,7 +51,7 @@ const projectGallery = () => {
   }
 
   const newProject = (event) => {
-    history.push('/newProject');
+    history.push("/newProject");
   };
   return (
     <>
@@ -79,7 +79,6 @@ const projectGallery = () => {
 
           <input type="submit" value="Upload File" />
         </div>
-        
       </form>
       <ProjectGalleryCards />
       <LogOutButton className="btn" />

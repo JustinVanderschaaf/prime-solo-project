@@ -1,11 +1,11 @@
-const express = require('express');
-const pool = require('../modules/pool');
+const express = require("express");
+const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
  * GET route template
  */
- router.get("/", (req, res) => {
+router.get("/", (req, res) => {
   pool
     .query(
       `
@@ -20,10 +20,9 @@ const router = express.Router();
     });
 });
 
-
-  // POST route code here
-router.post('/', (req, res, next) => {
-  const user = req.body.user
+// POST route code here
+router.post("/", (req, res, next) => {
+  const user = req.body.user;
   const categoryId = req.body.categoryId;
   const date = req.body.date;
   const budget = req.body.budget;
@@ -32,10 +31,10 @@ router.post('/', (req, res, next) => {
   const queryText = `INSERT INTO "project" (user_id, category_id, date, budget, title)
     VALUES ($1, $2, $3, $4, $5) `;
   pool
-    .query(queryText, [user, categoryId,date,budget,title])
+    .query(queryText, [user, categoryId, date, budget, title])
     .then(() => res.sendStatus(201))
     .catch((err) => {
-      console.log('project creation failed: ', err);
+      console.log("project creation failed: ", err);
       res.sendStatus(500);
     });
 });

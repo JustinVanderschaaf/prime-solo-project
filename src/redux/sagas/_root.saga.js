@@ -4,9 +4,9 @@ import registrationSaga from "./registration.saga";
 import userSaga from "./user.saga";
 import getProjectImagesSaga from "./projectImages.saga";
 import addSaga from "./addphoto.saga";
-import getCategoriesSaga from "./categories.saga"
-import addProjectSaga from "./newProject.saga"
-import getProjectsSaga from "./getProject.saga"
+import getCategoriesSaga from "./categories.saga";
+import addProjectSaga from "./newProject.saga";
+import getProjectsSaga from "./getProject.saga";
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.

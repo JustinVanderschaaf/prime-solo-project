@@ -14,9 +14,8 @@ const NewProject = () => {
   let [categoryId, setCategoryId] = useState(0);
   let [projectDate, setProjectDate] = useState("");
 
-
   useEffect(() => {
-    dispatch({type:"FETCH_CATEGORIES"});
+    dispatch({ type: "FETCH_CATEGORIES" });
   }, []);
   //Save budget/title/categoryId/userId data to object on submit/dispatch
   const projectData = {
@@ -24,7 +23,7 @@ const NewProject = () => {
     title: title,
     categoryId: categoryId,
     user: user.id,
-    date: projectDate
+    date: projectDate,
   };
   const saveProjectInformation = (event) => {
     event.preventDefault();
@@ -36,9 +35,8 @@ const NewProject = () => {
     });
 
     setBudget("");
-    setTitle("")
-    setCategoryId(0)
-    
+    setTitle("");
+    setCategoryId(0);
   };
 
   return (
@@ -80,25 +78,25 @@ const NewProject = () => {
         {/* end date inpu */}
         <br />
         {/* category input dropdown with cat names */}
-        
-      <select
-        id="select"
-        value={categoryId}
-        onChange={(evt) => setCategoryId(evt.target.value)}
-      >
-        <option disabled value="0">
-          Pick One!
-        </option>
-        {categories.map((category) => {
-          return (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          );
-        })}
-      </select>
-      {/* end drop down with cat names */}
-        
+
+        <select
+          id="select"
+          value={categoryId}
+          onChange={(evt) => setCategoryId(evt.target.value)}
+        >
+          <option disabled value="0">
+            Pick One!
+          </option>
+          {categories.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
+        </select>
+        {/* end drop down with cat names */}
+
         <button className="newProjectBtn" type="submit">
           Create Project
         </button>

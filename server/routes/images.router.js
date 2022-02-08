@@ -53,7 +53,6 @@ router.post(
   (req, res, next) => {
     console.log("req.body is", req.body);
     console.log("req.file is", req.file);
-    
 
     const queryText = `
       INSERT INTO "image"(url,subtitle)

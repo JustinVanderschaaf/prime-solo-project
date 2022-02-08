@@ -1,6 +1,6 @@
-import React from 'react';
-import './Footer.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,12 +8,19 @@ import { Link } from 'react-router-dom';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <footer>
-    <div>&copy; Created by Justin Vanderschaaf</div>
-    <div> Check me out on <a href="//github.com/JustinVanderschaaf">gitHub</a></div>
-    <div> or on  <a href="//www.linkedin.com/in/justin-vanderschaaf/">LinkIn</a></div>
-    
-    </footer>;
+  return (
+    <footer>
+      <div>&copy; Created by Justin Vanderschaaf</div>
+      <div>
+        {" "}
+        Check me out on <a href="//github.com/JustinVanderschaaf">gitHub</a>
+      </div>
+      <div>
+        {" "}
+        or on <a href="//www.linkedin.com/in/justin-vanderschaaf/">LinkIn</a>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;
