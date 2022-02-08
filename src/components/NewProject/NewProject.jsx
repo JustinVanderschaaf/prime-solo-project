@@ -7,7 +7,7 @@ import axios from "axios";
 
 const NewProject = () => {
   const dispatch = useDispatch();
-  const categories = useSelector((store) => store.categories);
+  const categories = useSelector((store) => store.projectCategoriesReducer);
   let [budget, setBudget] = useState("");
   let [title, setTitle] = useState("");
   let [category_id, setCategory_id] = useState(0);
