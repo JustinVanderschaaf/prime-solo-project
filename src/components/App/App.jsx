@@ -14,12 +14,13 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import ProjectList from '../ProjectList/ProjectList';
+import ProjectGallery from '../ProjectGallery/ProjectGallery';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import NewProject from '../NewProject/NewProject';
+import ProjectList from '../ProjectList/ProjectList'
 
 import './App.css';
 
@@ -58,7 +59,8 @@ function App() {
             exact
             path="/user"
           >
-            <ProjectList />
+            <ProjectList/>
+            
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -67,6 +69,14 @@ function App() {
             path="/newProject"
           >
             <NewProject />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/projectGallery"
+          >
+            <ProjectGallery />
           </ProtectedRoute>
 
           <ProtectedRoute

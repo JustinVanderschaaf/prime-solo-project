@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
-function ProjectList() {
+function ProjectGalleryCards() {
   const projectImages = useSelector((store) => store.projectImageReducer);
   const user = useSelector((store) => store.user);
   console.log("this is user", user);
@@ -64,4 +64,4 @@ function ProjectList() {
   );
 }
 
-export default ProjectList;
+export default ProjectGalleryCards;
