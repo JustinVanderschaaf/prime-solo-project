@@ -12,6 +12,7 @@ const NewProject = () => {
   let [budget, setBudget] = useState("");
   let [title, setTitle] = useState("");
   let [categoryId, setCategoryId] = useState(0);
+  let [projectDate, setProjectDate] = useState("");
 
 
   useEffect(() => {
@@ -22,7 +23,8 @@ const NewProject = () => {
     budget: budget,
     title: title,
     categoryId: categoryId,
-    user:user.id,
+    user: user.id,
+    date: projectDate
   };
   const saveProjectInformation = (event) => {
     event.preventDefault();
@@ -69,7 +71,12 @@ const NewProject = () => {
         {/* end budget input */}
         <br />
         {/* date input */}
-        <input type="date" placeholder="Date"></input>
+        <input
+          type="date"
+          value={projectDate}
+          onChange={(evt) => setProjectDate(evt.target.value)}
+          placeholder="Date"
+        />
         {/* end date inpu */}
         <br />
         {/* category input dropdown with cat names */}
