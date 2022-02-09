@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import ProjectGalleryCards from "./ProjectGalleryCards";
+// import ProjectGalleryCards from "./ProjectGalleryCards";
 import { useHistory } from "react-router-dom";
 
-
-const ProjectPhotoUpload = () => {
+const ProjectGalleryForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((store) => store.user);
@@ -18,10 +17,10 @@ const ProjectPhotoUpload = () => {
   const [selectedDescription, setSelectedDescription] = useState("");
 
   // display all projects on DOm upon app load
-  useEffect(() => {
-    dispatch({ type: "GET_PROJECT_PHOTOS", payload:selectedProject.id });
-    dispatch({ type: "FETCH_CATEGORIES" });
-  }, [projectImages]);
+  // useEffect(() => {
+  //   dispatch({ type: "GET_PROJECT_PHOTOS", payload:selectedProject.id });
+
+  // }, []);
 
   //Event handlers
   const handleFileSelect = (event) => {
@@ -40,7 +39,7 @@ const ProjectPhotoUpload = () => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("projectId", selectedProject.id )
+    formData.append("projectId", selectedProject.id);
     formData.append("description", selectedDescription);
     formData.append("selectedFile", selectedFile);
 
@@ -51,12 +50,10 @@ const ProjectPhotoUpload = () => {
       type: "SEND_FILE",
       payload: formData,
     });
-    
   }
 
   const summeryPage = (event) => {
     history.push("/summery");
-    
   };
   return (
     <>
@@ -87,17 +84,8 @@ const ProjectPhotoUpload = () => {
         </div>
       </form>
       <button onClick={summeryPage}>Summery</button>
-
-
-
-
-
-
-
-      <ProjectGalleryCards />
-      <LogOutButton className="btn" />
     </>
   );
 };
 
-export default ProjectPhotoUpload;
+export default ProjectGalleryForm;

@@ -41,4 +41,28 @@ router.post("/", (req, res, next) => {
     });
 });
 
+/**
+ * Delete an project if it's something the logged in user added
+ */
+router.delete("/:id", (req, res) => {
+  // endpoint functionality
+  console.log(
+    "this is req.params delete project",
+    req.params.id,
+    "and user is",
+    req.user
+  );
+
+  const queryText = "DELETE FROM project WHERE id=$1";
+  pool
+    .query(queryText, [req.params.id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Error completing SELECT project query", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

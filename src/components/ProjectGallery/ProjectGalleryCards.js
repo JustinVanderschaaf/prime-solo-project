@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 //MUI
 import Card from "@mui/material/Card";
@@ -14,11 +15,15 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
 function ProjectGalleryCards() {
+  const dispatch = useDispatch();
   const selectedProject = useSelector((store) => store.selectedProject);
   const projectImages = useSelector((store) => store.projectImageReducer);
   const user = useSelector((store) => store.user);
-  console.log("this is user", user);
-  console.log("projectPhotos is ", projectImages);
+
+  const itemToDelete = {
+    photo:photo.id,
+    projectId:selectedProject.id
+  }
 
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
@@ -28,6 +33,16 @@ function ProjectGalleryCards() {
     color: theme.palette.text.secondary,
   }));
   //end MUI
+  useEffect(() => {
+    dispatch({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });
+  }, []);
+  const removeImage = (photo) => {
+    
+    console.log("delete photo id is", photo.id);
+
+    dispatch({ type: "DELETE_PHOTO", payload: photo.id });
+    
+  };
 
   return (
     <div className="container">
@@ -39,14 +54,13 @@ function ProjectGalleryCards() {
           justifyContent="space-evenly"
         >
           {projectImages.map((photo) => (
-            
             <Grid key={photo.id} item md>
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
-                  
                     <Button size="small">{photo.project_id}</Button>
-                    <Button size="small">Share</Button>
+
+                    <button onClick={() => removeImage(photo)}>Remove</button>
                   </CardActions>
                   <CardMedia
                     component="img"

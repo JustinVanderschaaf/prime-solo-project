@@ -14,7 +14,7 @@ import Footer from "../Footer/Footer";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "../AboutPage/AboutPage";
-import ProjectPhotoUpload from "../ProjectGallery/ProjectPhotoUpload";
+import ProjectGalleryMain from "../ProjectGallery/ProjectGalleryMain";
 import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
@@ -76,7 +76,7 @@ function App() {
             exact
             path="/projectGallery"
           >
-            <ProjectPhotoUpload />
+            <ProjectGalleryMain />
           </ProtectedRoute>
 
           <ProtectedRoute

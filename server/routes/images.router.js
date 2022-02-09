@@ -42,7 +42,7 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       console.error("err in get images " + req.query, err,);
-      console.log('req.query', req.params.id);
+      console.log('req.params.id', req.params);
       
     });
 });
@@ -80,10 +80,11 @@ router.post(
  */
 router.delete("/:id", (req, res) => {
   // endpoint functionality
-  console.log(req.user);
-  const queryText = "DELETE FROM image WHERE id=$1 AND user_id=$2";
+  console.log("this is req.params %%%%%delete",req.params,"and user is",req.user);
+
+  const queryText = "DELETE FROM image WHERE id=$1";
   pool
-    .query(queryText, [req.params.id, req.user.id])
+    .query(queryText, [req.params.id])
     .then(() => {
       res.sendStatus(200);
     })
