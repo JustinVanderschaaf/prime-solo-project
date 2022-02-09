@@ -11,6 +11,7 @@ const projectGallery = () => {
   const history = useHistory();
   const user = useSelector((store) => store.user);
   const selectedProject = useSelector((store) => store.selectedProject);
+  const projectImages = useSelector((store) => store.projectImageReducer);
 
   // a local state to store the currently selected file.
   const [selectedFile, setSelectedFile] = useState(null);
@@ -20,7 +21,7 @@ const projectGallery = () => {
   useEffect(() => {
     dispatch({ type: "GET_PROJECT_PHOTOS", payload:selectedProject.id });
     dispatch({ type: "FETCH_CATEGORIES" });
-  }, []);
+  }, [projectImages]);
 
   //Event handlers
   const handleFileSelect = (event) => {

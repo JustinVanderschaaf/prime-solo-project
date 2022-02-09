@@ -13,7 +13,7 @@ function* addPhoto(action) {
 
     yield axios.post("/api/images", action.payload, config);
 
-    yield put({ type: "GET_PROJECT_PHOTOS" });
+    // yield put({ type: "GET_PROJECT_PHOTOS" });
   } catch (error) {
     console.log("Add photo failed", error);
   }
