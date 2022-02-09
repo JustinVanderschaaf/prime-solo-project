@@ -2,14 +2,11 @@ import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
 function* addPhoto(action) {
-  console.log("inside addPhoto");
-
   try {
     const config = {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    console.log("what is the file payload???", action.payload);
 
     yield axios.post("/api/images", action.payload, config);
 

@@ -14,12 +14,12 @@ import Footer from "../Footer/Footer";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "../AboutPage/AboutPage";
-import ProjectGallery from "../ProjectGallery/ProjectGallery";
+import ProjectPhotoUpload from "../ProjectGallery/ProjectPhotoUpload";
 import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import NewProject from "../NewProject/NewProject";
+import NewProject from "../CreateNewProject/CreateNewProject";
 import ProjectList from "../ProjectList/ProjectList";
 import ProjectSummery from "../ProjectSummery/ProjectSummery"
 
@@ -76,7 +76,7 @@ function App() {
             exact
             path="/projectGallery"
           >
-            <ProjectGallery />
+            <ProjectPhotoUpload />
           </ProtectedRoute>
 
           <ProtectedRoute

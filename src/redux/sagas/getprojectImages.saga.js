@@ -11,7 +11,6 @@ function* getProjectImages(action) {
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
-    console.log("***********what is the GET payload???", action.payload);
     let photoList = yield axios.get(`/api/images/${action.payload}`, config);
     yield put({
       type: "SET_PROJECT_IMAGES",

@@ -2,10 +2,10 @@ import { all } from "redux-saga/effects";
 import loginSaga from "./login.saga";
 import registrationSaga from "./registration.saga";
 import userSaga from "./user.saga";
-import getProjectImagesSaga from "./projectImages.saga";
+import getProjectImagesSaga from "./getprojectImages.saga";
 import addSaga from "./addphoto.saga";
-import getCategoriesSaga from "./categories.saga";
-import addProjectSaga from "./newProject.saga";
+import getCategoriesSaga from "./getCategories.saga";
+import addProjectSaga from "./createProject.saga";
 import getProjectsSaga from "./getProject.saga";
 import getMaterialsSaga from "./getMaterials.saga"
 

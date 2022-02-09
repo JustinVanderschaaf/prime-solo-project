@@ -6,7 +6,7 @@ import ProjectGalleryCards from "./ProjectGalleryCards";
 import { useHistory } from "react-router-dom";
 
 
-const projectGallery = () => {
+const ProjectPhotoUpload = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((store) => store.user);
@@ -100,4 +100,4 @@ const projectGallery = () => {
   );
 };
 
-export default projectGallery;
+export default ProjectPhotoUpload;

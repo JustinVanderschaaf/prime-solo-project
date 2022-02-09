@@ -9,11 +9,9 @@ function* addProject(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    console.log("what is add project payload???", action.payload);
 
     yield axios.post("/api/newProject", action.payload, config);
 
-    // yield put({ type: "GET_NEW_PROJECTS" });
   } catch (error) {
     console.log("Add photo failed", error);
   }
