@@ -41,7 +41,7 @@ router.get("/:id", (req, res) => {
       res.send(dbRes.rows);
     })
     .catch((err) => {
-      console.error("err in get images " + req.query, err,);
+      console.error("err in get images " , err,);
       console.log('req.params.id', req.params);
       
     });

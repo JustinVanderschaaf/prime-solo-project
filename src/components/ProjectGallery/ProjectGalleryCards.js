@@ -19,11 +19,7 @@ function ProjectGalleryCards() {
   const selectedProject = useSelector((store) => store.selectedProject);
   const projectImages = useSelector((store) => store.projectImageReducer);
   const user = useSelector((store) => store.user);
-
-  const itemToDelete = {
-    photo:photo.id,
-    projectId:selectedProject.id
-  }
+  
 
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
