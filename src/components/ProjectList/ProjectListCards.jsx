@@ -16,10 +16,11 @@ import Grid from "@mui/material/Grid";
 
 function ProjectListCards() {
   const history = useHistory();
-  const projects = useSelector((store) => store.projectReducer); //<<<CHANGE REDUCER
+  const dispatch = useDispatch();
+  const projects = useSelector((store) => store.projectReducer);
   const user = useSelector((store) => store.user);
   console.log("this is user", user);
-  console.log("projects are ", projects); ///<<<CHANGE
+  console.log("projects are ", projects);
 
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
@@ -30,9 +31,14 @@ function ProjectListCards() {
   }));
   //end MUI
 
-  const tempGallery = (event) => {
+  const handleSelectProject = (project) => {
+    // store selected movie object in Redux
+    dispatch({ type: "SET_SELECTED_PROJECT", payload: project });
+    // go to details view
     history.push("/projectGallery");
   };
+
+ 
 
   return (
     <div className="container">
@@ -43,34 +49,29 @@ function ProjectListCards() {
           justifyContent="center"
           justifyContent="space-evenly"
         >
-          {projects.map(
-            (
-              project //<<<<<<CHANGE MAP
-            ) => (
-              <Grid key={project.id} item md>
-               
-                <Item>
-                <div>project owner: {project.username}</div> 
-                  <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
-                    <CardActions>
-                    
-                      <Button size="small">After</Button>
-                      <Button size="small">Before</Button>
-                    </CardActions>
-                    <CardMedia
-                      component="img"
-                      alt="NEW PROJECT"
-                      height="200"
-                      onClick={tempGallery}
-                    />
-                    <CardContent>
-                      <Typography variant="body2">{project.title}</Typography>
-                    </CardContent>
-                  </Card>
-                </Item>
-              </Grid>
-            )
-          )}
+          {projects.map((project) => (
+            <Grid key={project.id} item md>
+              <Item>
+                <div>project owner: {project.username}</div>
+                <p>project id is: {project.id}</p>
+                <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
+                  <CardActions>
+                    <Button size="small">After</Button>
+                    <Button size="small">Before</Button>
+                  </CardActions>
+                  <CardMedia
+                    component="img"
+                    alt="NEW PROJECT"
+                    height="200"
+                    onClick={() => handleSelectProject(project)}
+                  />
+                  <CardContent>
+                    <Typography variant="body2">{project.title}</Typography>
+                  </CardContent>
+                </Card>
+              </Item>
+            </Grid>
+          ))}
         </Grid>
       </Box>
     </div>

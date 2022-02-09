@@ -14,6 +14,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
 function ProjectGalleryCards() {
+  const selectedProject = useSelector((store) => store.selectedProject);
   const projectImages = useSelector((store) => store.projectImageReducer);
   const user = useSelector((store) => store.user);
   console.log("this is user", user);
@@ -38,12 +39,13 @@ function ProjectGalleryCards() {
           justifyContent="space-evenly"
         >
           {projectImages.map((photo) => (
+            
             <Grid key={photo.id} item md>
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
                   
-                    <Button size="small">Learn More</Button>
+                    <Button size="small">{photo.project_id}</Button>
                     <Button size="small">Share</Button>
                   </CardActions>
                   <CardMedia

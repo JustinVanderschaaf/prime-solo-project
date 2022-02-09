@@ -4,16 +4,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ProjectGalleryCards from "./ProjectGalleryCards";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+
 
 const projectGallery = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((store) => store.user);
+  const selectedProject = useSelector((store) => store.selectedProject);
 
   // a local state to store the currently selected file.
-  const [selectedFile, setSelectedFile] = React.useState(null);
-  const [selectedDescription, setSelectedDescription] = React.useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedDescription, setSelectedDescription] = useState("");
 
   // display all projects on DOm upon app load
   useEffect(() => {
@@ -38,6 +39,7 @@ const projectGallery = () => {
     event.preventDefault();
 
     const formData = new FormData();
+    formData.append("projectId", selectedProject.id )
     formData.append("description", selectedDescription);
     formData.append("selectedFile", selectedFile);
 
@@ -48,6 +50,7 @@ const projectGallery = () => {
       type: "SEND_FILE",
       payload: formData,
     });
+    
   }
 
   const summeryPage = (event) => {
@@ -59,6 +62,7 @@ const projectGallery = () => {
       <div className="container">
         <h2>Welcome, {user.username}!</h2>
         <p>Your ID is: {user.id}</p>
+        <p>your project id is: {selectedProject.id}</p>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -82,6 +86,13 @@ const projectGallery = () => {
         </div>
       </form>
       <button onClick={summeryPage}>Summery</button>
+
+
+
+
+
+
+
       <ProjectGalleryCards />
       <LogOutButton className="btn" />
     </>

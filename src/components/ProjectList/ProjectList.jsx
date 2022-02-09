@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ProjectListCards from "../ProjectList/ProjectListCards";
-import axios from "axios";
+
 
 const projectList = () => {
   const history = useHistory();
@@ -13,10 +13,6 @@ const projectList = () => {
 
   const newProject = (event) => {
     history.push("/newProject");
-  };
-
-  const tempGallery = (event) => {
-    history.push("/projectGallery");
   };
 
   useEffect(() => {

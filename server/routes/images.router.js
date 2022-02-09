@@ -55,11 +55,11 @@ router.post(
     console.log("req.file is", req.file);
 
     const queryText = `
-      INSERT INTO "image"(url,subtitle)
-      VALUES ($1,$2);
+      INSERT INTO "image"(project_id,url,subtitle)
+      VALUES ($1,$2,$3);
   `;
 
-    const queryParams = [req.file.filename, req.body.description];
+    const queryParams = [req.body.projectId,req.file.filename, req.body.description];
 
     pool
       .query(queryText, queryParams)
