@@ -57,12 +57,6 @@ const ProjectGalleryForm = () => {
   };
   return (
     <>
-      <div className="container">
-        <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
-        <p>your project id is: {selectedProject.id}</p>
-      </div>
-
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
@@ -83,7 +77,7 @@ const ProjectGalleryForm = () => {
           <input type="submit" value="Upload File" />
         </div>
       </form>
-      <button onClick={summeryPage}>Summery</button>
+      
     </>
   );
 };

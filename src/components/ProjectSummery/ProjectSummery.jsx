@@ -17,10 +17,44 @@ import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
 
 const projectSummery = () => {
+  const selectedProject = useSelector((store) => store.selectedProject);
+  const user = useSelector((store) => store.user);
   const materials = useSelector((store) => store.materialsReducer);
   const history = useHistory();
   const dispatch = useDispatch();
   const [description, setDescription] = React.useState("");
+
+  //table inputs
+  let [material, setMaterial] = useState("");
+  let [qty, setQty] = useState(undefined);
+  let [cost, setCost] = useState(undefined);
+  let [onHand, setOnHand] = useState("");
+  let [location, setLocation] = useState("");
+
+  const materialData = {
+    material: material,
+    qty: qty,
+    cost: cost,
+    onHand: onHand,
+    location: location,
+  };
+  //end table inputs
+
+  const saveMaterialInformation = (event) => {
+    event.preventDefault();
+    console.log("Current MATERIAL INPUT", materialData);
+
+    dispatch({
+      type: "NEW_MATERIAL",
+      payload: materialData,
+    });
+
+    setMaterial("");
+    setQty("");
+    setCost("");
+    setOnHand("");
+    setLocation("");
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -45,6 +79,10 @@ const projectSummery = () => {
   };
   return (
     <>
+      <h2>Welcome, {user.username}!</h2>
+      <p>Your ID is: {user.id}</p>
+      <p>your project id is: {selectedProject.id}</p>
+
       <button onClick={galleryPage}>Gallery</button>
       <button onClick={mats}>LOG MATERIALS</button>
 
@@ -54,6 +92,50 @@ const projectSummery = () => {
         value={description}
         onChange={(evt) => setDescription(evt.target.value)}
       />
+
+      <form onSubmit={saveMaterialInformation}>
+        <button>Submit</button>
+        <input
+          type="text"
+          required
+          value={material}
+          onChange={(evt) => setMaterial(evt.target.value)}
+          placeholder="Material"
+        />
+
+        <input
+          type="text"
+          required
+          value={qty}
+          onChange={(evt) => setQty(evt.target.value)}
+          placeholder="QTY"
+        />
+
+        <input
+          type="text"
+          required
+          value={cost}
+          onChange={(evt) => setCost(evt.target.value)}
+          placeholder="Cost"
+        />
+
+        <input
+          type="text"
+          required
+          value={onHand}
+          onChange={(evt) => setOnHand(evt.target.value)}
+          placeholder="On Hand"
+        />
+
+        <input
+          type="text"
+          required
+          value={location}
+          onChange={(evt) => setLocation(evt.target.value)}
+          placeholder="Location"
+        />
+      </form>
+
       {/* start table */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
