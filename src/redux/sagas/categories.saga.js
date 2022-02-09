@@ -3,7 +3,11 @@ import { put, takeLatest } from "redux-saga/effects";
 
 function* getCategories(action) {
   try {
-    let categoriesList = yield axios.get("/api/categories");
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    let categoriesList = yield axios.get("/api/categories",config);
     yield put({
       type: "SET_CATEGORIES",
       payload: categoriesList.data,

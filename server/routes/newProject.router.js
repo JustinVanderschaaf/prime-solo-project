@@ -9,7 +9,9 @@ router.get("/", (req, res) => {
   pool
     .query(
       `
-    SELECT * FROM project
+      SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,"user".username FROM project
+      JOIN "user"
+      ON project.user_id = "user".id
     `
     )
     .then((dbRes) => {

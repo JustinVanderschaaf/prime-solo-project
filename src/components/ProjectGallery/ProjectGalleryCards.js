@@ -42,6 +42,7 @@ function ProjectGalleryCards() {
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
+                  
                     <Button size="small">Learn More</Button>
                     <Button size="small">Share</Button>
                   </CardActions>
@@ -52,7 +53,7 @@ function ProjectGalleryCards() {
                     image={`uploads/${photo.url}`}
                   />
                   <CardContent>
-                    <Typography variant="body2">{photo.subtitle}</Typography>
+                    <Typography variant="body2">{photo.subtitle},</Typography>
                   </CardContent>
                 </Card>
               </Item>

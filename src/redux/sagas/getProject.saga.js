@@ -3,8 +3,15 @@ import { put, takeLatest } from "redux-saga/effects";
 
 function* getProjects(action) {
   try {
-    let projectList = yield axios.get("/api/newProject");
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    let projectList = yield axios.get("/api/newProject",config);
+    
     yield put({
+      
+      
       type: "SET_PROJECTS",
       payload: projectList.data,
     });

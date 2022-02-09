@@ -48,9 +48,12 @@ function ProjectListCards() {
               project //<<<<<<CHANGE MAP
             ) => (
               <Grid key={project.id} item md>
+               
                 <Item>
+                <div>project owner: {project.username}</div> 
                   <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                     <CardActions>
+                    
                       <Button size="small">After</Button>
                       <Button size="small">Before</Button>
                     </CardActions>

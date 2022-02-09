@@ -3,7 +3,11 @@ import { put, takeLatest } from "redux-saga/effects";
 
 function* getMaterials(action) {
   try {
-    let materials = yield axios.get("/api/materials");
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    let materials = yield axios.get("/api/materials",config);
     yield put({
       type: "SET_MATERIALS",
       payload: materials.data,
