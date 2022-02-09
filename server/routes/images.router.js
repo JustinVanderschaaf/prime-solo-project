@@ -28,18 +28,22 @@ const pool = require("../modules/pool");
 /**
  * Get all of the images in list
  */
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
+  
   pool
     .query(
       `
-    SELECT * FROM image
+    SELECT * FROM image 
+    WHERE project_id = ${req.params.id}
     `
     )
     .then((dbRes) => {
       res.send(dbRes.rows);
     })
     .catch((err) => {
-      console.error("err in get images", err);
+      console.error("err in get images " + req.query, err,);
+      console.log('req.query', req.params.id);
+      
     });
 });
 

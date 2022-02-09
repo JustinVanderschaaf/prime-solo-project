@@ -18,7 +18,7 @@ const projectGallery = () => {
 
   // display all projects on DOm upon app load
   useEffect(() => {
-    dispatch({ type: "GET_PROJECT_PHOTOS" });
+    dispatch({ type: "GET_PROJECT_PHOTOS", payload:selectedProject.id });
     dispatch({ type: "FETCH_CATEGORIES" });
   }, []);
 
