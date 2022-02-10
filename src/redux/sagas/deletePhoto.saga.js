@@ -7,9 +7,10 @@ function* deletePhoto(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
-    yield axios.delete(`/api/images/${action.payload}`, config);
-
+    console.log('what is delte action.payload',action.payload.selectedProject);
+    
+    yield axios.delete(`/api/images/${action.payload.photo}`, config);
+    yield put({ type: "GET_PROJECT_PHOTOS", payload: action.payload.selectedProject.id });;
   } catch (error) {
     console.log("DELETE photo failed", error);
   }

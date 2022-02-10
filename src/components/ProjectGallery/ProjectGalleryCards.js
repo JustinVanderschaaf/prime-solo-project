@@ -34,11 +34,15 @@ function ProjectGalleryCards() {
   }, []);
 
   
-  const removeImage = (photo) => {
-    
-    console.log("delete photo id is", photo.id);
 
-    dispatch({ type: "DELETE_PHOTO", payload: photo.id });
+  const removeImage = (photo) => {
+    let photoToRemove={
+      selectedProject: selectedProject,
+      photo : photo.id 
+    }
+
+    console.log("delete photo id is", photoToRemove);
+    dispatch({ type: "DELETE_PHOTO", payload: photoToRemove });
     
   };
 

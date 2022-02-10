@@ -11,7 +11,7 @@ console.log('action.payload$#$#$#$#$#',action.payload);
 
     yield axios.post("/api/images", action.payload, config);
 
-    yield put({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });;
+    // yield put({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });;
   } catch (error) {
     console.log("Add photo failed", error);
   }
