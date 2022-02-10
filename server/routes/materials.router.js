@@ -20,11 +20,26 @@ const router = express.Router();
       });
   });
 
-/**
- * POST route template
- */
-router.post("/", (req, res) => {
-  // POST route code here
+//post routee
+ router.post("/", (req, res, next) => {
+   console.log('MATERIALS RE>BODY IS ',req.body);
+   
+   const project_id = req.body.selectedProject
+  const cost = req.body.cost;
+  const location = req.body.location;
+  const material = req.body.material;
+  const onHand = req.body.onHand;
+  const qty = req.body.qty;
+
+  const queryText = `INSERT INTO "materials" (project_id, material, qty, cost, on_hand, location)
+    VALUES ($1, $2, $3, $4, $5, $6) `;
+  pool
+    .query(queryText, [project_id, material, qty, cost, onHand, location])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log("project creation failed: ", err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

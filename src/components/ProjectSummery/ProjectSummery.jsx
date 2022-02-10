@@ -26,12 +26,13 @@ const projectSummery = () => {
 
   //table inputs
   let [material, setMaterial] = useState("");
-  let [qty, setQty] = useState(undefined);
-  let [cost, setCost] = useState(undefined);
-  let [onHand, setOnHand] = useState("");
+  let [qty, setQty] = useState("");
+  let [cost, setCost] = useState("");
+  let [onHand, setOnHand] = useState("false");
   let [location, setLocation] = useState("");
 
   const materialData = {
+    selectedProject: selectedProject.id,
     material: material,
     qty: qty,
     cost: cost,
@@ -52,7 +53,7 @@ const projectSummery = () => {
     setMaterial("");
     setQty("");
     setCost("");
-    setOnHand("");
+    setOnHand("false");
     setLocation("");
   };
 
@@ -119,17 +120,18 @@ const projectSummery = () => {
           placeholder="Cost"
         />
 
-        <input
-          type="text"
-          required
+        <select
+          id="select"
           value={onHand}
           onChange={(evt) => setOnHand(evt.target.value)}
-          placeholder="On Hand"
-        />
+        >
+          <option value="false">Not Purchased</option>
+
+          <option value="true">On Hand</option>
+        </select>
 
         <input
           type="text"
-          required
           value={location}
           onChange={(evt) => setLocation(evt.target.value)}
           placeholder="Location"
