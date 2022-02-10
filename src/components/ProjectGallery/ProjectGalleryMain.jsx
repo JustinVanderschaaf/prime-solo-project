@@ -5,6 +5,7 @@ import ProjectGalleryCards from "./ProjectGalleryCards";
 import ProjectGalleryForm from "./ProjectGalleryForm";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function ProjectGalleryMain() {
   const dispatch = useDispatch();
@@ -13,10 +14,23 @@ function ProjectGalleryMain() {
   const user = useSelector((store) => store.user);
 
   const deleteProject = () => {
-    console.log("delete project id is", selectedProject.id);
-
-    dispatch({ type: "DELETE_PROJECT", payload: selectedProject.id });
+    Swal.fire({
+      title: 'Do you want to DELETE this project? This cant be undone',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Project has been Deleted!', '', 'success')
+        dispatch({ type: "DELETE_PROJECT", payload: selectedProject.id });
     history.push("/user")
+      } else if (result.isDenied) {
+        Swal.fire('Project Safe', '', 'info')
+      }
+    })
+    
+
   };
 
   const summeryPage = (event) => {
