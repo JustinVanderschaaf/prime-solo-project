@@ -9,9 +9,12 @@ function* addPhoto(action) {
     };
 console.log('action.payload$#$#$#$#$#',action.payload);
 
-    yield axios.post("/api/images", action.payload, config);
+    yield axios.post("/api/images", action.payload.formData, config);
 
-    // yield put({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });;
+    yield put({
+      type: "GET_PROJECT_PHOTOS",
+      payload: action.payload.selectedProject.id,
+    });
   } catch (error) {
     console.log("Add photo failed", error);
   }

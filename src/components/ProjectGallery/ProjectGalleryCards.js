@@ -40,8 +40,6 @@ function ProjectGalleryCards() {
       selectedProject: selectedProject,
       photo : photo.id 
     }
-
-    console.log("delete photo id is", photoToRemove);
     dispatch({ type: "DELETE_PHOTO", payload: photoToRemove });
     
   };

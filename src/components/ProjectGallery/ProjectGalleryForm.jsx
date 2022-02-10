@@ -43,12 +43,16 @@ const ProjectGalleryForm = () => {
     formData.append("description", selectedDescription);
     formData.append("selectedFile", selectedFile);
 
+    let imageDataToSend = {
+      formData: formData,
+      selectedProject: selectedProject,
+    };
     console.log("item to send with selected file is", itemToSend);
     console.log("form data is,", formData);
 
     dispatch({
       type: "SEND_FILE",
-      payload: formData,
+      payload: imageDataToSend,
     });
   }
 
@@ -77,7 +81,6 @@ const ProjectGalleryForm = () => {
           <input type="submit" value="Upload File" />
         </div>
       </form>
-      
     </>
   );
 };
