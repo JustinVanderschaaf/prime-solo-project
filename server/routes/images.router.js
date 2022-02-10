@@ -80,8 +80,6 @@ router.post(
  */
 router.delete("/:id", (req, res) => {
   // endpoint functionality
-  console.log("this is req.params %%%%%delete",req.params,"and user is",req.user);
-
   const queryText = "DELETE FROM image WHERE id=$1";
   pool
     .query(queryText, [req.params.id])
@@ -89,7 +87,7 @@ router.delete("/:id", (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.log("Error completing SELECT item query", err);
+      console.log("Error completing delete images query", err);
       res.sendStatus(500);
     });
 });

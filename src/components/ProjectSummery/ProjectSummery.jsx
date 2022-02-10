@@ -57,13 +57,10 @@ const projectSummery = () => {
     setLocation("");
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  const removeMaterial = (row) => {
+    console.log("delete row id is", row.id);
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+    dispatch({ type: "DELETE_MATERIAL", payload: row.id });
   };
 
   const galleryPage = (event) => {
@@ -172,7 +169,7 @@ const projectSummery = () => {
                 <TableCell align="right">{row.on_hand.toString()}</TableCell>
                 <TableCell align="right">{row.location}</TableCell>
                 <TableCell align="right">
-                  <button>Delete button</button>
+                  <button onClick={() => removeMaterial(row)}>Remove</button>
                 </TableCell>
               </TableRow>
             ))}

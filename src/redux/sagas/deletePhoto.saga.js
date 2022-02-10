@@ -7,7 +7,6 @@ function* deletePhoto(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-console.log('****%%%deletes action .payload ',action.payload);
 
     yield axios.delete(`/api/images/${action.payload}`, config);
 
