@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const NewProject = () => {
   const dispatch = useDispatch();
@@ -41,10 +42,25 @@ const NewProject = () => {
     setCategoryId(0);
     history.push("/projectGallery")
   };
-  const summeryPage = (event) => {
-    history.push("/summery");
+  
+  const cancelProject = () => {
+    Swal.fire({
+      title: 'Do you want to Cancel this project?',
+      showDenyButton: true,
+      confirmButtonText: 'Project canceled',
+      denyButtonText: `Keep Creating`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Canceled!', '', 'success')
+        history.push("/user")
+      } else if (result.isDenied) {
+        Swal.fire('Project Safe', '', 'info')
+      }
+    })
     
-  };
+  }
+
   return (
     <>
       <h1>Hello</h1>
@@ -106,7 +122,9 @@ const NewProject = () => {
         <button className="newProjectBtn" type="submit">
           Create Project
         </button>
+        
       </form>
+      <button onClick={cancelProject}>cancel Project</button>
     </>
   );
 };
