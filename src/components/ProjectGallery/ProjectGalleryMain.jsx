@@ -16,6 +16,7 @@ function ProjectGalleryMain() {
     console.log("delete project id is", selectedProject.id);
 
     dispatch({ type: "DELETE_PROJECT", payload: selectedProject.id });
+    history.push("/user")
   };
 
   const summeryPage = (event) => {

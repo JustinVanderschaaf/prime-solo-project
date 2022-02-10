@@ -11,7 +11,7 @@ function* addMaterial(action) {
     };
 
     yield axios.post("/api/materials", action.payload, config);
-
+    yield put({ type: "GET_MATERIALS"});;
   } catch (error) {
     console.log("Add material failed", error);
   }

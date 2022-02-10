@@ -32,6 +32,8 @@ function ProjectGalleryCards() {
   useEffect(() => {
     dispatch({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });
   }, []);
+
+  
   const removeImage = (photo) => {
     
     console.log("delete photo id is", photo.id);

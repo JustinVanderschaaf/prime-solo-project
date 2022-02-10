@@ -7,10 +7,11 @@ function* addPhoto(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
+console.log('action.payload$#$#$#$#$#',action.payload);
 
     yield axios.post("/api/images", action.payload, config);
 
-    // yield put({ type: "GET_PROJECT_PHOTOS" });
+    yield put({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });;
   } catch (error) {
     console.log("Add photo failed", error);
   }

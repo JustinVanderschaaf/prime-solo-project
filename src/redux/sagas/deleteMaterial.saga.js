@@ -7,10 +7,10 @@ function* deleteMaterial(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-console.log('****%%%deletes action .payload ',action.payload);
+    console.log("****%%%deletes action .payload ", action.payload);
 
     yield axios.delete(`/api/materials/${action.payload}`, config);
-
+    yield put({ type: "GET_MATERIALS" });
   } catch (error) {
     console.log("DELETE material failed", error);
   }
