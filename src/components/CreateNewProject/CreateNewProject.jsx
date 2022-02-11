@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const NewProject = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,9 @@ const NewProject = () => {
   let [categoryId, setCategoryId] = useState(0);
   let [projectDate, setProjectDate] = useState("");
   const history = useHistory();
-  
+  useEffect(() => {
+    dispatch({ type: "GET_PROJECTS" });
+  }, [categoryId]);
 
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORIES" });
@@ -40,26 +42,25 @@ const NewProject = () => {
     setBudget("");
     setTitle("");
     setCategoryId(0);
-    history.push("/user")
+    history.push("/user");
   };
-  
+
   const cancelProject = () => {
     Swal.fire({
-      title: 'Do you want to Cancel this project?',
+      title: "Do you want to Cancel this project?",
       showDenyButton: true,
-      confirmButtonText: 'Project canceled',
+      confirmButtonText: "Project canceled",
       denyButtonText: `Keep Creating`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Canceled!', '', 'success')
-        history.push("/user")
+        Swal.fire("Canceled!", "", "success");
+        history.push("/user");
       } else if (result.isDenied) {
-        Swal.fire('Project Safe', '', 'info')
+        Swal.fire("Project Safe", "", "info");
       }
-    })
-    
-  }
+    });
+  };
 
   return (
     <>
@@ -122,7 +123,6 @@ const NewProject = () => {
         <button className="newProjectBtn" type="submit">
           Create Project
         </button>
-        
       </form>
       <button onClick={cancelProject}>cancel Project</button>
     </>
@@ -130,10 +130,3 @@ const NewProject = () => {
 };
 
 export default NewProject;
-
-
-
-
-
-
-

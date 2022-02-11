@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 //MUI
 import Card from "@mui/material/Card";
@@ -19,8 +20,8 @@ function ProjectListCards() {
   const dispatch = useDispatch();
   const projects = useSelector((store) => store.projectReducer);
   const user = useSelector((store) => store.user);
-  console.log("this is user", user);
-  console.log("projects are ", projects);
+  
+ 
 
   //MUI
   const Item = styled(Paper)(({ theme }) => ({

@@ -41,7 +41,7 @@ function ProjectGalleryCards() {
   };
 
   const setBeforeImage = (photo) => {
-    console.log("Change photo id is", photo.url);
+    console.log("Change before photo id is", photo.url);
     let photoToBefore = {
       selectedProject: selectedProject,
       photo: photo.url,

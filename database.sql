@@ -1,9 +1,4 @@
 
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
-
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -34,8 +29,11 @@ CREATE TABLE "image" (
     "subtitle" VARCHAR(300)
 );
 
+1
+2
 ALTER TABLE image ADD FOREIGN KEY (project_id)
 REFERENCES project(id) ON DELETE CASCADE;
+
 
 CREATE TABLE "materials" (
     "id" SERIAL PRIMARY KEY,
@@ -50,4 +48,13 @@ ALTER TABLE ONLY materials ALTER COLUMN on_hand SET DEFAULT false;
 
 ALTER TABLE materials ADD FOREIGN KEY (project_id)
 REFERENCES project(id) ON DELETE CASCADE;
+
+ALTER TABLE project ADD COLUMN after_img varchar;
+ALTER TABLE project ADD COLUMN before_img varchar;
+
+ALTER TABLE project ALTER COLUMN before_img SET DEFAULT 'New-project.jpeg';
+
+ALTER TABLE project ALTER COLUMN after_img SET DEFAULT 'New-project.jpeg';
+
+
 
