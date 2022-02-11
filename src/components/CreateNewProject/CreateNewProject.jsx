@@ -40,7 +40,7 @@ const NewProject = () => {
     setBudget("");
     setTitle("");
     setCategoryId(0);
-    history.push("/projectGallery")
+    history.push("/user")
   };
   
   const cancelProject = () => {

@@ -11,7 +11,10 @@ function* addProject(action) {
     };
 
     yield axios.post("/api/newProject", action.payload, config);
-
+    console.log("action.payload new project", action.payload);
+    yield put({
+      type: "GET_PROJECT",
+    });
   } catch (error) {
     console.log("Add photo failed", error);
   }

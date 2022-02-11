@@ -38,8 +38,6 @@ function ProjectListCards() {
     history.push("/projectGallery");
   };
 
- 
-
   return (
     <div className="container">
       <Box sx={{ flexGrow: 1 }}>
@@ -53,7 +51,6 @@ function ProjectListCards() {
             <Grid key={project.id} item md>
               <Item>
                 <div>project owner: {project.username}</div>
-                <p>project id is: {project.id}</p>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
                     <Button size="small">After</Button>

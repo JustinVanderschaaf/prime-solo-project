@@ -19,7 +19,6 @@ function ProjectGalleryCards() {
   const selectedProject = useSelector((store) => store.selectedProject);
   const projectImages = useSelector((store) => store.projectImageReducer);
   const user = useSelector((store) => store.user);
-  
 
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
@@ -33,15 +32,12 @@ function ProjectGalleryCards() {
     dispatch({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });
   }, []);
 
-  
-
   const removeImage = (photo) => {
-    let photoToRemove={
+    let photoToRemove = {
       selectedProject: selectedProject,
-      photo : photo.id 
-    }
+      photo: photo.id,
+    };
     dispatch({ type: "DELETE_PHOTO", payload: photoToRemove });
-    
   };
 
   return (
@@ -58,9 +54,9 @@ function ProjectGalleryCards() {
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
-                    <Button size="small">{photo.project_id}</Button>
+                    <Button size="small">Edit</Button>
 
-                    <button onClick={() => removeImage(photo)}>Remove</button>
+                    <Button size="small" onClick={() => removeImage(photo)}>Remove</Button>
                   </CardActions>
                   <CardMedia
                     component="img"
