@@ -22,7 +22,6 @@ const projectSummery = () => {
   const materials = useSelector((store) => store.materialsReducer);
   const history = useHistory();
   const dispatch = useDispatch();
-  
 
   //table inputs
   let [material, setMaterial] = useState("");
@@ -68,21 +67,20 @@ const projectSummery = () => {
   };
 
   useEffect(() => {
-    dispatch({ type: "GET_MATERIALS" });
+    dispatch({ type: "GET_MATERIALS", payload: selectedProject.id });
   }, []);
+ 
 
   const rows = [materials];
   const mats = () => {
     console.log("this it the mats", rows);
   };
 
-
   const changeOnHand = (row) => {
     console.log("Change row id is", row.id);
 
     dispatch({ type: "CHANGE_ON_HAND", payload: row.id });
   };
- 
 
   return (
     <>
@@ -142,7 +140,6 @@ const projectSummery = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              
               <TableCell>Material</TableCell>
               <TableCell align="right">QTY</TableCell>
               <TableCell align="right">Cost</TableCell>
@@ -160,13 +157,14 @@ const projectSummery = () => {
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                
                 <TableCell component="th" scope="row">
                   {row.material}
                 </TableCell>
                 <TableCell align="right">{row.qty}</TableCell>
                 <TableCell align="right">{row.cost}</TableCell>
-                <TableCell align="right" onClick={() => changeOnHand(row)}><button>{row.on_hand.toString()}</button></TableCell>
+                <TableCell align="right" onClick={() => changeOnHand(row)}>
+                  <button>{row.on_hand.toString()}</button>
+                </TableCell>
                 <TableCell align="right">{row.location}</TableCell>
                 <TableCell align="right">
                   <button onClick={() => removeMaterial(row)}>Remove</button>

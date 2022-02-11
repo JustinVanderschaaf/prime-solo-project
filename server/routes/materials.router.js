@@ -5,13 +5,11 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
+  const queryText = "SELECT * FROM materials WHERE project_id=$1";
   pool
-    .query(
-      `
-      SELECT * FROM materials
-      `
-    )
+    .query(queryText, [req.params.id])
+
     .then((dbRes) => {
       res.send(dbRes.rows);
     })
@@ -45,12 +43,6 @@ router.post("/", (req, res, next) => {
 //Delete route
 router.delete("/:id", (req, res) => {
   // endpoint functionality
-  console.log(
-    "this is req.params %%%%%delete",
-    req.params,
-    "and user is",
-    req.user
-  );
 
   const queryText = "DELETE FROM materials WHERE id=$1";
   pool
@@ -68,17 +60,23 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   // Update this single student
-  console.log('this is the put router!!!!!',req.params.id,"and body",req.body);
-  
+  console.log(
+    "this is the put router!!!!!",
+    req.params.id,
+    "and body",
+    req.body
+  );
+
   const sqlText = `UPDATE materials SET "on_hand" = NOT "on_hand" WHERE id = $1`;
-  pool.query(sqlText, [req.params.id ])
-      .then((result) => {
-          res.sendStatus(200);
-      })
-      .catch((error) => {
-          console.log(`Error making database query ${sqlText}`, error);
-          res.sendStatus(500);
-      });
+  pool
+    .query(sqlText, [req.params.id])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

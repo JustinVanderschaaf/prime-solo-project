@@ -29,21 +29,16 @@ const pool = require("../modules/pool");
  * Get all of the images in list
  */
 router.get("/:id", (req, res) => {
-  
+  const queryText = "SELECT * FROM image WHERE project_id=$1";
   pool
-    .query(
-      `
-    SELECT * FROM image 
-    WHERE project_id = ${req.params.id}
-    `
-    )
+    .query(queryText, [req.params.id])
+
     .then((dbRes) => {
       res.send(dbRes.rows);
     })
     .catch((err) => {
-      console.error("err in get images " , err,);
-      console.log('req.params.id', req.params);
-      
+      console.error("err in get images ", err);
+      console.log("req.params.id", req.params);
     });
 });
 
@@ -63,7 +58,11 @@ router.post(
       VALUES ($1,$2,$3);
   `;
 
-    const queryParams = [req.body.projectId,req.file.filename, req.body.description];
+    const queryParams = [
+      req.body.projectId,
+      req.file.filename,
+      req.body.description,
+    ];
 
     pool
       .query(queryText, queryParams)

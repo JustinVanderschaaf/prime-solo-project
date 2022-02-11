@@ -7,7 +7,7 @@ function* getMaterials(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    let materials = yield axios.get("/api/materials",config);
+    let materials = yield axios.get(`/api/materials/${action.payload}`, config);
     yield put({
       type: "SET_MATERIALS",
       payload: materials.data,

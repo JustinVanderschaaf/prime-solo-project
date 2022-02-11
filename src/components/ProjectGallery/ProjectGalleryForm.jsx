@@ -16,12 +16,6 @@ const ProjectGalleryForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedDescription, setSelectedDescription] = useState("");
 
-  // display all projects on DOm upon app load
-  // useEffect(() => {
-  //   dispatch({ type: "GET_PROJECT_PHOTOS", payload:selectedProject.id });
-
-  // }, []);
-
   //Event handlers
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
