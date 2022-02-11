@@ -15,6 +15,8 @@ import getMaterialsSaga from "./getMaterials.saga"
 import deletePhotoSaga from "./deletePhoto.saga"
 import deleteProjectSaga from "./deleteProject.saga"
 import deleteMaterialSaga from "./deleteMaterial.saga"
+//Put
+import changeOnHandSaga from "./changeOnHand.saga"
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -38,5 +40,6 @@ export default function* rootSaga() {
     deletePhotoSaga(),
     deleteProjectSaga(),
     deleteMaterialSaga(),
+    changeOnHandSaga()
   ]);
 }

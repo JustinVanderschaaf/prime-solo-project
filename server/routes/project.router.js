@@ -9,32 +9,31 @@ router.get("/", (req, res) => {
   pool
     .query(
       `
-      SELECT * FROM materials
-      `
+      SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,"user".username FROM project
+      JOIN "user"
+      ON project.user_id = "user".id
+    `
     )
     .then((dbRes) => {
       res.send(dbRes.rows);
     })
     .catch((err) => {
-      console.error("err in get materials", err);
+      console.error("err in get project", err);
     });
 });
 
-//post routee
+// POST route code here
 router.post("/", (req, res, next) => {
-  console.log("MATERIALS RE>BODY IS ", req.body);
+  const user = req.body.user;
+  const categoryId = req.body.categoryId;
+  const date = req.body.date;
+  const budget = req.body.budget;
+  const title = req.body.title;
 
-  const project_id = req.body.selectedProject;
-  const cost = req.body.cost;
-  const location = req.body.location;
-  const material = req.body.material;
-  const onHand = req.body.onHand;
-  const qty = req.body.qty;
-
-  const queryText = `INSERT INTO "materials" (project_id, material, qty, cost, on_hand, location)
-    VALUES ($1, $2, $3, $4, $5, $6) `;
+  const queryText = `INSERT INTO "project" (user_id, category_id, date, budget, title)
+    VALUES ($1, $2, $3, $4, $5) `;
   pool
-    .query(queryText, [project_id, material, qty, cost, onHand, location])
+    .query(queryText, [user, categoryId, date, budget, title])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log("project creation failed: ", err);
@@ -42,36 +41,37 @@ router.post("/", (req, res, next) => {
     });
 });
 
-//Delete route
+/**
+ * Delete an project if it's something the logged in user added
+ */
 router.delete("/:id", (req, res) => {
   // endpoint functionality
   console.log(
-    "this is req.params %%%%%delete",
-    req.params,
+    "this is req.params delete project",
+    req.params.id,
     "and user is",
     req.user
   );
 
-  const queryText = "DELETE FROM materials WHERE id=$1";
+  const queryText = "DELETE FROM project WHERE id=$1";
   pool
     .query(queryText, [req.params.id])
     .then(() => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.log("Error completing delete material query", err);
+      console.log("Error completing SELECT project query", err);
       res.sendStatus(500);
     });
 });
-
-//PUT route
 
 router.put("/:id", (req, res) => {
   // Update this single student
   console.log('this is the put router!!!!!',req.params.id,"and body",req.body);
   
-  const sqlText = `UPDATE materials SET "on_hand" = NOT "on_hand" WHERE id = $1`;
-  pool.query(sqlText, [req.params.id ])
+  const idToUpdate = req.params.id;
+  const sqlText = `UPDATE project SET user_notes = $1 WHERE id = $2`;
+  pool.query(sqlText, [req.body.user_notes, req.body.id])
       .then((result) => {
           res.sendStatus(200);
       })
@@ -80,5 +80,8 @@ router.put("/:id", (req, res) => {
           res.sendStatus(500);
       });
 });
+
+
+
 
 module.exports = router;

@@ -22,7 +22,7 @@ const projectSummery = () => {
   const materials = useSelector((store) => store.materialsReducer);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [description, setDescription] = React.useState("");
+  
 
   //table inputs
   let [material, setMaterial] = useState("");
@@ -75,6 +75,15 @@ const projectSummery = () => {
   const mats = () => {
     console.log("this it the mats", rows);
   };
+
+
+  const changeOnHand = (row) => {
+    console.log("Change row id is", row.id);
+
+    dispatch({ type: "CHANGE_ON_HAND", payload: row.id });
+  };
+ 
+
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
@@ -83,13 +92,6 @@ const projectSummery = () => {
 
       <button onClick={galleryPage}>Gallery</button>
       <button onClick={mats}>LOG MATERIALS</button>
-
-      <h3>Notes</h3>
-      <textarea
-        className="sumTextBox"
-        value={description}
-        onChange={(evt) => setDescription(evt.target.value)}
-      />
 
       <form onSubmit={saveMaterialInformation}>
         <button>Submit</button>
@@ -140,7 +142,7 @@ const projectSummery = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right">Edit</TableCell>
+              
               <TableCell>Material</TableCell>
               <TableCell align="right">QTY</TableCell>
               <TableCell align="right">Cost</TableCell>
@@ -158,15 +160,13 @@ const projectSummery = () => {
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="right">
-                  <button>Edit button</button>
-                </TableCell>
+                
                 <TableCell component="th" scope="row">
                   {row.material}
                 </TableCell>
                 <TableCell align="right">{row.qty}</TableCell>
                 <TableCell align="right">{row.cost}</TableCell>
-                <TableCell align="right">{row.on_hand.toString()}</TableCell>
+                <TableCell align="right" onClick={() => changeOnHand(row)}><button>{row.on_hand.toString()}</button></TableCell>
                 <TableCell align="right">{row.location}</TableCell>
                 <TableCell align="right">
                   <button onClick={() => removeMaterial(row)}>Remove</button>
