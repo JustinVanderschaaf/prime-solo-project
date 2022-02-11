@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//post routee
+//post route
 router.post("/", (req, res, next) => {
   console.log("MATERIALS RE>BODY IS ", req.body);
 

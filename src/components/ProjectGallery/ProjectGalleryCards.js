@@ -40,6 +40,23 @@ function ProjectGalleryCards() {
     dispatch({ type: "DELETE_PHOTO", payload: photoToRemove });
   };
 
+  const setBeforeImage = (photo) => {
+    console.log("Change photo id is", photo.id);
+    let photoToBefore = {
+      selectedProject: selectedProject,
+      photo: photo.id,
+    };
+    dispatch({ type: "CHANGE_BEFORE_IMG", payload: photoToBefore });
+  };
+  const setAfterImage = (photo) => {
+    console.log("Change photo id is", photo.id);
+    let photoToAfter = {
+      selectedProject: selectedProject,
+      photo: photo.id,
+    };
+    dispatch({ type: "CHANGE_AFTER_IMG", payload: photoToAfter });
+  };
+
   return (
     <div className="container">
       <Box sx={{ flexGrow: 1 }}>
@@ -54,7 +71,8 @@ function ProjectGalleryCards() {
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
-                    <Button size="small">Edit</Button>
+                    <Button size="small" onClick={() => setBeforeImage(photo)} >Before</Button>
+                    <Button size="small" onClick={() => setAfterImage(photo)} >After</Button>
 
                     <Button size="small" onClick={() => removeImage(photo)}>Remove</Button>
                   </CardActions>
