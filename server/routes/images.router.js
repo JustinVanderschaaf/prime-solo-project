@@ -94,7 +94,7 @@ router.delete("/:id", (req, res) => {
 /**
  * Update an image if it's something the logged in user added
  */
-router.put("/after:id", (req, res) => {
+router.put("/after/:id", (req, res) => {
   // Update this single student
   console.log(
     "this is the put router!!!!!",
@@ -105,15 +105,38 @@ router.put("/after:id", (req, res) => {
 
   const sqlText = `UPDATE image
   SET after_img = false
-  WHERE project_Id = $1;`
-   
+  WHERE project_Id = $1
+  `
+  
   pool
     .query(sqlText, [req.body.selectedProject.id])
     .then((result) => {
       res.sendStatus(200);
-      `UPDATE image 
-    SET after_img = true
-    WHERE images.id = ${req.params.id}`
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
+router.put("/before/:id", (req, res) => {
+  // Update this single student
+  console.log(
+    "this is the put router!!!!!",
+    req.params.id,
+    "and body",
+    req.body.selectedProject.id
+  );
+
+  const sqlText = `UPDATE image
+  SET before_img = false
+  WHERE project_Id = $1
+  `
+  
+  pool
+    .query(sqlText, [req.body.selectedProject.id])
+    .then((result) => {
+      res.sendStatus(200);
     })
     .catch((error) => {
       console.log(`Error making database query ${sqlText}`, error);

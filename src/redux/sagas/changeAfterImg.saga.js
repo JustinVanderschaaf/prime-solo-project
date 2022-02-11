@@ -9,7 +9,7 @@ function* changeAfterImg(action) {
       };
       console.log("#####CHANGE_AFTER_IMG action .payload ", action.payload);
   
-      yield axios.put(`/api/images/after${action.payload.photo}`, action.payload, config);
+      yield axios.put(`/api/images/after/${action.payload.photo}`, action.payload, config);
     //   yield put({ type: "GET_MATERIALS" });
     } catch (error) {
       console.log("CHANGE on After img failed", error);

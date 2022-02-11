@@ -18,6 +18,7 @@ import deleteMaterialSaga from "./deleteMaterial.saga"
 //Put
 import changeOnHandSaga from "./changeOnHand.saga"
 import changeAfterImgSaga from "./changeAfterImg.saga"
+import changeBeforeImgSaga from "./changeBeforeImg.saga"
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -43,5 +44,6 @@ export default function* rootSaga() {
     deleteMaterialSaga(),
     changeOnHandSaga(),
     changeAfterImgSaga(),
+    changeBeforeImgSaga(),
   ]);
 }
