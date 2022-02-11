@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   pool
     .query(
       `
-      SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,"user".username FROM project
+      SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,project.after_img,project.before_img,"user".username FROM project
       JOIN "user"
       ON project.user_id = "user".id
     `
@@ -61,6 +61,58 @@ router.delete("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log("Error completing SELECT project query", err);
+      res.sendStatus(500);
+    });
+});
+
+//after img
+router.put("/after/:id", (req, res) => {
+  // Update this single student
+  console.log(
+    "this is the put router!!!!!",
+    req.params.id,
+    "and body",
+    req.body.photo
+  );
+
+  const sqlText = `UPDATE project
+  SET after_img = $1
+  WHERE id = $2
+  `;
+  pool
+    .query(sqlText, [req.body.photo, req.params.id])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
+
+router.put("/before/:id", (req, res) => {
+  // Update this single student
+  console.log(
+    "this is the put router!!!!!",
+    req.params.id,
+    "and body",
+    req.body.photo
+  );
+
+  const sqlText = `UPDATE project
+  SET before_img = $1
+  WHERE id = $2
+  `;
+  pool
+    .query(sqlText, [req.body.photo, req.params.id])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
       res.sendStatus(500);
     });
 });

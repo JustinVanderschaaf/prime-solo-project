@@ -10,7 +10,7 @@ function* editProject(action) {
     };
 console.log('ACTION>EDIT !!!#!#',action.payload);
 
-    yield axios.put(`/api/project/${action.payload.id}`, action.payload);
+    yield axios.put(`/api/newProject/${action.payload.id}`, action.payload);
 
   } catch (error) {
     console.log("edit material failed", error);

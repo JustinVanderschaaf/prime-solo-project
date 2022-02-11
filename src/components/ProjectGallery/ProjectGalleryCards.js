@@ -41,18 +41,18 @@ function ProjectGalleryCards() {
   };
 
   const setBeforeImage = (photo) => {
-    console.log("Change photo id is", photo.id);
+    console.log("Change photo id is", photo.url);
     let photoToBefore = {
       selectedProject: selectedProject,
-      photo: photo.id,
+      photo: photo.url,
     };
     dispatch({ type: "CHANGE_BEFORE_IMG", payload: photoToBefore });
   };
   const setAfterImage = (photo) => {
-    console.log("Change photo id is", photo.id);
+    console.log("Change photo id is", photo.url);
     let photoToAfter = {
       selectedProject: selectedProject,
-      photo: photo.id,
+      photo: photo.url,
     };
     dispatch({ type: "CHANGE_AFTER_IMG", payload: photoToAfter });
   };
@@ -71,10 +71,16 @@ function ProjectGalleryCards() {
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
                   <CardActions>
-                    <Button size="small" onClick={() => setBeforeImage(photo)} >Before</Button>
-                    <Button size="small" onClick={() => setAfterImage(photo)} >After</Button>
+                    <Button size="small" onClick={() => setBeforeImage(photo)}>
+                      Before
+                    </Button>
+                    <Button size="small" onClick={() => setAfterImage(photo)}>
+                      After
+                    </Button>
 
-                    <Button size="small" onClick={() => removeImage(photo)}>Remove</Button>
+                    <Button size="small" onClick={() => removeImage(photo)}>
+                      Remove
+                    </Button>
                   </CardActions>
                   <CardMedia
                     component="img"

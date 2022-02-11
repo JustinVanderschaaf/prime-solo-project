@@ -93,32 +93,41 @@ router.delete("/:id", (req, res) => {
 
 /**
  * Update an image if it's something the logged in user added
- */
-router.put("/after/:id", (req, res) => {
-  // Update this single student
-  console.log(
-    "this is the put router!!!!!",
-    req.params.id,
-    "and body",
-    req.body.selectedProject.id
-  );
+ */ //after Img
+// router.put("/after/:id", (req, res) => {
+//   // Update this single student
+//   console.log(
+//     "this is the put router!!!!!",
+//     req.params.id,
+//     "and body",
+//     req.body.selectedProject.id
+//   );
 
-  const sqlText = `UPDATE image
-  SET after_img = false
-  WHERE project_Id = $1
-  `
-  
-  pool
-    .query(sqlText, [req.body.selectedProject.id])
-    .then((result) => {
-      res.sendStatus(200);
-    })
-    .catch((error) => {
-      console.log(`Error making database query ${sqlText}`, error);
-      res.sendStatus(500);
-    });
-});
+//   const sqlText = `UPDATE image
+//   SET after_img = false
+//   WHERE project_Id = $1
+//   `;
+//   const secondSqlText = `UPDATE image
+//   SET after_img = true
+//   WHERE id = $2
+//   `;
 
+//   pool
+//     .query(sqlText, secondSqlText[(req.body.selectedProject.id, req.params.id)])
+//     .then((firstQueryRes) => {
+//       return pool.query();
+//     })
+//     .then((secondQueryRes) => {
+//       res.sendStatus(204);
+//     })
+
+//     .catch((error) => {
+//       console.log(`Error making database query ${sqlText}`, error);
+//       res.sendStatus(500);
+//     });
+// });
+
+//Before img
 router.put("/before/:id", (req, res) => {
   // Update this single student
   console.log(
@@ -131,13 +140,20 @@ router.put("/before/:id", (req, res) => {
   const sqlText = `UPDATE image
   SET before_img = false
   WHERE project_Id = $1
-  `
-  
+  `;
+  const secondSqlText = `UPDATE image
+   SET before_img = true
+   WHERE id = $2
+   `;
+
   pool
-    .query(sqlText, [req.body.selectedProject.id])
-    .then((result) => {
-      res.sendStatus(200);
-    })
+    .query(sqlText, [req.body.selectedProject.id, req.params.id])
+    .then((sqlText) => {
+      return pool.query()
+   })
+   .then((secondSqlText) => {
+      res.sendStatus(204);
+   })
     .catch((error) => {
       console.log(`Error making database query ${sqlText}`, error);
       res.sendStatus(500);

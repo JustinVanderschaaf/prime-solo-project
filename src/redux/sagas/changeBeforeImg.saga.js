@@ -9,7 +9,11 @@ function* changeBeforeImg(action) {
       };
       console.log("#####CHANGE_BEFORE_IMG action .payload ", action.payload);
   
-      yield axios.put(`/api/images/before/${action.payload.photo}`, action.payload, config);
+      yield axios.put(
+        `/api/newProject/before/${action.payload.selectedProject.id}`,
+        action.payload,
+        config
+      );
     //   yield put({ type: "GET_MATERIALS" });
     } catch (error) {
       console.log("CHANGE on BEFORE img failed", error);

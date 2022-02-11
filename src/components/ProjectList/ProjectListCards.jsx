@@ -60,6 +60,7 @@ function ProjectListCards() {
                     component="img"
                     alt="NEW PROJECT"
                     height="200"
+                    image={`uploads/${project.after_img}`}
                     onClick={() => handleSelectProject(project)}
                   />
                   <CardContent>
