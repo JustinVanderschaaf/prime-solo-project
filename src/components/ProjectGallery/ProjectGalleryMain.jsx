@@ -37,6 +37,8 @@ function ProjectGalleryMain() {
     });
   };
 
+
+
   const summeryPage = (event) => {
     history.push("/summery");
   };

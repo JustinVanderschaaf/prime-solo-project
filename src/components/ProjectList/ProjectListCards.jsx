@@ -20,8 +20,6 @@ function ProjectListCards() {
   const dispatch = useDispatch();
   const projects = useSelector((store) => store.projectReducer);
   const user = useSelector((store) => store.user);
-  
- 
 
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
@@ -40,7 +38,7 @@ function ProjectListCards() {
   };
 
   return (
-    <div className="container">
+    <div id="galleryContainer" className="container">
       <Box sx={{ flexGrow: 1 }}>
         <Grid
           container

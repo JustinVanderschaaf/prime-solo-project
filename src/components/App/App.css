@@ -159,3 +159,6 @@ input {
   height: 200px;
   font-size: larger;
 }
+#galleryContainer{
+  margin-top: 100px;
+}

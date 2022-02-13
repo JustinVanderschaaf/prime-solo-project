@@ -78,7 +78,7 @@ function ProjectGalleryCards() {
   };
 
   return (
-    <div className="container">
+    <div id="galleryContainer" className="container">
       <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
@@ -87,10 +87,9 @@ function ProjectGalleryCards() {
           justifyContent="space-evenly"
         >
           {projectImages.map((photo) => (
-            <Grid key={photo.id} >
-              <Item >
-                <Card 
-                id="cards"sx={{ maxWidth: 300, minWidth: 300 }}>
+            <Grid key={photo.id}>
+              <Item>
+                <Card id="cards" sx={{ maxWidth: 300, minWidth: 300 }}>
                   {user.id === selectedProject.user_id && (
                     <CardActions>
                       <Button
