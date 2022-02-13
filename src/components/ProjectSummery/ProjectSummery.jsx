@@ -85,12 +85,11 @@ const projectSummery = () => {
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <p>your project id is: {selectedProject.id}</p>
+      <p>Your Viewing {selectedProject.username}'s {selectedProject.title} project</p>
 
       <button onClick={galleryPage}>Gallery</button>
-      <button onClick={mats}>LOG MATERIALS</button>
-
+      
+      {user.id === selectedProject.user_id && 
       <form onSubmit={saveMaterialInformation}>
         <button>Submit</button>
         <input
@@ -133,7 +132,7 @@ const projectSummery = () => {
           onChange={(evt) => setLocation(evt.target.value)}
           placeholder="Location"
         />
-      </form>
+      </form>}
 
       {/* start table */}
       <TableContainer component={Paper}>

@@ -13,6 +13,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Swal from "sweetalert2";
 
 function ProjectGalleryCards() {
   const dispatch = useDispatch();
@@ -33,11 +34,30 @@ function ProjectGalleryCards() {
   }, []);
 
   const removeImage = (photo) => {
+    console.log("delte", photo);
     let photoToRemove = {
       selectedProject: selectedProject,
       photo: photo.id,
     };
-    dispatch({ type: "DELETE_PHOTO", payload: photoToRemove });
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      imageUrl: `uploads/${photo.url}`,
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        dispatch({ type: "DELETE_PHOTO", payload: photoToRemove });
+      }
+    });
   };
 
   const setBeforeImage = (photo) => {
@@ -70,18 +90,28 @@ function ProjectGalleryCards() {
             <Grid key={photo.id} item md>
               <Item>
                 <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
-                  <CardActions>
-                    <Button size="small" onClick={() => setBeforeImage(photo)}>
-                      Before
-                    </Button>
-                    <Button size="small" onClick={() => setAfterImage(photo)}>
-                      After
-                    </Button>
+                  {user.id === selectedProject.user_id && (
+                    <CardActions>
+                      <Button
+                        size="small"
+                        onClick={() => setBeforeImage(photo)}
+                      >
+                        Before
+                      </Button>
+                      <Button size="small" onClick={() => setAfterImage(photo)}>
+                        After
+                      </Button>
 
-                    <Button size="small" onClick={() => removeImage(photo)}>
-                      Remove
-                    </Button>
-                  </CardActions>
+                      <Button size="small" onClick={() => removeImage(photo)}>
+                        Remove
+                      </Button>
+                    </CardActions>
+                  )}
+                  {user.id !== selectedProject.user_id && (
+                    <CardActions>
+                      {selectedProject.username}'s {selectedProject.title}
+                    </CardActions>
+                  )}
                   <CardMedia
                     component="img"
                     alt="green iguana"

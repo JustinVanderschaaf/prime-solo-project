@@ -12,6 +12,7 @@ function ProjectGalleryMain() {
   const history = useHistory();
   const selectedProject = useSelector((store) => store.selectedProject);
   const user = useSelector((store) => store.user);
+  
 
   const deleteProject = () => {
     Swal.fire({
@@ -39,16 +40,17 @@ function ProjectGalleryMain() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <p>your project id is: {selectedProject.id}</p>
-
+      <p>Your Viewing {selectedProject.username}'s {selectedProject.title} project</p>
       <button onClick={summeryPage}>Summery</button>
-      <ProjectGalleryForm />
+      
+      {user.id === selectedProject.user_id && <ProjectGalleryForm />}
+      
       <ProjectGalleryCards />
       <LogOutButton className="btn" />
-      <button onClick={deleteProject}>
+       {user.id === selectedProject.user_id && <button onClick={deleteProject}>
         DELETE PROJECT{selectedProject.id}
-      </button>
+      </button>}
+      
     </div>
   );
 }

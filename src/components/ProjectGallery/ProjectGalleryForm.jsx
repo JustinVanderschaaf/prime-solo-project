@@ -41,8 +41,6 @@ const ProjectGalleryForm = () => {
       formData: formData,
       selectedProject: selectedProject,
     };
-    console.log("item to send with selected file is", itemToSend);
-    console.log("form data is,", formData);
 
     dispatch({
       type: "SEND_FILE",
