@@ -20,8 +20,8 @@ import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import NewProject from "../CreateNewProject/CreateNewProject";
-import ProjectList from "../ProjectList/ProjectList";
 import ProjectSummery from "../ProjectSummery/ProjectSummery"
+import ProjectListCards from "../ProjectList/ProjectListCards";
 
 import "./App.css";
 
@@ -60,7 +60,7 @@ function App() {
             exact
             path="/user"
           >
-            <ProjectList />
+            <ProjectListCards />
           </ProtectedRoute>
 
           <ProtectedRoute

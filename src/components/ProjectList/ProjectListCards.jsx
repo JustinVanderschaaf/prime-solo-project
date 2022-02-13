@@ -30,6 +30,14 @@ function ProjectListCards() {
   }));
   //end MUI
 
+  const newProject = (event) => {
+    history.push("/newProject");
+  };
+
+  useEffect(() => {
+    dispatch({ type: "GET_PROJECTS" });
+  }, []);
+
   const handleSelectProject = (project) => {
     // store selected movie object in Redux
     dispatch({ type: "SET_SELECTED_PROJECT", payload: project });
@@ -38,40 +46,44 @@ function ProjectListCards() {
   };
 
   return (
-    <div id="galleryContainer" className="container">
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={3}
-          justifyContent="center"
-          justifyContent="space-evenly"
-        >
-          {projects.map((project) => (
-            <Grid key={project.id}>
-              <Item>
-                <div>project owner: {project.username}</div>
-                <Card id="cards" sx={{ maxWidth: 300, minWidth: 300 }}>
-                  <CardActions>
-                    <Button size="small">After</Button>
-                    <Button size="small">Before</Button>
-                  </CardActions>
-                  <CardMedia
-                    component="img"
-                    alt="NEW PROJECT"
-                    height="300"
-                    image={`uploads/${project.after_img}`}
-                    onClick={() => handleSelectProject(project)}
-                  />
-                  <CardContent>
-                    <Typography variant="body2">{project.title}</Typography>
-                  </CardContent>
-                </Card>
-              </Item>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </div>
+    <>
+      <h2>Welcome, {user.username}!</h2>
+      <div id="galleryContainer" className="container">
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            spacing={3}
+            justifyContent="center"
+            justifyContent="space-evenly"
+          >
+            {projects.map((project) => (
+              <Grid key={project.id}>
+                <Item>
+                  <div>project owner: {project.username}</div>
+                  <Card id="cards" sx={{ maxWidth: 300, minWidth: 300 }}>
+                    <CardActions>
+                      <Button size="small">After</Button>
+                      <Button size="small">Before</Button>
+                    </CardActions>
+                    <CardMedia
+                      component="img"
+                      alt="NEW PROJECT"
+                      height="300"
+                      image={`uploads/${project.after_img}`}
+                      onClick={() => handleSelectProject(project)}
+                    />
+                    <CardContent>
+                      <Typography variant="body2">{project.title}</Typography>
+                    </CardContent>
+                  </Card>
+                </Item>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </div>
+      <button onClick={newProject}>Create New Project</button>
+    </>
   );
 }
 
