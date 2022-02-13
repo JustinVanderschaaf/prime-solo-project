@@ -49,7 +49,7 @@ const NewProject = () => {
     Swal.fire({
       title: "Do you want to Cancel this project?",
       showDenyButton: true,
-      confirmButtonText: "Project canceled",
+      confirmButtonText: "Cancel Project",
       denyButtonText: `Keep Creating`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */

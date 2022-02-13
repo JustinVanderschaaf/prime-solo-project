@@ -45,13 +45,13 @@ function ProjectGalleryCards() {
       text: "You won't be able to revert this!",
       imageUrl: `uploads/${photo.url}`,
       imageWidth: 400,
-      imageHeight: 200,
+      imageHeight: 350,
       imageAlt: "Custom image",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, delete Photo!",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -87,9 +87,10 @@ function ProjectGalleryCards() {
           justifyContent="space-evenly"
         >
           {projectImages.map((photo) => (
-            <Grid key={photo.id} item md>
-              <Item>
-                <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
+            <Grid key={photo.id} >
+              <Item >
+                <Card 
+                id="cards"sx={{ maxWidth: 300, minWidth: 300 }}>
                   {user.id === selectedProject.user_id && (
                     <CardActions>
                       <Button
@@ -115,7 +116,7 @@ function ProjectGalleryCards() {
                   <CardMedia
                     component="img"
                     alt="green iguana"
-                    height="200"
+                    height="300"
                     image={`uploads/${photo.url}`}
                   />
                   <CardContent>

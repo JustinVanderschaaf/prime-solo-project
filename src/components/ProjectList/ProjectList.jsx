@@ -5,11 +5,11 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ProjectListCards from "../ProjectList/ProjectListCards";
 
-
 const projectList = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const projects = useSelector((store) => store.projectReducer);
+  const user = useSelector((store) => store.user);
 
   const newProject = (event) => {
     history.push("/newProject");
@@ -21,7 +21,7 @@ const projectList = () => {
 
   return (
     <>
-      <h1>hello</h1>
+      <h2>Welcome, {user.username}!</h2>
 
       <ProjectListCards />
       <button onClick={newProject}>Create New Project</button>

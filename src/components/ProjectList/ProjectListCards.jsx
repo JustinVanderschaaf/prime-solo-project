@@ -49,10 +49,10 @@ function ProjectListCards() {
           justifyContent="space-evenly"
         >
           {projects.map((project) => (
-            <Grid key={project.id} item md>
+            <Grid key={project.id}>
               <Item>
                 <div>project owner: {project.username}</div>
-                <Card id="cards" sx={{ maxWidth: 200, minWidth: 200 }}>
+                <Card id="cards" sx={{ maxWidth: 300, minWidth: 300 }}>
                   <CardActions>
                     <Button size="small">After</Button>
                     <Button size="small">Before</Button>
@@ -60,7 +60,7 @@ function ProjectListCards() {
                   <CardMedia
                     component="img"
                     alt="NEW PROJECT"
-                    height="200"
+                    height="300"
                     image={`uploads/${project.after_img}`}
                     onClick={() => handleSelectProject(project)}
                   />
