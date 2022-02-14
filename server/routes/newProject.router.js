@@ -67,14 +67,6 @@ router.delete("/:id", (req, res) => {
 
 //after img
 router.put("/after/:id", (req, res) => {
-  // Update this single student
-  console.log(
-    "this is the put router!!!!!",
-    req.params.id,
-    "and body",
-    req.body.photo
-  );
-
   const sqlText = `UPDATE project
   SET after_img = $1
   WHERE id = $2
@@ -91,22 +83,38 @@ router.put("/after/:id", (req, res) => {
     });
 });
 
-
 router.put("/before/:id", (req, res) => {
-  // Update this single student
-  console.log(
-    "this is the put router!!!!!",
-    req.params.id,
-    "and body",
-    req.body.photo
-  );
-
   const sqlText = `UPDATE project
   SET before_img = $1
   WHERE id = $2
   `;
   pool
     .query(sqlText, [req.body.photo, req.params.id])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
+router.put("/title/:id", (req, res) => {
+  // Update this single student
+  console.log(
+    "this is the put router!!!!!",
+    req.params.id,
+    "and body",
+    req.body.newTitle
+  );
+
+  const sqlText = `UPDATE project
+  SET title = $1
+  WHERE id = $2
+  `;
+  pool
+    .query(sqlText, [req.body.newTitle, req.params.id])
     .then((result) => {
       res.sendStatus(200);
     })

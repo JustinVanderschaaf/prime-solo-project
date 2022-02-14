@@ -14,6 +14,12 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import MenuItem from '@mui/material/MenuItem';
+import { useTheme } from '@mui/material/styles';
 //prop is project from projectList map
 function ProjectItem(prop) {
   const history = useHistory();
@@ -21,6 +27,8 @@ function ProjectItem(prop) {
   const projects = useSelector((store) => store.projectReducer);
   const user = useSelector((store) => store.user);
   const project = prop.project;
+  const [editable, setEditable] = useState(false);
+  const [newTitle, setNewTitle] = useState("")
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -45,6 +53,21 @@ function ProjectItem(prop) {
     setTogglePic(project.after_img);
   };
 
+ 
+
+  const editTitle = (event) => {
+    event.preventDefault();
+    console.log("NewTitle is !!!", newTitle,project.id);
+   let titleToSend = {
+    newTitle: newTitle, 
+    project: project.id
+   }
+    dispatch({ type: "CHANGE_TITLE", payload: titleToSend });
+
+  };
+
+ 
+
   return (
     <>
       <Grid key={project.id}>
@@ -58,6 +81,7 @@ function ProjectItem(prop) {
               <Button onClick={beforeImg} size="small">
                 Before
               </Button>
+              
             </CardActions>
             <CardMedia
               component="img"
@@ -67,11 +91,37 @@ function ProjectItem(prop) {
               onClick={() => handleSelectProject(project)}
             />
             <CardContent>
-              <Typography variant="body2">{project.title}</Typography>
+              <Typography variant="body2">
+              {editable === false ?
+            <h3>{project.title}</h3> :
+            <form onSubmit={editTitle}>
+            <input rows="4" cols="50" 
+                type="text"
+                value={newTitle}
+                onChange={(evt) => setNewTitle(evt.target.value)}
+                placeholder={project.title}
+               >
+            </input>
+            {user.id === project.user_id && (<button className="newProjectBtn" type="submit">
+          Submit
+        </button>)}
+            </form>
+        }
+              </Typography>
+              {user.id === project.user_id && (<button onClick={() => setEditable(true)}>Edit Details</button>)}
+              {user.id === project.user_id && (<button onClick={() => setEditable(false)}>Cancel</button>)}
+              
             </CardContent>
           </Card>
+          
+       
+        
+
+        
         </Item>
       </Grid>
+      
+    
     </>
   );
 }

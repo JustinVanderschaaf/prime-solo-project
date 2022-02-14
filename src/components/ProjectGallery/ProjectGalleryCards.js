@@ -119,7 +119,7 @@ function ProjectGalleryCards() {
                     image={`uploads/${photo.url}`}
                   />
                   <CardContent>
-                    <Typography variant="body2">{photo.subtitle},</Typography>
+                    <Typography variant="body2">{photo.subtitle}</Typography>
                   </CardContent>
                 </Card>
               </Item>
