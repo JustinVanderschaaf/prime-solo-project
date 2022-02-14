@@ -147,4 +147,21 @@ router.get("/search/:id", (req, res, next) => {
     });
 });
 
+router.get("/username", (req, res, next) => {
+  console.log("SEARCH USERNAME");
+
+  pool
+    .query(   `
+    SELECT username as label,
+    id
+    FROM "user"
+  `)
+    .then((dbRes) => {
+      res.send(dbRes.rows);
+    })
+    .catch((err) => {
+      console.error("err in get project", err);
+    });
+});
+
 module.exports = router;

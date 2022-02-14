@@ -6,6 +6,7 @@ import projectCategoriesReducer from "./categories.reducer";
 import projectReducer from "./project.reducer";
 import materialsReducer from "./materials.reducer"
 import selectedProject from "./selectedProject.reducer"
+import usernameReducer from "./username.reducer"
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   projectReducer,
   materialsReducer,
   selectedProject,
+  usernameReducer,
 
 });
 
