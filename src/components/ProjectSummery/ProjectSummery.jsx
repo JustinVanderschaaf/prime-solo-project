@@ -58,8 +58,12 @@ const projectSummery = () => {
 
   const removeMaterial = (row) => {
     console.log("delete row id is", row.id);
+    const materialToRemove = {
+      project: selectedProject.id,
+      row : row.id
+    }
 
-    dispatch({ type: "DELETE_MATERIAL", payload: row.id });
+    dispatch({ type: "DELETE_MATERIAL", payload: materialToRemove });
   };
 
   const galleryPage = (event) => {
@@ -78,8 +82,11 @@ const projectSummery = () => {
 
   const changeOnHand = (row) => {
     console.log("Change row id is", row.id);
-
-    dispatch({ type: "CHANGE_ON_HAND", payload: row.id });
+    const onHandToChange = {
+      project: selectedProject.id,
+      row : row.id
+    }
+    dispatch({ type: "CHANGE_ON_HAND", payload: onHandToChange });
   };
 
   return (

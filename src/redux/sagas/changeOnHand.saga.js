@@ -9,8 +9,8 @@ function* changeOnHand(action) {
       };
       console.log("CHANGE ON HAND action .payload ", action.payload);
   
-      yield axios.put(`/api/materials/${action.payload}`, config);
-      yield put({ type: "GET_MATERIALS" });
+      yield axios.put(`/api/materials/${action.payload.row}`, config);
+      yield put({ type: "GET_MATERIALS", payload: action.payload.project });
     } catch (error) {
       console.log("CHANGE on hand material failed", error);
     }

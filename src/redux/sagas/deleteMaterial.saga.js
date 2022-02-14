@@ -9,8 +9,8 @@ function* deleteMaterial(action) {
     };
     console.log("****%%%deletes action .payload ", action.payload);
 
-    yield axios.delete(`/api/materials/${action.payload}`, config);
-    yield put({ type: "GET_MATERIALS" });
+    yield axios.delete(`/api/materials/${action.payload.row}`, config);
+    yield put({ type: "GET_MATERIALS", payload: action.payload.project });
   } catch (error) {
     console.log("DELETE material failed", error);
   }
