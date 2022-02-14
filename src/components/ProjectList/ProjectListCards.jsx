@@ -14,6 +14,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import ProjectItem from "../ProjectList/ProjectItem"
 
 function ProjectListCards() {
   const history = useHistory();
@@ -38,12 +39,7 @@ function ProjectListCards() {
     dispatch({ type: "GET_PROJECTS" });
   }, []);
 
-  const handleSelectProject = (project) => {
-    // store selected movie object in Redux
-    dispatch({ type: "SET_SELECTED_PROJECT", payload: project });
-    // go to details view
-    history.push("/projectGallery");
-  };
+ 
 
   return (
     <>
@@ -57,27 +53,11 @@ function ProjectListCards() {
             justifyContent="space-evenly"
           >
             {projects.map((project) => (
-              <Grid key={project.id}>
-                <Item>
-                  <div>project owner: {project.username}</div>
-                  <Card id="cards" sx={{ maxWidth: 300, minWidth: 300 }}>
-                    <CardActions>
-                      <Button size="small">After</Button>
-                      <Button size="small">Before</Button>
-                    </CardActions>
-                    <CardMedia
-                      component="img"
-                      alt="NEW PROJECT"
-                      height="300"
-                      image={`uploads/${project.after_img}`}
-                      onClick={() => handleSelectProject(project)}
-                    />
-                    <CardContent>
-                      <Typography variant="body2">{project.title}</Typography>
-                    </CardContent>
-                  </Card>
-                </Item>
-              </Grid>
+                <ProjectItem 
+                key={project.id}
+          project={project}
+                />
+              
             ))}
           </Grid>
         </Box>
