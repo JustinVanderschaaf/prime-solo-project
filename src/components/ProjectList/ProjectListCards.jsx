@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
@@ -12,9 +12,11 @@ import Grid from "@mui/material/Grid";
 import ProjectItem from "../ProjectList/ProjectItem"
 
 function ProjectListCards() {
+  let [categoryId, setCategoryId] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
   const projects = useSelector((store) => store.projectReducer);
+  const categories = useSelector((store) => store.projectCategoriesReducer);
   const user = useSelector((store) => store.user);
 
   //MUI
@@ -33,8 +35,24 @@ function ProjectListCards() {
   useEffect(() => {
     dispatch({ type: "GET_PROJECTS" });
   }, []);
+  useEffect(() => {
+    dispatch({ type: "FETCH_CATEGORIES" });
+  }, []);
 
- 
+
+  const searchCategory = (event) => {
+    event.preventDefault();
+    console.log("Current category",categoryId,);
+
+    dispatch({
+      type: "SEARCH_CATEGORY",
+      payload: categoryId,
+    });
+
+    
+    setCategoryId(0);
+    
+  };
 
   return (
     <>
@@ -58,6 +76,30 @@ function ProjectListCards() {
         </Box>
       </div>
       <button onClick={newProject}>Create New Project</button>
+
+
+
+      <form onSubmit={searchCategory}>
+      <select
+          id="select"
+          value={categoryId}
+          onChange={(evt) => setCategoryId(evt.target.value)}
+        >
+          <option disabled value="0">
+            Pick One!
+          </option>
+          {categories.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
+        </select>
+        <button className="newProjectBtn" type="submit">
+          SEARCH
+        </button>
+      </form>
     </>
   );
 }

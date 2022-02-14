@@ -11,6 +11,7 @@ import getCategoriesSaga from "./getCategories.saga";
 import getProjectImagesSaga from "./getprojectImages.saga";
 import getProjectsSaga from "./getProject.saga";
 import getMaterialsSaga from "./getMaterials.saga"
+import getSearchCategorySaga from "./getSearchCategory.saga"
 //delete
 import deletePhotoSaga from "./deletePhoto.saga"
 import deleteProjectSaga from "./deleteProject.saga"
@@ -40,6 +41,7 @@ export default function* rootSaga() {
     getCategoriesSaga(),
     getProjectsSaga(),
     getMaterialsSaga(),
+    getSearchCategorySaga(),
     deletePhotoSaga(),
     deleteProjectSaga(),
     deleteMaterialSaga(),

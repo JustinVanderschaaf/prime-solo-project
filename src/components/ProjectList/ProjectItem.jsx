@@ -64,7 +64,7 @@ function ProjectItem(prop) {
     <Grid>
       <Item>
         <div>project owner: {project.username}</div>
-        <Card id="cards" sx={{ maxWidth: 300, minWidth: 300 }}>
+        <Card id="cards" sx={{ maxWidth: 250, minWidth: 250 }}>
           <CardActions>
             <Button onClick={afterImg} size="small">
               After
@@ -76,7 +76,7 @@ function ProjectItem(prop) {
           <CardMedia
             component="img"
             alt="NEW PROJECT"
-            height="300"
+            height="250"
             image={`uploads/${togglePic}`}
             onClick={() => handleSelectProject(project)}
           />
