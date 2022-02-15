@@ -121,7 +121,7 @@ console.log("AASDFGHJERTRDFGCBXZFD",username);
       onSelect={(event) => dispatch({ type: 'FILTER_USERS', payload: event.target.value})}
     />
 
-    
+<button onClick={(event) => dispatch({ type: 'GET_PROJECTS', payload: event.target.value})}>View All Projects</button>
     </>
   );
 }
