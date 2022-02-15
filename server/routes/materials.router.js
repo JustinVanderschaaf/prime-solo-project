@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get("/:id", (req, res) => {
-  const queryText = "SELECT * FROM materials WHERE project_id=$1";
+  const queryText = "SELECT * FROM materials WHERE project_id=$1 ORDER BY on_hand ASC";
   pool
     .query(queryText, [req.params.id])
 
