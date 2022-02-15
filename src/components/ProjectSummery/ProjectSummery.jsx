@@ -60,8 +60,8 @@ const projectSummery = () => {
     console.log("delete row id is", row.id);
     const materialToRemove = {
       project: selectedProject.id,
-      row : row.id
-    }
+      row: row.id,
+    };
 
     dispatch({ type: "DELETE_MATERIAL", payload: materialToRemove });
   };
@@ -73,7 +73,6 @@ const projectSummery = () => {
   useEffect(() => {
     dispatch({ type: "GET_MATERIALS", payload: selectedProject.id });
   }, []);
- 
 
   const rows = [materials];
   const mats = () => {
@@ -84,63 +83,67 @@ const projectSummery = () => {
     console.log("Change row id is", row.id);
     const onHandToChange = {
       project: selectedProject.id,
-      row : row.id
-    }
+      row: row.id,
+    };
     dispatch({ type: "CHANGE_ON_HAND", payload: onHandToChange });
   };
 
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
-      <p>Your Viewing {selectedProject.username}'s {selectedProject.title} project</p>
+      <p>
+        Your Viewing {selectedProject.username}'s {selectedProject.title}{" "}
+        project
+      </p>
 
       <button onClick={galleryPage}>Gallery</button>
-      
-      {user.id === selectedProject.user_id && 
-      <form onSubmit={saveMaterialInformation}>
-        <button>Submit</button>
-        <input
-          type="text"
-          required
-          value={material}
-          onChange={(evt) => setMaterial(evt.target.value)}
-          placeholder="Material"
-        />
 
-        <input
-          type="text"
-          required
-          value={qty}
-          onChange={(evt) => setQty(evt.target.value)}
-          placeholder="QTY"
-        />
+      {user.id === selectedProject.user_id && (
+        <form onSubmit={saveMaterialInformation}>
+          <button>Submit</button>
+          <input
+            type="text"
+            required
+            value={material}
+            onChange={(evt) => setMaterial(evt.target.value)}
+            placeholder="Material"
+          />
 
-        <input
-          type="text"
-          required
-          value={cost}
-          onChange={(evt) => setCost(evt.target.value)}
-          placeholder="Cost"
-        />
+          <input
+            type="text"
+            required
+            value={qty}
+            onChange={(evt) => setQty(evt.target.value)}
+            placeholder="QTY"
+          />
 
-        <select
-          id="select"
-          value={onHand}
-          onChange={(evt) => setOnHand(evt.target.value)}
-        >
-          <option value="false">Not Purchased</option>
+          <input
+            type="text"
+            required
+            value={cost}
+            onChange={(evt) => setCost(evt.target.value)}
+            placeholder="Cost"
+          />
 
-          <option value="true">On Hand</option>
-        </select>
+          <select
+            id="select"
+            value={onHand}
+            onChange={(evt) => setOnHand(evt.target.value)}
+          >
+            <option value="false">Not Purchased</option>
 
-        <input
-          type="text"
-          value={location}
-          onChange={(evt) => setLocation(evt.target.value)}
-          placeholder="Location"
-        />
-      </form>}
-      
+            <option value="true">On Hand</option>
+          </select>
+
+          <input
+            type="text"
+            value={location}
+            onChange={(evt) => setLocation(evt.target.value)}
+            placeholder="Location"
+          />
+        </form>
+      )}
+
       {/* start table */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -168,13 +171,23 @@ const projectSummery = () => {
                 </TableCell>
                 <TableCell align="right">{row.qty}</TableCell>
                 <TableCell align="right">{row.cost}</TableCell>
-                <TableCell align="right" onClick={() => changeOnHand(row)}>
-                  <button>{row.on_hand.toString()}</button>
-                </TableCell>
+                {/* on hand view for user */}
+                {user.id === selectedProject.user_id && (
+                  <TableCell align="right" onClick={() => changeOnHand(row)}>
+                    <button>{row.on_hand.toString()}</button>
+                  </TableCell>
+                )}
+                {user.id !== selectedProject.user_id && (
+                  <TableCell align="right">{row.on_hand.toString()}</TableCell>
+                )}
+
                 <TableCell align="right">{row.location}</TableCell>
-                <TableCell align="right">
-                  <button onClick={() => removeMaterial(row)}>Remove</button>
-                </TableCell>
+                {/* delete view for user */}
+                {user.id === selectedProject.user_id && (
+                  <TableCell align="right">
+                    <button onClick={() => removeMaterial(row)}>Remove</button>
+                  </TableCell>
+                )}
               </TableRow>
             ))}
           </TableBody>

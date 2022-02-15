@@ -14,7 +14,7 @@ function* changeBeforeImg(action) {
         action.payload,
         config
       );
-    //   yield put({ type: "GET_MATERIALS" });
+      yield put({ type: "GET_PROJECTS" });
     } catch (error) {
       console.log("CHANGE on BEFORE img failed", error);
     }

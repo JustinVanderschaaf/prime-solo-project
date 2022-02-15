@@ -9,9 +9,9 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import ProjectItem from "../ProjectList/ProjectItem"
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import ProjectItem from "../ProjectList/ProjectItem";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 function ProjectListCards() {
   let [categoryId, setCategoryId] = useState(0);
@@ -22,8 +22,6 @@ function ProjectListCards() {
   const user = useSelector((store) => store.user);
   const username = useSelector((store) => store.usernameReducer);
 
-
-  
   //MUI
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -37,18 +35,16 @@ function ProjectListCards() {
     history.push("/newProject");
   };
 
+
   useEffect(() => {
     dispatch({ type: "GET_PROJECTS" });
-  }, []);
-  useEffect(() => {
     dispatch({ type: "FETCH_CATEGORIES" });
     dispatch({ type: "FETCH_USERNAMES" });
   }, []);
 
-
   const searchCategory = (event) => {
     event.preventDefault();
-    console.log("Current category",categoryId,);
+    console.log("Current category", categoryId);
 
     dispatch({
       type: "SEARCH_CATEGORY",
@@ -57,12 +53,7 @@ function ProjectListCards() {
     setCategoryId(0);
   };
 
-console.log("AASDFGHJERTRDFGCBXZFD",username);
-  const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-  ];
-  
+
   return (
     <>
       <h2>Welcome, {user.username}!</h2>
@@ -75,21 +66,16 @@ console.log("AASDFGHJERTRDFGCBXZFD",username);
             justifyContent="space-evenly"
           >
             {projects.map((project) => (
-                <ProjectItem 
-                key={project.id}
-          project={project}
-                />
-              
+              <ProjectItem key={project.id} project={project} />
             ))}
           </Grid>
         </Box>
       </div>
       <button onClick={newProject}>Create New Project</button>
 
-
-              {/* search by category form */}
+      {/* search by category form */}
       <form onSubmit={searchCategory}>
-      <select
+        <select
           id="select"
           value={categoryId}
           onChange={(evt) => setCategoryId(evt.target.value)}
@@ -109,19 +95,26 @@ console.log("AASDFGHJERTRDFGCBXZFD",username);
           SEARCH
         </button>
       </form>
-{/* search by category form ends*/}
+      {/* search by category form ends*/}
 
+      <Autocomplete
+        disablePortal
+        id="combo-box-demo"
+        options={username}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Username" />}
+        onSelect={(event) =>
+          dispatch({ type: "FILTER_USERS", payload: event.target.value })
+        }
+      />
 
-<Autocomplete
-      disablePortal
-      id="combo-box-demo"
-      options={username}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Username" />}
-      onSelect={(event) => dispatch({ type: 'FILTER_USERS', payload: event.target.value})}
-    />
-
-<button onClick={(event) => dispatch({ type: 'GET_PROJECTS', payload: event.target.value})}>View All Projects</button>
+      <button
+        onClick={(event) =>
+          dispatch({ type: "GET_PROJECTS", payload: event.target.value })
+        }
+      >
+        View All Projects
+      </button>
     </>
   );
 }
