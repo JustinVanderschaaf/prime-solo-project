@@ -125,7 +125,7 @@ router.put("/title/:id", (req, res) => {
     });
 });
 
-// GET route for search
+// GET route for search category
 
 router.get("/search/:id", (req, res, next) => {
   console.log("EARCH REQ>BODY", req.params.id);
@@ -156,6 +156,27 @@ router.get("/username", (req, res, next) => {
     id
     FROM "user"
   `)
+    .then((dbRes) => {
+      res.send(dbRes.rows);
+    })
+    .catch((err) => {
+      console.error("err in get project", err);
+    });
+});
+
+//get route for search username
+router.get("/searchUser/:id", (req, res, next) => {
+  console.log("EARCH REQ>BODY", req.params.id);
+
+  const sqlText = `
+  SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,project.after_img,project.before_img,"user".username FROM project
+  JOIN "user"
+  ON project.user_id = "user".id
+  WHERE "user".username = $1
+`;
+
+  pool
+    .query(sqlText, [req.params.id])
     .then((dbRes) => {
       res.send(dbRes.rows);
     })

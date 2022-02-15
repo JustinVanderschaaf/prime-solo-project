@@ -13,6 +13,7 @@ import getProjectsSaga from "./getProject.saga";
 import getMaterialsSaga from "./getMaterials.saga"
 import getSearchCategorySaga from "./getSearchCategory.saga"
 import getUsernameSaga from "./getUsernames.saga"
+import getSearchUsernameSaga from "./getSearchUsername.saga"
 //delete
 import deletePhotoSaga from "./deletePhoto.saga"
 import deleteProjectSaga from "./deleteProject.saga"
@@ -51,5 +52,6 @@ export default function* rootSaga() {
     changeBeforeImgSaga(),
     changeTitleSaga(),
     getUsernameSaga(),
+    getSearchUsernameSaga(),
   ]);
 }
