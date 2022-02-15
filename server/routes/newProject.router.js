@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
       SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,project.after_img,project.before_img,"user".username FROM project
       JOIN "user"
       ON project.user_id = "user".id
+      ORDER BY id DESC
     `
     )
     .then((dbRes) => {
