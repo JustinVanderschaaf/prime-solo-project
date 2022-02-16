@@ -11,9 +11,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faBan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -32,6 +36,7 @@ function ProjectItem(prop) {
   const project = prop.project;
   const [editable, setEditable] = useState(false);
   const [newTitle, setNewTitle] = useState("");
+  const [toggle, setToggle] = useState(true);
   //MUI
 
   const handleSelectProject = (project) => {
@@ -44,9 +49,11 @@ function ProjectItem(prop) {
   let [togglePic, setTogglePic] = useState(project.after_img);
   const beforeImg = () => {
     setTogglePic(project.before_img);
+    setToggle(!toggle);
   };
   const afterImg = () => {
     setTogglePic(project.after_img);
+    setToggle(!toggle);
   };
 
   const editTitle = (event) => {
@@ -61,22 +68,29 @@ function ProjectItem(prop) {
 
   console.log("rerendered");
   return (
-    <Grid >
+    <Grid>
       <Item id="item">
         <div>project owner: {project.username}</div>
-        <Card id="cards" sx={{ maxWidth: 250, minWidth: 250 }}>
+        <Card id="cards" sx={{ maxWidth: 220, minWidth: 220 }}>
           <CardActions>
-            <Button onClick={afterImg} size="small">
-              After
-            </Button>
-            <Button onClick={beforeImg} size="small">
-              Before
-            </Button>
+            {!toggle ? (
+              <FontAwesomeIcon
+                icon={faArrowsRotate}
+                transform="grow-9 right-15 down-4"
+                onClick={afterImg}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faArrowsRotate}
+                transform="grow-9 right-15 down-4"
+                onClick={beforeImg}
+              />
+            )}
           </CardActions>
           <CardMedia
             component="img"
             alt="NEW PROJECT"
-            height="250"
+            height="220"
             image={`uploads/${togglePic}`}
             onClick={() => handleSelectProject(project)}
           />
@@ -90,7 +104,6 @@ function ProjectItem(prop) {
                     type="text"
                     value={newTitle}
                     onChange={(evt) => {
-                      console.log("on change", evt.target.value);
                       setNewTitle(evt.target.value);
                     }}
                     placeholder={project.title}
@@ -100,14 +113,22 @@ function ProjectItem(prop) {
                       Submit
                     </button>
                   )}
+                  <FontAwesomeIcon
+                    icon={faBan}
+                    transform="grow-9 right-15 down-4"
+                    onClick={() => setEditable(false)}
+                  />
                 </form>
               )}
             </div>
             {user.id === project.user_id && (
-              <button onClick={() => setEditable(true)}>Edit Details</button>
-            )}
-            {user.id === project.user_id && (
-              <button onClick={() => setEditable(false)}>Cancel</button>
+              <FontAwesomeIcon
+                className="penIcon"
+                icon={faPenToSquare}
+                flip="horizontal"
+                transform="grow-9 right-105 down-20"
+                onClick={() => setEditable(true)}
+              />
             )}
           </CardContent>
         </Card>

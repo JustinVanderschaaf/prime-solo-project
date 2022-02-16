@@ -89,7 +89,7 @@ function ProjectGalleryCards() {
           {projectImages.map((photo) => (
             <Grid key={photo.id}>
               <Item id="item">
-                <Card id="cards" sx={{ maxWidth: 250, minWidth: 250 }}>
+                <Card id="cards" sx={{ maxWidth: 220, minWidth: 220 }}>
                   {user.id === selectedProject.user_id && (
                     <CardActions>
                       <Button
@@ -128,7 +128,7 @@ function ProjectGalleryCards() {
                   <CardMedia
                     component="img"
                     alt="green iguana"
-                    height="250"
+                    height="220"
                     image={`uploads/${photo.url}`}
                   />
                   <CardContent>
