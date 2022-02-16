@@ -6,6 +6,13 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+//MUI
+import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+
 const NewProject = () => {
   const dispatch = useDispatch();
   const categories = useSelector((store) => store.projectCategoriesReducer);
@@ -65,8 +72,10 @@ const NewProject = () => {
   return (
     <div className="bodyContainer">
       <h1>Hello</h1>
-      <form onSubmit={saveProjectInformation}>
+      <form className="newProjectForm" onSubmit={saveProjectInformation}>
         {/* title input */}
+        
+        <div className="newForm1">
         <input
           type="text"
           required
@@ -75,23 +84,40 @@ const NewProject = () => {
           placeholder="Title"
         />
         {/* end title input */}
+
         {/* budget input */}
-        <input
-          //limit the client to only numbers between 0 and 9 and only one character long
-          onKeyPress={(event) => {
-            if (!/[0-9]/.test(event.key)) {
-              event.preventDefault();
-            }
-          }}
-          type="text"
-          required
-          value={budget}
-          onChange={(evt) => setBudget(evt.target.value)}
-          placeholder="Budget"
-        />
+
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          
+            <FormControl fullWidth sx={{ m: 1 }}>
+              <InputLabel htmlFor="outlined-adornment-amount">
+                Budget
+              </InputLabel>
+              <OutlinedInput
+                onKeyPress={(event) => {
+                  if (!/[0-9]/.test(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
+                type="text"
+                required
+                value={budget}
+                onChange={(evt) => setBudget(evt.target.value)}
+                startAdornment={
+                  <InputAdornment position="start">$</InputAdornment>
+                }
+                label="Amount"
+              />
+            </FormControl>
+          
+        </Box>
+        
+        </div>
         {/* end budget input */}
+
         <br />
         {/* date input */}
+        <div className="newForm2">
         <input
           type="date"
           value={projectDate}
@@ -119,12 +145,15 @@ const NewProject = () => {
           })}
         </select>
         {/* end drop down with cat names */}
-
+        </div>
+        <div className="newForm3">
         <button className="newProjectBtn" type="submit">
           Create Project
         </button>
+        <button onClick={cancelProject}>cancel Project</button>
+        </div>
       </form>
-      <button onClick={cancelProject}>cancel Project</button>
+     
     </div>
   );
 };
