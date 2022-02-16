@@ -96,7 +96,7 @@ function ProjectListCards() {
           })}
         </select>
         </div>
-        <button className="newProjectBtn" type="submit">
+        <button className="SearchCat" type="submit">
           SEARCH
         </button>
       </form>
@@ -106,7 +106,7 @@ function ProjectListCards() {
 
 {/* AUTO COMPLETE */}
       <Autocomplete
-      
+      className="cselect"
         disablePortal
         id="combo-box-demo"
         options={username}

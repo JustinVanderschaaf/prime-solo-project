@@ -272,7 +272,7 @@ body{
 /* (C1) OVERRIDE DEFAULT SELECT BOX STYLES */
 .cselect select {
   border: 1px solid #ccc;
-  background: #fafafa;
+  background: #e0e2e4;
   padding: 5px 10px;
 }
 
@@ -291,7 +291,7 @@ body{
 .cselect::after { transition: all 0.3s; }
 .cselect:hover::after {
   transform: rotate(90deg);
-  background: #274396;
+  background: #35495e;
   color: #fff;
 }
 
@@ -313,4 +313,10 @@ body{
 .allProjectBtn{
   height: 55px;
   margin-left: 40px;
+}
+
+.SearchCat{
+  background-color: #35495e;
+  width: 100%;
+  color:#e3e0cc
 }
