@@ -63,7 +63,7 @@ const NewProject = () => {
   };
 
   return (
-    <>
+    <div className="bodyContainer">
       <h1>Hello</h1>
       <form onSubmit={saveProjectInformation}>
         {/* title input */}
@@ -125,7 +125,7 @@ const NewProject = () => {
         </button>
       </form>
       <button onClick={cancelProject}>cancel Project</button>
-    </>
+    </div>
   );
 };
 

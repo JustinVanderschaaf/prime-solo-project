@@ -31,7 +31,7 @@ function ProjectGalleryCards() {
   //end MUI
   useEffect(() => {
     dispatch({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });
-  }, []);
+  }, [selectedProject.before_img]);
 
   const removeImage = (photo) => {
     console.log("delte", photo);
@@ -88,17 +88,30 @@ function ProjectGalleryCards() {
         >
           {projectImages.map((photo) => (
             <Grid key={photo.id}>
-              <Item>
+              <Item id="item">
                 <Card id="cards" sx={{ maxWidth: 250, minWidth: 250 }}>
                   {user.id === selectedProject.user_id && (
                     <CardActions>
                       <Button
+                        className={
+                          photo.url === selectedProject.before_img
+                            ? "selected-text"
+                            : "nothing"
+                        }
                         size="small"
                         onClick={() => setBeforeImage(photo)}
                       >
                         Before
                       </Button>
-                      <Button size="small" onClick={() => setAfterImage(photo)}>
+                      <Button
+                        className={
+                          photo.url === selectedProject.after_img
+                            ? "selected-text"
+                            : "nothing"
+                        }
+                        size="small"
+                        onClick={() => setAfterImage(photo)}
+                      >
                         After
                       </Button>
 

@@ -61,6 +61,7 @@ function App() {
             path="/user"
           >
             <ProjectListCards />
+            
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -125,6 +126,7 @@ function App() {
             ) : (
               // Otherwise, show the Landing page
               <LandingPage />
+
             )}
           </Route>
 

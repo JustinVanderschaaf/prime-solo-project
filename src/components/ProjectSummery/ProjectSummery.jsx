@@ -89,7 +89,7 @@ const projectSummery = () => {
   };
 
   return (
-    <>
+    <div className="bodyContainer">
       <h2>Welcome, {user.username}!</h2>
       <p>
         Your Viewing {selectedProject.username}'s {selectedProject.title}{" "}
@@ -195,7 +195,7 @@ const projectSummery = () => {
       </TableContainer>
 
       {/* end table */}
-    </>
+    </div>
   );
 };
 export default projectSummery;

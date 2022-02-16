@@ -55,7 +55,8 @@ function ProjectListCards() {
 
 
   return (
-    <>
+    
+    <div className="bodyContainer">
       <h2>Welcome, {user.username}!</h2>
       <div id="galleryContainer" className="container">
         <Box sx={{ flexGrow: 1 }}>
@@ -71,15 +72,18 @@ function ProjectListCards() {
           </Grid>
         </Box>
       </div>
-      <button onClick={newProject}>Create New Project</button>
-
+      
+      <div className="btnBox">
       {/* search by category form */}
-      <form onSubmit={searchCategory}>
+
+      <form className="listForm" onSubmit={searchCategory}>
+      <div className="cselect">
         <select
           id="select"
           value={categoryId}
           onChange={(evt) => setCategoryId(evt.target.value)}
         >
+          
           <option disabled value="0">
             Pick One!
           </option>
@@ -91,13 +95,18 @@ function ProjectListCards() {
             );
           })}
         </select>
+        </div>
         <button className="newProjectBtn" type="submit">
           SEARCH
         </button>
       </form>
       {/* search by category form ends*/}
 
+
+
+{/* AUTO COMPLETE */}
       <Autocomplete
+      className = "listAuto"
         disablePortal
         id="combo-box-demo"
         options={username}
@@ -107,15 +116,24 @@ function ProjectListCards() {
           dispatch({ type: "FILTER_USERS", payload: event.target.value })
         }
       />
+{/* AUTO COMPLETE ENDS */}
+
+
+
 
       <button
+      className="allProjectBtn"
         onClick={(event) =>
           dispatch({ type: "GET_PROJECTS", payload: event.target.value })
         }
       >
         View All Projects
       </button>
-    </>
+      </div>
+      
+      <div className="box" onClick={newProject}>New Project</div>
+      </div>
+    
   );
 }
 

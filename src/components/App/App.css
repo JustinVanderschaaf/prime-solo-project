@@ -1,4 +1,4 @@
-/* html,
+html,
 body,
 #react-root {
   height: 100%;
@@ -41,7 +41,7 @@ background-position:
 			1000px 100%,
 			400px 0;
 		}
-	} */
+	}
 
 /* end moving back */
 
@@ -68,7 +68,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #659DBD;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -148,9 +148,13 @@ input {
 }
 
 #cards {
-  background-color: rgb(70, 197, 176);
-  color: white;
+  background-color: #35495e;
+  color: #e3e0cc;
+  
   max-width: 250px;
+  
+}
+#item{
   margin: 10px;
   padding: 10px;
 }
@@ -160,5 +164,141 @@ input {
   font-size: larger;
 }
 #galleryContainer{
-  margin-top: 100px;
+  
+  border:1px solid black;
+  width:90%;
+  
+  height:400px;
+  position:relative;
+  overflow: scroll;
+       margin-left: 5%;
+}
+
+button.selected-text{
+  color:darkgreen;
+}
+#item{
+  background-color: #e0e2e4;
+}
+
+body{
+  margin: 0
+}
+.bodyContainer{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.btnBox{
+  display: flex;
+}
+
+
+
+
+.box {
+	background: linear-gradient(to right, #FBEEC1, #659DBD);
+	color: white;
+	--width: 200px;
+	--height: calc(var(--width) / 3);
+	width: var(--width);
+	height: var(--height);
+	text-align: center;
+	line-height: var(--height);
+	font-size: calc(var(--height) / 3.5);
+	font-family: sans-serif;
+	letter-spacing: 0.2em;
+	border: 1px solid darkgreen;
+	border-radius: 2em;
+	transform: perspective(500px) rotateY(-15deg);
+	text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 0 0 5px rgba(0, 0, 0, 0.2);
+	transition: 0.5s;
+	position: relative;
+	overflow: hidden;
+}
+
+.box:hover {
+	transform: perspective(500px) rotateY(15deg);
+	text-shadow: -6px 3px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: -2px 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.box::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to right, transparent, white, transparent);
+	left: -100%;
+	transition: 0.5s;
+}
+
+.box:hover::before {
+	left: 100%;
+}
+
+
+
+.cselect select { appearance: none; }
+
+/* (A2) DEFINE OUR OWN CUSTOM ARROW */
+.cselect::after { content: "\25b6"; }
+
+/* (A3) POSITION CUSTOM ARROW */
+.cselect { position: relative; }
+.cselect::after {
+  position: absolute;
+  top: 0; right: 0;
+}
+/* (B) DIMENSTIONS */
+/* (B1) MAKE <SELECT> FILL THE WRAPPER */
+.cselect select { width: 100%; }
+.cselect { max-width: 400px; } /* OPTIONAL */
+
+/* (B2) ALL SAME HEIGHT */
+.cselect, .cselect::after, .cselect select {
+  box-sizing: border-box;
+  height: 55px;
+}
+
+/* (B3) A SQUARE CUSTOM ARROW BOX */
+/* ADD BORDER-RADIUS: 50% TO TURN IT CIRCLE */
+.cselect::after { width: 55px; }
+/* (C) COSMETICS */
+/* (C1) OVERRIDE DEFAULT SELECT BOX STYLES */
+.cselect select {
+  border: 1px solid #ccc;
+  background: #fafafa;
+  padding: 5px 10px;
+}
+
+/* (C2) DROPDOWN ARROW BOX */
+.cselect::after {
+  /* COLORS */
+  color: #fff;
+  background: #cfdcff;
+  /* CENTER ARROW IN BOX */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* (C3) FUNKY ANIMATIONS */
+.cselect::after { transition: all 0.3s; }
+.cselect:hover::after {
+  transform: rotate(90deg);
+  background: #274396;
+  color: #fff;
+}
+
+/* (C4) REMOVE DEFAULT HIGHLIGHTS */
+.cselect select:active,
+.cselect select:focus,
+.cselect select:hover {
+  outline: none;
+}
+
+.listForm{
+  width: 300px;
 }

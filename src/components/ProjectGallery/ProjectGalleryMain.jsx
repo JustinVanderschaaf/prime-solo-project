@@ -43,13 +43,13 @@ function ProjectGalleryMain() {
     history.push("/summery");
   };
   return (
-    <div className="container">
+    <div className="bodyContainer">
       <h2>Welcome, {user.username}!</h2>
       <p>
         Your Viewing {selectedProject.username}'s {selectedProject.title}{" "}
         project
       </p>
-      <button onClick={summeryPage}>Summery</button>
+      <button onClick={summeryPage}>Summary</button>
 
       {user.id === selectedProject.user_id && <ProjectGalleryForm />}
 

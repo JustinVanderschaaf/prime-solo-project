@@ -61,8 +61,8 @@ function ProjectItem(prop) {
 
   console.log("rerendered");
   return (
-    <Grid>
-      <Item>
+    <Grid >
+      <Item id="item">
         <div>project owner: {project.username}</div>
         <Card id="cards" sx={{ maxWidth: 250, minWidth: 250 }}>
           <CardActions>
