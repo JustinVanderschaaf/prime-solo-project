@@ -106,12 +106,12 @@ function ProjectListCards() {
 
 {/* AUTO COMPLETE */}
       <Autocomplete
-      className = "listAuto"
+      
         disablePortal
         id="combo-box-demo"
         options={username}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Username" />}
+        renderInput={(params) => <TextField className="listAuto"{...params} label="Username" />}
         onSelect={(event) =>
           dispatch({ type: "FILTER_USERS", payload: event.target.value })
         }
@@ -122,18 +122,18 @@ function ProjectListCards() {
 
 
       <button
-      className="allProjectBtn"
+      className="box" id="viewAll"
         onClick={(event) =>
           dispatch({ type: "GET_PROJECTS", payload: event.target.value })
         }
       >
         View All Projects
       </button>
-      </div>
       
-      <div className="box" onClick={newProject}>New Project</div>
+      
+      <div className="box" id="newProject" onClick={newProject}>New Project</div>
       </div>
-    
+      </div>
   );
 }
 

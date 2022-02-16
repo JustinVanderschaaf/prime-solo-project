@@ -1,4 +1,4 @@
-html,
+/* html,
 body,
 #react-root {
   height: 100%;
@@ -41,7 +41,7 @@ background-position:
 			1000px 100%,
 			400px 0;
 		}
-	}
+	} */
 
 /* end moving back */
 
@@ -172,6 +172,7 @@ input {
   position:relative;
   overflow: scroll;
        margin-left: 5%;
+       margin-bottom: 20px;
 }
 
 button.selected-text{
@@ -191,13 +192,15 @@ body{
 
 .btnBox{
   display: flex;
+  margin-left: 5%;
 }
 
 
 
 
 .box {
-	background: linear-gradient(to right, #FBEEC1, #659DBD);
+  margin-left: 80px;
+	background: linear-gradient(to right, #e0e2e4, #35495e);
 	color: white;
 	--width: 200px;
 	--height: calc(var(--width) / 3);
@@ -301,4 +304,13 @@ body{
 
 .listForm{
   width: 300px;
+  margin-right: 40px;
+}
+
+.listAuto{
+ background-color : #e0e2e4;
+}
+.allProjectBtn{
+  height: 55px;
+  margin-left: 40px;
 }
