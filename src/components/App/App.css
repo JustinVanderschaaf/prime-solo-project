@@ -350,10 +350,17 @@ body {
   height: 500px;
   left: 50%;
   position: relative;
-  transform: translateX(-50%);
+  
   background-color: #35495e;
   border-radius: 10%;
-}
+
+  transform: perspective(1500px) rotateY(5deg) translateX(-50%);
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  transition: transform 1s ease 0s;
+
+  
+} 
 
 .createTitle {
   color: #e3e0cc;

@@ -79,7 +79,6 @@ function ProjectListCards() {
       <form className="listForm" onSubmit={searchCategory}>
       <div className="cselect">
         <select
-          id="select"
           value={categoryId}
           onChange={(evt) => setCategoryId(evt.target.value)}
         >
