@@ -71,26 +71,31 @@ const NewProject = () => {
 
   return (
     <div className="bodyContainer">
-      <h1>Hello</h1>
       <form className="newProjectForm" onSubmit={saveProjectInformation}>
-        {/* title input */}
-        
+        <h1 className="createTitle">Create New Project</h1>
         <div className="newForm1">
-        <input
-          type="text"
-          required
-          value={title}
-          onChange={(evt) => setTitle(evt.target.value)}
-          placeholder="Title"
-        />
-        {/* end title input */}
+          {/* title input */}
 
-        {/* budget input */}
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBox" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="titleLabel" htmlFor="outlined-adornment-amount">
+                Title
+              </InputLabel>
+              <OutlinedInput
+                type="text"
+                required
+                value={title}
+                onChange={(evt) => setTitle(evt.target.value)}
+                label="Title"
+              />
+            </FormControl>
+          </Box>
+          {/* end title input */}
+          {/* budget input */}
 
-        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-          
-            <FormControl fullWidth sx={{ m: 1 }}>
-              <InputLabel htmlFor="outlined-adornment-amount">
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="budgetBox" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="budgetLabel" htmlFor="outlined-adornment-amount">
                 Budget
               </InputLabel>
               <OutlinedInput
@@ -109,51 +114,51 @@ const NewProject = () => {
                 label="Amount"
               />
             </FormControl>
-          
-        </Box>
-        
+          </Box>
         </div>
         {/* end budget input */}
 
         <br />
         {/* date input */}
         <div className="newForm2">
-        <input
-          type="date"
-          value={projectDate}
-          onChange={(evt) => setProjectDate(evt.target.value)}
-          placeholder="Date"
-        />
-        {/* end date inpu */}
-        <br />
-        {/* category input dropdown with cat names */}
+          <input
+            type="date"
+            
+            value={projectDate}
+            onChange={(evt) => setProjectDate(evt.target.value)}
+            placeholder="Date"
+          />
+          {/* end date inpu */}
+          <br />
+          {/* category input dropdown with cat names */}
 
-        <select
-          id="select"
-          value={categoryId}
-          onChange={(evt) => setCategoryId(evt.target.value)}
-        >
-          <option disabled value="0">
-            Pick One!
-          </option>
-          {categories.map((category) => {
-            return (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            );
-          })}
-        </select>
-        {/* end drop down with cat names */}
+          <select
+            id="select"
+            value={categoryId}
+            onChange={(evt) => setCategoryId(evt.target.value)}
+          >
+            <option disabled value="0">
+              Pick One!
+            </option>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
+          {/* end drop down with cat names */}
         </div>
         <div className="newForm3">
-        <button className="newProjectBtn" type="submit">
-          Create Project
-        </button>
-        <button onClick={cancelProject}>cancel Project</button>
+          <button className="box" type="submit">
+            Create Project
+          </button>
+          <button className="box" onClick={cancelProject}>
+            cancel Project
+          </button>
         </div>
       </form>
-     
     </div>
   );
 };
