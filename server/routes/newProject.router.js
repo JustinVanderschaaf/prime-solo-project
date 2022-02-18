@@ -25,7 +25,9 @@ router.get("/", (req, res) => {
 
 // POST route code here
 router.post("/", (req, res, next) => {
-  const user = req.body.user;
+  console.log("asdklfaldjksfasdfadfs",req.user.id)
+  console.log("req.body.useraaaa",req.body.user)
+  const user = req.user.id;
   const categoryId = req.body.categoryId;
   const date = req.body.date;
   const budget = req.body.budget;

@@ -30,14 +30,14 @@ background-position:
 		1000px,
 		400px 260px;
 	animation: 50s para infinite linear;
-	} */
+	}
 
 @keyframes para {
   100% {
     background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%,
       400px 0;
   }
-}
+} */
 
 /* end moving back */
 
@@ -159,7 +159,6 @@ input {
 #galleryContainer {
   border: 1px solid black;
   width: 90%;
-
   height: 400px;
   position: relative;
   overflow: scroll;
@@ -354,7 +353,7 @@ body {
   background-color: #35495e;
   border-radius: 10%;
 
-  transform: perspective(1500px) rotateY(5deg) translateX(-50%);
+  transform: perspective(1500px)  translateX(-50%);
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   transition: transform 1s ease 0s;
@@ -432,4 +431,27 @@ input::-webkit-datetime-edit-fields-wrapper {
   margin-left: 30px;
   height: 55px;
   background-color: #e0e2e4;
+}
+
+.galleryForm{
+  display: flex;
+  margin-left: 5%;
+  flex-wrap: wrap;
+}
+
+.photoTitle{
+  width: 210px;
+  border-radius: 4px;
+  margin-left: 30px;
+  height: 55px;
+  background-color: #e0e2e4;
+}
+
+.css-n4c7mb{
+  margin-bottom: 0px;
+}
+#tabs{
+  margin-bottom: 0px;
+  width: 90%;
+  margin-left: 6.5%;
 }

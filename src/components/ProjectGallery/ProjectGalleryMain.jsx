@@ -37,29 +37,17 @@ function ProjectGalleryMain() {
     });
   };
 
-
-
-  const summeryPage = (event) => {
-    history.push("/summery");
-  };
   return (
     <div className="bodyContainer">
-      <h2>Welcome, {user.username}!</h2>
-      <p>
-        Your Viewing {selectedProject.username}'s {selectedProject.title}{" "}
-        project
-      </p>
-      <button onClick={summeryPage}>Summary</button>
-
-      {user.id === selectedProject.user_id && <ProjectGalleryForm />}
-
       <ProjectGalleryCards />
-      <LogOutButton className="btn" />
+      <div className="galleryForm">
+      {user.id === selectedProject.user_id && <ProjectGalleryForm />}
       {user.id === selectedProject.user_id && (
         <button onClick={deleteProject}>
-          DELETE PROJECT{selectedProject.id}
+          DELETE PROJECT
         </button>
       )}
+      </div>
     </div>
   );
 }

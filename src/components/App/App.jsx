@@ -22,6 +22,8 @@ import RegisterPage from "../RegisterPage/RegisterPage";
 import NewProject from "../CreateNewProject/CreateNewProject";
 import ProjectSummery from "../ProjectSummery/ProjectSummery"
 import ProjectListCards from "../ProjectList/ProjectListCards";
+import UserProjectMain from "../ProjectSummery/UserProjectMain"
+
 
 import "./App.css";
 
@@ -77,7 +79,7 @@ function App() {
             exact
             path="/projectGallery"
           >
-            <ProjectGalleryMain />
+            <UserProjectMain />
           </ProtectedRoute>
 
           <ProtectedRoute

@@ -62,15 +62,30 @@ const ProjectGalleryForm = () => {
             onChange={handleFileSelect}
           />
 
+{/* <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBox" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="titleLabel" htmlFor="outlined-adornment-amount">
+                Photo Title
+              </InputLabel>
+              <OutlinedInput
+                type="text"
+                
+                
+                onChange={handleSubtitle}
+                label="Photo Title"
+              />
+            </FormControl>
+          </Box> */}
           <input
+          className="photoTitle"
             type="text"
             className="form-control"
-            placeholder="Description"
+            placeholder="Photo Title"
             name="description"
             onChange={handleSubtitle}
           />
 
-          <input type="submit" value="Upload File" />
+          <input type="submit" value="Add new Photo" />
         </div>
       </form>
     </>

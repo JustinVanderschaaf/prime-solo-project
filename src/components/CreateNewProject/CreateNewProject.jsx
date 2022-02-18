@@ -39,7 +39,6 @@ const NewProject = () => {
   };
   const saveProjectInformation = (event) => {
     event.preventDefault();
-    console.log("Current project", projectData);
 
     dispatch({
       type: "NEW_PROJECT",
@@ -123,7 +122,6 @@ const NewProject = () => {
         <div className="newForm2">
           <input
             type="date"
-            
             value={projectDate}
             onChange={(evt) => setProjectDate(evt.target.value)}
             placeholder="Date"
@@ -154,7 +152,7 @@ const NewProject = () => {
           <button className="box" type="submit">
             Create Project
           </button>
-          <button className="box" onClick={cancelProject}>
+          <button className="box" type="button" onClick={cancelProject}>
             cancel Project
           </button>
         </div>

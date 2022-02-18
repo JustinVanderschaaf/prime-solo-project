@@ -90,11 +90,7 @@ const projectSummery = () => {
 
   return (
     <div className="bodyContainer">
-      <h2>Welcome, {user.username}!</h2>
-      <p>
-        Your Viewing {selectedProject.username}'s {selectedProject.title}{" "}
-        project
-      </p>
+     
 
       <button onClick={galleryPage}>Gallery</button>
 
