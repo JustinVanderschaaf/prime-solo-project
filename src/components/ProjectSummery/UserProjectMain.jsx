@@ -106,7 +106,7 @@ const UserProject = () => {
      <TabsUnstyled defaultValue={0}>
       <TabsList id="tabs">
         <Tab>Gallery</Tab>
-        <Tab>Summery</Tab>
+        <Tab>Summary</Tab>
         <Tab>Mailbox</Tab>
       </TabsList>
       <TabPanel value={0}><ProjectGalleryMain/></TabPanel>

@@ -166,8 +166,11 @@ input {
   margin-bottom: 20px;
 }
 
-button.selected-text {
-  color: darkgreen;
+#baBtn.selected-text {
+  color: #1be235;
+}
+#baBtn{
+  color: #e3e0cc
 }
 #item {
   background-color: #e0e2e4;
@@ -533,4 +536,13 @@ input::-webkit-datetime-edit-fields-wrapper {
 }
 #tableRow{
   background-color: #e0e2e4;
+}
+.BtnFlip{
+  width: 30px
+}
+.tableHead{
+  color: #e0e2e4 !important;
+}
+.pOwner{
+  color: black;
 }

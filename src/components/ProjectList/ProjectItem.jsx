@@ -70,21 +70,25 @@ function ProjectItem(prop) {
   return (
     <Grid>
       <Item id="item">
-        <div>project owner: {project.username}</div>
+        <div className="pOwner">project owner: {project.username}</div>
         <Card id="cards" sx={{ maxWidth: 220, minWidth: 220 }}>
           <CardActions>
             {!toggle ? (
+              <div className="BtnFlip" onClick={afterImg}>
               <FontAwesomeIcon
                 icon={faArrowsRotate}
-                transform="grow-9 right-15 down-4"
-                onClick={afterImg}
+                transform="grow-9 "
+                
               />
+              </div>
             ) : (
+              <div className="BtnFlip" onClick={beforeImg}>
               <FontAwesomeIcon
                 icon={faArrowsRotate}
-                transform="grow-9 right-15 down-4"
+                transform="grow-9"
                 onClick={beforeImg}
               />
+              </div>
             )}
           </CardActions>
           <CardMedia

@@ -14,6 +14,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function ProjectGalleryCards() {
   const dispatch = useDispatch();
@@ -92,7 +94,7 @@ function ProjectGalleryCards() {
                 <Card id="cards" sx={{ maxWidth: 220, minWidth: 220 }}>
                   {user.id === selectedProject.user_id && (
                     <CardActions>
-                      <Button
+                      <Button id="baBtn"
                         className={
                           photo.url === selectedProject.before_img
                             ? "selected-text"
@@ -103,7 +105,7 @@ function ProjectGalleryCards() {
                       >
                         Before
                       </Button>
-                      <Button
+                      <Button id="baBtn"
                         className={
                           photo.url === selectedProject.after_img
                             ? "selected-text"
@@ -114,10 +116,15 @@ function ProjectGalleryCards() {
                       >
                         After
                       </Button>
-
-                      <Button size="small" onClick={() => removeImage(photo)}>
-                        Remove
-                      </Button>
+                      <div onClick={() => removeImage(photo)}>
+                      <FontAwesomeIcon
+                icon={faTrashCan}
+                transform="grow-9 right-50 "
+                
+                
+              />
+              </div>
+                      
                     </CardActions>
                   )}
                   {user.id !== selectedProject.user_id && (

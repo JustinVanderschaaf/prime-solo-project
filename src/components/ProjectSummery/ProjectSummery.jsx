@@ -91,14 +91,14 @@ const projectSummery = () => {
       {/* start table */}
       <TableContainer  id="table" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow >
-              <TableCell>Material</TableCell>
-              <TableCell align="right">QTY</TableCell>
-              <TableCell align="right">Cost</TableCell>
-              <TableCell align="right">On_hand</TableCell>
-              <TableCell align="right">Location</TableCell>
-              <TableCell align="right">Delete</TableCell>
+          <TableHead >
+            <TableRow  >
+              <TableCell className="tableHead">Material</TableCell>
+              <TableCell className="tableHead" align="right">QTY</TableCell>
+              <TableCell className="tableHead" align="right">Cost</TableCell>
+              <TableCell className="tableHead" align="right">On_hand</TableCell>
+              <TableCell className="tableHead" align="right">Location</TableCell>
+              <TableCell className="tableHead" align="right">Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
