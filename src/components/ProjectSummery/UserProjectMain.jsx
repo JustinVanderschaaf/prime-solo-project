@@ -98,8 +98,8 @@ const UserProject = () => {
 
   return (
     <>
-     <h2>Welcome, {user.username}!</h2>
-      <p>
+     <h2 className="welcome">Welcome, {user.username}!</h2>
+      <p className="pProject">
         Your Viewing {selectedProject.username}'s {selectedProject.title}{" "}
         project
       </p>

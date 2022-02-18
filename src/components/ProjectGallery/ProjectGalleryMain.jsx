@@ -6,6 +6,8 @@ import ProjectGalleryForm from "./ProjectGalleryForm";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 function ProjectGalleryMain() {
   const dispatch = useDispatch();
@@ -43,10 +45,18 @@ function ProjectGalleryMain() {
       <div className="galleryForm">
       {user.id === selectedProject.user_id && <ProjectGalleryForm />}
       {user.id === selectedProject.user_id && (
-        <button onClick={deleteProject}>
-          DELETE PROJECT
-        </button>
+        <Stack direction="row" spacing={2}>
+        <Button onClick={deleteProject}
+          id="photoDelete"
+          type="button"
+          value="Delete"
+          variant="contained"
+        >
+          Delete Project
+        </Button>
+      </Stack>
       )}
+       
       </div>
     </div>
   );

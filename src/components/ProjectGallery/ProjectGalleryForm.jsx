@@ -5,6 +5,15 @@ import { useEffect } from "react";
 // import ProjectGalleryCards from "./ProjectGalleryCards";
 import { useHistory } from "react-router-dom";
 
+//MUI
+import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+
 const ProjectGalleryForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -62,30 +71,29 @@ const ProjectGalleryForm = () => {
             onChange={handleFileSelect}
           />
 
-{/* <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-            <FormControl id="titleBox" fullWidth sx={{ m: 1 }}>
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBoxGal" fullWidth sx={{ m: 1 }}>
               <InputLabel id="titleLabel" htmlFor="outlined-adornment-amount">
                 Photo Title
               </InputLabel>
               <OutlinedInput
                 type="text"
-                
-                
                 onChange={handleSubtitle}
                 label="Photo Title"
               />
             </FormControl>
-          </Box> */}
-          <input
-          className="photoTitle"
-            type="text"
-            className="form-control"
-            placeholder="Photo Title"
-            name="description"
-            onChange={handleSubtitle}
-          />
+          </Box>
 
-          <input type="submit" value="Add new Photo" />
+          <Stack direction="row" spacing={2}>
+            <Button
+              id="photoSubmit"
+              type="submit"
+              value="Add new Photo"
+              variant="contained"
+            >
+              Add Photo
+            </Button>
+          </Stack>
         </div>
       </form>
     </>
