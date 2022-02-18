@@ -451,7 +451,7 @@ input::-webkit-datetime-edit-fields-wrapper {
   margin-bottom: 0px;
 }
 #tabs{
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   width: 90%;
   margin-left: 6.5%;
 }
@@ -510,4 +510,27 @@ input::-webkit-datetime-edit-fields-wrapper {
   margin-bottom: 0px;
   font-size: 40px;
   margin-left: 6.5%;
+}
+
+#table{
+  
+  color: #35495e;
+  border: 1px solid black;
+  width: 93%;
+  margin-left: 1.5%;
+  height: 500px;
+  left: 50%;
+  position: relative;
+  
+  background-color: #35495e;
+  border-radius: 10%;
+
+  transform: perspective(1500px)  translateX(-50%);
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  transition: transform 1s ease 0s;
+
+}
+#tableRow{
+  background-color: #e0e2e4;
 }

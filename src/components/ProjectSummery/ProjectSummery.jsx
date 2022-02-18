@@ -66,10 +66,6 @@ const projectSummery = () => {
     dispatch({ type: "DELETE_MATERIAL", payload: materialToRemove });
   };
 
-  const galleryPage = (event) => {
-    history.push("/projectGallery");
-  };
-
   useEffect(() => {
     dispatch({ type: "GET_MATERIALS", payload: selectedProject.id });
   }, []);
@@ -92,8 +88,58 @@ const projectSummery = () => {
     <div className="bodyContainer">
      
 
-      <button onClick={galleryPage}>Gallery</button>
+      {/* start table */}
+      <TableContainer  id="table" component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow >
+              <TableCell>Material</TableCell>
+              <TableCell align="right">QTY</TableCell>
+              <TableCell align="right">Cost</TableCell>
+              <TableCell align="right">On_hand</TableCell>
+              <TableCell align="right">Location</TableCell>
+              <TableCell align="right">Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {materials.map((row) => (
+              <TableRow
+              id="tableRow"
+                hover
+                role="checkbox"
+                tabIndex={-1}
+                key={row.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.material}
+                </TableCell>
+                <TableCell align="right">{row.qty}</TableCell>
+                <TableCell align="right">{row.cost}</TableCell>
+                {/* on hand view for user */}
+                {user.id === selectedProject.user_id && (
+                  <TableCell align="right" onClick={() => changeOnHand(row)}>
+                    <button>{row.on_hand.toString()}</button>
+                  </TableCell>
+                )}
+                {user.id !== selectedProject.user_id && (
+                  <TableCell align="right">{row.on_hand.toString()}</TableCell>
+                )}
 
+                <TableCell align="right">{row.location}</TableCell>
+                {/* delete view for user */}
+                {user.id === selectedProject.user_id && (
+                  <TableCell align="right">
+                    <button onClick={() => removeMaterial(row)}>Remove</button>
+                  </TableCell>
+                )}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* end table */}
       {user.id === selectedProject.user_id && (
         <form onSubmit={saveMaterialInformation}>
           <button>Submit</button>
@@ -139,58 +185,6 @@ const projectSummery = () => {
           />
         </form>
       )}
-
-      {/* start table */}
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Material</TableCell>
-              <TableCell align="right">QTY</TableCell>
-              <TableCell align="right">Cost</TableCell>
-              <TableCell align="right">On_hand</TableCell>
-              <TableCell align="right">Location</TableCell>
-              <TableCell align="right">Delete</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {materials.map((row) => (
-              <TableRow
-                hover
-                role="checkbox"
-                tabIndex={-1}
-                key={row.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.material}
-                </TableCell>
-                <TableCell align="right">{row.qty}</TableCell>
-                <TableCell align="right">{row.cost}</TableCell>
-                {/* on hand view for user */}
-                {user.id === selectedProject.user_id && (
-                  <TableCell align="right" onClick={() => changeOnHand(row)}>
-                    <button>{row.on_hand.toString()}</button>
-                  </TableCell>
-                )}
-                {user.id !== selectedProject.user_id && (
-                  <TableCell align="right">{row.on_hand.toString()}</TableCell>
-                )}
-
-                <TableCell align="right">{row.location}</TableCell>
-                {/* delete view for user */}
-                {user.id === selectedProject.user_id && (
-                  <TableCell align="right">
-                    <button onClick={() => removeMaterial(row)}>Remove</button>
-                  </TableCell>
-                )}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      {/* end table */}
     </div>
   );
 };
