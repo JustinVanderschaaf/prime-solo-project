@@ -14,7 +14,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import TablePagination from "@mui/material/TablePagination";
+import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
 
 const projectSummery = () => {
   const selectedProject = useSelector((store) => store.selectedProject);
@@ -140,35 +144,62 @@ const projectSummery = () => {
       </TableContainer>
 
       {/* end table */}
+      
       {user.id === selectedProject.user_id && (
-        <form onSubmit={saveMaterialInformation}>
+        <form  onSubmit={saveMaterialInformation}>
+          <div className="matForm">
           <button>Submit</button>
-          <input
-            type="text"
-            required
-            value={material}
-            onChange={(evt) => setMaterial(evt.target.value)}
-            placeholder="Material"
-          />
 
-          <input
-            type="text"
-            required
-            value={qty}
-            onChange={(evt) => setQty(evt.target.value)}
-            placeholder="QTY"
-          />
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
+              Material
+              </InputLabel>
+              <OutlinedInput
+                type="text"
+                required
+                value={material}
+                onChange={(evt) => setMaterial(evt.target.value)}
+                label="Material"
+              />
+            </FormControl>
+          </Box>
 
-          <input
-            type="text"
-            required
-            value={cost}
-            onChange={(evt) => setCost(evt.target.value)}
-            placeholder="Cost"
-          />
 
+
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
+              QTY
+              </InputLabel>
+              <OutlinedInput
+                type="text"
+                required
+                value={qty}
+                onChange={(evt) => setQty(evt.target.value)}
+                label="QTY"
+              />
+            </FormControl>
+          </Box>
+          </div>
+          <div className="matForm">
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
+              QTY
+              </InputLabel>
+              <OutlinedInput
+                type="text"
+                required
+                value={cost}
+                onChange={(evt) => setCost(evt.target.value)}
+                label="cost"
+              />
+            </FormControl>
+          </Box>
+         
           <select
-            id="select"
+            id="selectSum"
             value={onHand}
             onChange={(evt) => setOnHand(evt.target.value)}
           >
@@ -177,12 +208,22 @@ const projectSummery = () => {
             <option value="true">On Hand</option>
           </select>
 
-          <input
-            type="text"
-            value={location}
-            onChange={(evt) => setLocation(evt.target.value)}
-            placeholder="Location"
-          />
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
+              QTY
+              </InputLabel>
+              <OutlinedInput
+                type="text"
+                required
+                value={location}
+                onChange={(evt) => setLocation(evt.target.value)}
+                label="location"
+              />
+            </FormControl>
+          </Box>
+
+          </div>
         </form>
       )}
     </div>
