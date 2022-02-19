@@ -1,13 +1,13 @@
-![Repo Size](https://img.shields.io/github/languages/code-size/mmettille/redux-feedback-form.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/mmettille/redux-feedback-form.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/mmettille/redux-feedback-form.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/mmettille/redux-feedback-form.svg?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/languages/code-size/JustinVanderschaaf/prime-solo-project.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/JustinVanderschaaf/prime-solo-project.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/JustinVanderschaaf/prime-solo-project.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/JustinVanderschaaf/prime-solo-project.svg?style=for-the-badge)
 
-# Redux Feedback Form
+# Zoetrope Gallery
 
 ## Table of Contents
 
 - [Description](#description)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
+    - [Prerequisites](#prerequisite
     - [Installation](#installation)
 - [Usage](#usage)
 
@@ -15,7 +15,9 @@
 
 _Duration: 10 Day Sprint_
 
-A feedback form was built for Prime Digital Academy to assess how their students are feeling about the immersive education.
+On a regular basis I find myself talking to friends and family about this cool new project I'm working on or they tell me about how far along their garden has come over the last two years.
+Then we spend the next 20 mins awkwardly sending photos back and forth via text or email or try to describe the growth of the project over the course of time but feeling like it’s not really getting the idea across.
+That's why I created Zoetrope Gallery.
 
 ## Built With
 
@@ -26,6 +28,7 @@ A feedback form was built for Prime Digital Academy to assess how their students
 <a href="https://www.postgresql.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" height="40px" width="40px" /></a>
 <a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" height="40px" width="40px" /></a>
 <a href="https://redux.js.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" height="40px" width="40px" /></a>
+<a href="https://redux.js.org/"><img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" height="40px" width="40px" /></a>
 
 ## Getting Started
 
