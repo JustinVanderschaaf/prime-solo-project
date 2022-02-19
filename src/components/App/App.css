@@ -597,3 +597,40 @@ input::-webkit-datetime-edit-fields-wrapper {
 .sumInput{
   margin-left: 60px;
 }
+.aboutContainer{
+  border: 1px solid black;
+  width: 80%;
+  position: relative;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  padding-bottom: 5%;
+  padding-top: 1.5%;
+  background-color: #e0e2e4 ;
+  color: #35495e;
+}
+.aboutContainerTop{
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.aboutContainerBot{
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.infoContainer{
+  border: 1px solid black;
+  width: 80%;
+  position: relative;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  padding-bottom: 5%;
+  padding-top: 1.5%;
+  background-color: #e0e2e4 ;
+  color: #35495e;
+ 
+}
+.infoContent{
+  margin-left: 5%;
+  margin-right: 5%;
+}

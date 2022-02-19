@@ -1,29 +1,56 @@
 import React from "react";
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
-
 function AboutPage() {
   return (
-    <div className="container">
-      <div>
-      <div>
+    <div className="aboutContainer">
+      <div className="aboutContainerTop">
+      <h4>
+        On a regular basis I find myself talking to friends and family about
+        this cool new project I'm working on or they tell me about how far along
+        their garden has come over the last two years. Then we spend the next 20
+        mins awkwardly sending photos back and forth via text or email or try to
+        describe the growth of the project over the course of time but feeling
+        like it’s not really getting the idea across. That's why I created
+        Zoetrope Gallery.
+      </h4>
+      </div>
+      <div className="aboutContainerBot">
+      <p>This app was designed to be easy to use.</p>
       
-        <h2>Technologies</h2>
-JavaScript React ,Redux, sagas, node, express, Multer for photo uploads Mui and CSS for styling
-</div>
-
-<h2>Challenge</h2>
-
-The toughest challenge I overcame was learning multer to send both a file and a title to posgresql and then displaying the saved photo.
-Excited for
-Now that you're able to create and share projects with everyone, I can't wait to build a feature where the users can send and receive messages about the projects that they are viewing or have created.
-
-<h2>Thanks</h2>
-I would like to say thanks to Edan Swartz for all the knowledge he has shared with me as well as my wife Jane for supporting me along this change in both our lives as I pursue this next step in my career.
-My name is Justin and this is Zoetrope Gallery.
+      <ul>
+        <li>log in or register as a new user to enter the application</li>
+        <li>
+          once inside you will see a list off every project in the application
+        </li>
+        <li>
+          toggle the projects to before and after as well as filter the projects
+          by username and category
+        </li>
+        <li>
+          clicking create new project will bring you to a form to start the
+          creation event.
+        </li>
+        <li>
+          when you click submit for new project you will be redirected to the
+          main page with the newest project at the top.
+        </li>
+        <li>
+          you can click into the projects from main page to view others or
+          view/edit your own
+        </li>
+        <li>
+          inside the project you have the ability to upload new photos, delete
+          photos, set your before/after pics or delete the entire project
+        </li>
+        <li>
+          There is also tabs at the top of the project page that lets you
+          navigate between pages to look at you summary page just click the tab
+        </li>
+        <li>
+          In the summary tab you can view or edit you own table that hold the
+          information on the materials needed for the project
+        </li>
+      </ul>
       </div>
     </div>
   );
