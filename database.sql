@@ -56,5 +56,3 @@ ALTER TABLE project ALTER COLUMN before_img SET DEFAULT 'New-project.jpeg';
 
 ALTER TABLE project ALTER COLUMN after_img SET DEFAULT 'New-project.jpeg';
 
-
-
