@@ -1,4 +1,4 @@
-![Repo Size](https://img.shields.io/github/languages/code-size/mmettille/redux-feedback-form.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/mmettille/redux-feedback-form.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/mmettille/redux-feedback-form.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/mmettille/redux-feedback-form.svg?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/languages/code-size/JustinVanderschaaf/prime-solo-project.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/mmettille/redux-feedback-form.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/mmettille/redux-feedback-form.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/mmettille/redux-feedback-form.svg?style=for-the-badge)
 
 # Redux Feedback Form
 
@@ -13,7 +13,7 @@
 
 ## Description
 
-_Duration: 2 Day Sprint_
+_Duration: 10 Day Sprint_
 
 A feedback form was built for Prime Digital Academy to assess how their students are feeling about the immersive education.
 
