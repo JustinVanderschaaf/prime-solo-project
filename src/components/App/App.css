@@ -549,6 +549,12 @@ input::-webkit-datetime-edit-fields-wrapper {
 .matForm{
   display: flex;
   flex-wrap: wrap;
+  margin-left: 4%;
+}
+.matFormBot{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5.4%;
 }
 
 #titleLabelSum {
@@ -571,4 +577,23 @@ input::-webkit-datetime-edit-fields-wrapper {
   margin-top: 20px;
   height: 55px;
   background-color: #e0e2e4;
+}
+
+#photoSubmitSum{
+  width: 165px;
+  margin-left: 20px;
+  background-color: #35495e;
+  height: 50px;
+  margin-top: 22px;
+  margin-right:15px ;
+  
+}
+#photoSubmitSum:hover {
+  background-color: green;
+  transform: perspective(500px) rotateY(15deg);
+  text-shadow: -6px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.sumInput{
+  margin-left: 60px;
 }

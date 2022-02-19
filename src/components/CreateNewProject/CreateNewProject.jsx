@@ -126,7 +126,7 @@ const NewProject = () => {
             onChange={(evt) => setProjectDate(evt.target.value)}
             placeholder="Date"
           />
-          {/* end date inpu */}
+          {/* end date input */}
           <br />
           {/* category input dropdown with cat names */}
 

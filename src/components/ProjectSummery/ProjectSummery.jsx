@@ -19,6 +19,8 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 const projectSummery = () => {
   const selectedProject = useSelector((store) => store.selectedProject);
@@ -148,14 +150,25 @@ const projectSummery = () => {
       {user.id === selectedProject.user_id && (
         <form  onSubmit={saveMaterialInformation}>
           <div className="matForm">
-          <button>Submit</button>
+          
+          <Stack direction="row" spacing={2}>
+            <Button
+              id="photoSubmitSum"
+              type="submit"
+              value="Add new Material"
+              variant="contained"
+            >
+              Add new Material
+            </Button>
+          </Stack>
 
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          <Box className="sumInput" sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
               <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
               Material
               </InputLabel>
               <OutlinedInput
+              
                 type="text"
                 required
                 value={material}
@@ -167,12 +180,18 @@ const projectSummery = () => {
 
 
 
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          <Box className="sumInput" sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
               <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
               QTY
               </InputLabel>
               <OutlinedInput
+              
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
                 type="text"
                 required
                 value={qty}
@@ -182,13 +201,19 @@ const projectSummery = () => {
             </FormControl>
           </Box>
           </div>
-          <div className="matForm">
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          <div className="matFormBot">
+          <Box  sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
               <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
-              QTY
+              Cost
               </InputLabel>
               <OutlinedInput
+              
+                onKeyPress={(event) => {
+                  if (!/[0-9]/.test(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
                 type="text"
                 required
                 value={cost}
@@ -199,6 +224,7 @@ const projectSummery = () => {
           </Box>
          
           <select
+          className="sumInput"
             id="selectSum"
             value={onHand}
             onChange={(evt) => setOnHand(evt.target.value)}
@@ -208,12 +234,13 @@ const projectSummery = () => {
             <option value="true">On Hand</option>
           </select>
 
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          <Box className="sumInput" sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
               <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
-              QTY
+              Location
               </InputLabel>
               <OutlinedInput
+              
                 type="text"
                 required
                 value={location}
