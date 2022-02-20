@@ -1,4 +1,4 @@
-/* html,
+html,
 body,
 #react-root {
   height: 100%;
@@ -37,7 +37,7 @@ background-position:
     background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%,
       400px 0;
   }
-} */
+}
 
 /* end moving back */
 
@@ -468,6 +468,8 @@ input::-webkit-datetime-edit-fields-wrapper {
 .form-control-file{
   width: 250px;
   margin-top: 25px;
+  -webkit-text-stroke-width: .3px;
+  -webkit-text-stroke-color: white;
 }
 
 #titleBoxGal {
@@ -507,14 +509,18 @@ input::-webkit-datetime-edit-fields-wrapper {
 }
 
 .pProject{
-  font-size: x-large;
+  font-size: 30px;
   margin-top: 0px;
   text-align: center;
+  -webkit-text-stroke-width: .3px;
+    -webkit-text-stroke-color: white;
 }
 .welcome{
   margin-bottom: 0px;
   font-size: 40px;
   margin-left: 6.5%;
+  -webkit-text-stroke-width: .3px;
+  -webkit-text-stroke-color: white;
 }
 /* inside project gallery END*/
 /* Summary page */
@@ -564,7 +570,7 @@ input::-webkit-datetime-edit-fields-wrapper {
   font-size: large;
   color: black;
   font-weight: 900;
-  -webkit-transform: translate(14px, -20px) scale(0.75);
+  -webkit-transform: translate(14px, -2px) scale(0.75);
 }
 
 #titleBoxSum {
@@ -640,3 +646,4 @@ input::-webkit-datetime-edit-fields-wrapper {
   margin-left: 5%;
   margin-right: 5%;
 }
+
