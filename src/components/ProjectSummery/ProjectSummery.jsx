@@ -23,19 +23,21 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 const projectSummery = () => {
+  //reducers
   const selectedProject = useSelector((store) => store.selectedProject);
   const user = useSelector((store) => store.user);
   const materials = useSelector((store) => store.materialsReducer);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
-  //table inputs
+  //table inputs local state to be sent
   let [material, setMaterial] = useState("");
   let [qty, setQty] = useState("");
   let [cost, setCost] = useState("");
   let [onHand, setOnHand] = useState("false");
   let [location, setLocation] = useState("");
-
+  //state placed in an object to be sent
   const materialData = {
     selectedProject: selectedProject.id,
     material: material,
@@ -48,22 +50,20 @@ const projectSummery = () => {
 
   const saveMaterialInformation = (event) => {
     event.preventDefault();
-    console.log("Current MATERIAL INPUT", materialData);
-
+    //post request to add new material to the db/selected project table
     dispatch({
       type: "NEW_MATERIAL",
       payload: materialData,
     });
-
+    //set inputs back to empty strings or default
     setMaterial("");
     setQty("");
     setCost("");
     setOnHand("false");
     setLocation("");
   };
-
+  //delete request to delete row.id in selected project
   const removeMaterial = (row) => {
-    console.log("delete row id is", row.id);
     const materialToRemove = {
       project: selectedProject.id,
       row: row.id,
@@ -71,18 +71,14 @@ const projectSummery = () => {
 
     dispatch({ type: "DELETE_MATERIAL", payload: materialToRemove });
   };
-
+  //on page load Get materials for display in table
   useEffect(() => {
     dispatch({ type: "GET_MATERIALS", payload: selectedProject.id });
   }, []);
 
   const rows = [materials];
-  const mats = () => {
-    console.log("this it the mats", rows);
-  };
-
+  //put request to toggle on hand to !onhand and display results in order putting false at top
   const changeOnHand = (row) => {
-    console.log("Change row id is", row.id);
     const onHandToChange = {
       project: selectedProject.id,
       row: row.id,
@@ -92,25 +88,33 @@ const projectSummery = () => {
 
   return (
     <div className="bodyContainer">
-     
-
       {/* start table */}
-      <TableContainer  id="table" component={Paper}>
+      <TableContainer id="table" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead >
-            <TableRow  >
+          <TableHead>
+            <TableRow>
               <TableCell className="tableHead">Material</TableCell>
-              <TableCell className="tableHead" align="right">QTY</TableCell>
-              <TableCell className="tableHead" align="right">Cost</TableCell>
-              <TableCell className="tableHead" align="right">On_hand</TableCell>
-              <TableCell className="tableHead" align="right">Location</TableCell>
-              <TableCell className="tableHead" align="right">Delete</TableCell>
+              <TableCell className="tableHead" align="right">
+                QTY
+              </TableCell>
+              <TableCell className="tableHead" align="right">
+                Cost
+              </TableCell>
+              <TableCell className="tableHead" align="right">
+                On_hand
+              </TableCell>
+              <TableCell className="tableHead" align="right">
+                Location
+              </TableCell>
+              <TableCell className="tableHead" align="right">
+                Delete
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {materials.map((row) => (
               <TableRow
-              id="tableRow"
+                id="tableRow"
                 hover
                 role="checkbox"
                 tabIndex={-1}
@@ -146,110 +150,124 @@ const projectSummery = () => {
       </TableContainer>
 
       {/* end table */}
-      
+
       {user.id === selectedProject.user_id && (
-        <form  onSubmit={saveMaterialInformation}>
+        // conditional if user owns project allow addition to the table via below form
+        <form onSubmit={saveMaterialInformation}>
           <div className="matForm">
-          
-          <Stack direction="row" spacing={2}>
-            <Button
-              id="photoSubmitSum"
-              type="submit"
-              value="Add new Material"
-              variant="contained"
+            <Stack direction="row" spacing={2}>
+              <Button
+                id="photoSubmitSum"
+                type="submit"
+                value="Add new Material"
+                variant="contained"
+              >
+                Add new Material
+              </Button>
+            </Stack>
+
+            <Box
+              className="sumInput"
+              sx={{ display: "flex", flexWrap: "wrap" }}
             >
-              Add new Material
-            </Button>
-          </Stack>
+              <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+                <InputLabel
+                  id="titleLabelSum"
+                  htmlFor="outlined-adornment-amount"
+                >
+                  Material
+                </InputLabel>
+                <OutlinedInput
+                  type="text"
+                  required
+                  value={material}
+                  onChange={(evt) => setMaterial(evt.target.value)}
+                  label="Material"
+                />
+              </FormControl>
+            </Box>
 
-          <Box className="sumInput" sx={{ display: "flex", flexWrap: "wrap" }}>
-            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
-              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
-              Material
-              </InputLabel>
-              <OutlinedInput
-              
-                type="text"
-                required
-                value={material}
-                onChange={(evt) => setMaterial(evt.target.value)}
-                label="Material"
-              />
-            </FormControl>
-          </Box>
-
-
-
-          <Box className="sumInput" sx={{ display: "flex", flexWrap: "wrap" }}>
-            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
-              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
-              QTY
-              </InputLabel>
-              <OutlinedInput
-              
-              onKeyPress={(event) => {
-                if (!/[0-9]/.test(event.key)) {
-                  event.preventDefault();
-                }
-              }}
-                type="text"
-                required
-                value={qty}
-                onChange={(evt) => setQty(evt.target.value)}
-                label="QTY"
-              />
-            </FormControl>
-          </Box>
+            <Box
+              className="sumInput"
+              sx={{ display: "flex", flexWrap: "wrap" }}
+            >
+              <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+                <InputLabel
+                  id="titleLabelSum"
+                  htmlFor="outlined-adornment-amount"
+                >
+                  QTY
+                </InputLabel>
+                <OutlinedInput
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  type="text"
+                  required
+                  value={qty}
+                  onChange={(evt) => setQty(evt.target.value)}
+                  label="QTY"
+                />
+              </FormControl>
+            </Box>
           </div>
           <div className="matFormBot">
-          <Box  sx={{ display: "flex", flexWrap: "wrap" }}>
-            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
-              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
-              Cost
-              </InputLabel>
-              <OutlinedInput
-              
-                onKeyPress={(event) => {
-                  if (!/[0-9]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                type="text"
-                required
-                value={cost}
-                onChange={(evt) => setCost(evt.target.value)}
-                label="cost"
-              />
-            </FormControl>
-          </Box>
-         
-          <select
-          className="sumInput"
-            id="selectSum"
-            value={onHand}
-            onChange={(evt) => setOnHand(evt.target.value)}
-          >
-            <option value="false">Not Purchased</option>
+            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+              <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+                <InputLabel
+                  id="titleLabelSum"
+                  htmlFor="outlined-adornment-amount"
+                >
+                  Cost
+                </InputLabel>
+                <OutlinedInput
+                  onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                  type="text"
+                  required
+                  value={cost}
+                  onChange={(evt) => setCost(evt.target.value)}
+                  label="cost"
+                />
+              </FormControl>
+            </Box>
 
-            <option value="true">On Hand</option>
-          </select>
+            <select
+              className="sumInput"
+              id="selectSum"
+              value={onHand}
+              onChange={(evt) => setOnHand(evt.target.value)}
+            >
+              <option value="false">Not Purchased</option>
 
-          <Box className="sumInput" sx={{ display: "flex", flexWrap: "wrap" }}>
-            <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
-              <InputLabel id="titleLabelSum" htmlFor="outlined-adornment-amount">
-              Location
-              </InputLabel>
-              <OutlinedInput
-              
-                type="text"
-                required
-                value={location}
-                onChange={(evt) => setLocation(evt.target.value)}
-                label="location"
-              />
-            </FormControl>
-          </Box>
+              <option value="true">On Hand</option>
+            </select>
 
+            <Box
+              className="sumInput"
+              sx={{ display: "flex", flexWrap: "wrap" }}
+            >
+              <FormControl id="titleBoxSum" fullWidth sx={{ m: 1 }}>
+                <InputLabel
+                  id="titleLabelSum"
+                  htmlFor="outlined-adornment-amount"
+                >
+                  Location
+                </InputLabel>
+                <OutlinedInput
+                  type="text"
+                  required
+                  value={location}
+                  onChange={(evt) => setLocation(evt.target.value)}
+                  label="location"
+                />
+              </FormControl>
+            </Box>
           </div>
         </form>
       )}

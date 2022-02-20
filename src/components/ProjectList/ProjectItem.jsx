@@ -31,21 +31,23 @@ const Item = styled(Paper)(({ theme }) => ({
 function ProjectItem(prop) {
   const history = useHistory();
   const dispatch = useDispatch();
+  //reducers
   const projects = useSelector((store) => store.projectReducer);
   const user = useSelector((store) => store.user);
+  //local state
   const project = prop.project;
   const [editable, setEditable] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [toggle, setToggle] = useState(true);
   //MUI
-
+  //set selected project based on clicked project Id
   const handleSelectProject = (project) => {
     // store selected movie object in Redux
     dispatch({ type: "SET_SELECTED_PROJECT", payload: project });
     // go to details view
     history.push("/projectGallery");
   };
-
+  //main page arrow toggle switches picture from before to after and after to before
   let [togglePic, setTogglePic] = useState(project.after_img);
   const beforeImg = () => {
     setTogglePic(project.before_img);
@@ -55,10 +57,9 @@ function ProjectItem(prop) {
     setTogglePic(project.after_img);
     setToggle(!toggle);
   };
-
+  //Put request to inline edit the title of the overall project
   const editTitle = (event) => {
     event.preventDefault();
-    console.log("NewTitle is !!!", newTitle, project.id);
     let titleToSend = {
       newTitle: newTitle,
       project: project.id,
@@ -66,28 +67,24 @@ function ProjectItem(prop) {
     dispatch({ type: "CHANGE_TITLE", payload: titleToSend });
   };
 
-  console.log("rerendered");
   return (
     <Grid>
       <Item id="item">
         <div className="pOwner">project owner: {project.username}</div>
         <Card id="cards" sx={{ maxWidth: 220, minWidth: 220 }}>
           <CardActions>
+            {/* on click toggle between before and after buttons/pics */}
             {!toggle ? (
               <div className="BtnFlip" onClick={afterImg}>
-              <FontAwesomeIcon
-                icon={faArrowsRotate}
-                transform="grow-9 "
-                
-              />
+                <FontAwesomeIcon icon={faArrowsRotate} transform="grow-9 " />
               </div>
             ) : (
               <div className="BtnFlip" onClick={beforeImg}>
-              <FontAwesomeIcon
-                icon={faArrowsRotate}
-                transform="grow-9"
-                onClick={beforeImg}
-              />
+                <FontAwesomeIcon
+                  icon={faArrowsRotate}
+                  transform="grow-9"
+                  onClick={beforeImg}
+                />
               </div>
             )}
           </CardActions>
@@ -100,6 +97,7 @@ function ProjectItem(prop) {
           />
           <CardContent>
             <div variant="body2">
+              {/* conditional rendering if editable button was clicked  */}
               {!editable ? (
                 <h3>{project.title}</h3>
               ) : (
@@ -126,6 +124,8 @@ function ProjectItem(prop) {
               )}
             </div>
             {user.id === project.user_id && (
+              // conditional render button that allows owner to set editable to true
+              //this allows title to be changed above
               <FontAwesomeIcon
                 className="penIcon"
                 icon={faPenToSquare}
