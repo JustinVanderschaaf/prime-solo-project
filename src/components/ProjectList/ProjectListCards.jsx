@@ -55,7 +55,7 @@ function ProjectListCards() {
 
   return (
     <div className="bodyContainer">
-      <h2>Welcome, {user.username}!</h2>
+      <h2 className="welcome">Welcome, {user.username}!</h2>
       <div id="galleryContainer" className="container">
         <Box sx={{ flexGrow: 1 }}>
           <Grid
