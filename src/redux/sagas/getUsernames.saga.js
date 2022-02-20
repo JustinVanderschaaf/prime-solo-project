@@ -7,14 +7,10 @@ function* getUsername(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    console.log('WE ARE SEARCHING FOR USERNAME');
-    
-    let usernameList = yield axios.get(`/api/newProject/username`,config);
-    console.log('username!!!!!!!!!!!!!!!!!!!!',usernameList);
+
+    let usernameList = yield axios.get(`/api/newProject/username`, config);
+
     yield put({
-      
-      
-      
       type: "SET_USERNAMES",
       payload: usernameList.data,
     });

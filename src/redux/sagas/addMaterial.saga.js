@@ -2,8 +2,6 @@ import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
 function* addMaterial(action) {
-  console.log("**********inside add material#############", action.payload);
-
   try {
     const config = {
       headers: { "Content-Type": "application/json" },
@@ -11,7 +9,10 @@ function* addMaterial(action) {
     };
 
     yield axios.post("/api/materials", action.payload, config);
-    yield put({type: "GET_MATERIALS", payload: action.payload.selectedProject});;
+    yield put({
+      type: "GET_MATERIALS",
+      payload: action.payload.selectedProject,
+    });
   } catch (error) {
     console.log("Add material failed", error);
   }

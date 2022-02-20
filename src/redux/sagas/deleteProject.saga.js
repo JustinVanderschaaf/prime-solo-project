@@ -9,8 +9,6 @@ function* deleteProject(action) {
     };
 
     yield axios.delete(`/api/newProject/${action.payload}`, config);
-
-    
   } catch (error) {
     console.log("DELETE project failed", error);
   }

@@ -7,7 +7,6 @@ function* deleteMaterial(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    console.log("****%%%deletes action .payload ", action.payload);
 
     yield axios.delete(`/api/materials/${action.payload.row}`, config);
     yield put({ type: "GET_MATERIALS", payload: action.payload.project });

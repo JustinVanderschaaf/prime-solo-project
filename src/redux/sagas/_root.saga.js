@@ -5,24 +5,24 @@ import userSaga from "./user.saga";
 //post
 import addProjectSaga from "./addProject.saga";
 import addSaga from "./addphoto.saga";
-import addMaterialSaga from "./addMaterial.saga"
+import addMaterialSaga from "./addMaterial.saga";
 //get
 import getCategoriesSaga from "./getCategories.saga";
 import getProjectImagesSaga from "./getprojectImages.saga";
 import getProjectsSaga from "./getProject.saga";
-import getMaterialsSaga from "./getMaterials.saga"
-import getSearchCategorySaga from "./getSearchCategory.saga"
-import getUsernameSaga from "./getUsernames.saga"
-import getSearchUsernameSaga from "./getSearchUsername.saga"
+import getMaterialsSaga from "./getMaterials.saga";
+import getSearchCategorySaga from "./getSearchCategory.saga";
+import getUsernameSaga from "./getUsernames.saga";
+import getSearchUsernameSaga from "./getSearchUsername.saga";
 //delete
-import deletePhotoSaga from "./deletePhoto.saga"
-import deleteProjectSaga from "./deleteProject.saga"
-import deleteMaterialSaga from "./deleteMaterial.saga"
+import deletePhotoSaga from "./deletePhoto.saga";
+import deleteProjectSaga from "./deleteProject.saga";
+import deleteMaterialSaga from "./deleteMaterial.saga";
 //Put
-import changeOnHandSaga from "./changeOnHand.saga"
-import changeAfterImgSaga from "./changeAfterImg.saga"
-import changeBeforeImgSaga from "./changeBeforeImg.saga"
-import changeTitleSaga from "./changeTitle.saga"
+import changeOnHandSaga from "./changeOnHand.saga";
+import changeAfterImgSaga from "./changeAfterImg.saga";
+import changeBeforeImgSaga from "./changeBeforeImg.saga";
+import changeTitleSaga from "./changeTitle.saga";
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.

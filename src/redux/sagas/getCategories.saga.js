@@ -7,7 +7,7 @@ function* getCategories(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    let categoriesList = yield axios.get("/api/categories",config);
+    let categoriesList = yield axios.get("/api/categories", config);
     yield put({
       type: "SET_CATEGORIES",
       payload: categoriesList.data,

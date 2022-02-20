@@ -7,13 +7,13 @@ function* getSearchCategory(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    console.log('WE ARE SEARCHING FOR ',action.payload);
-    
-    let projectList = yield axios.get(`/api/newProject/search/${action.payload}`,config);
-    
+
+    let projectList = yield axios.get(
+      `/api/newProject/search/${action.payload}`,
+      config
+    );
+
     yield put({
-      
-      
       type: "SET_PROJECTS",
       payload: projectList.data,
     });

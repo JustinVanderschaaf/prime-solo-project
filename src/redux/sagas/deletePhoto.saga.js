@@ -9,7 +9,6 @@ function* deletePhoto(action) {
     };
 
     yield axios.delete(`/api/images/${action.payload.photo}`, config);
-    console.log("!@!@!@!@!@@", action.payload.selectedProject.id);
 
     yield put({
       type: "GET_PROJECT_PHOTOS",

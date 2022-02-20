@@ -7,11 +7,6 @@ function* changeAfterImg(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    console.log(
-      "#####CHANGE_AFTER_IMG action .payload ",
-      action.payload,
-      action.payload.selectedProject.id
-    );
 
     yield axios.put(
       `/api/newProject/after/${action.payload.selectedProject.id}`,

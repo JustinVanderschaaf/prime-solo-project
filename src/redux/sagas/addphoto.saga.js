@@ -7,7 +7,6 @@ function* addPhoto(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-console.log('action.payload$#$#$#$#$#',action.payload);
 
     yield axios.post("/api/images", action.payload.formData, config);
 

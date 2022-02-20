@@ -7,11 +7,9 @@ function* getProjects(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    let projectList = yield axios.get("/api/newProject",config);
-    
+    let projectList = yield axios.get("/api/newProject", config);
+
     yield put({
-      
-      
       type: "SET_PROJECTS",
       payload: projectList.data,
     });
