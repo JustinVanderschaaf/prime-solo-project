@@ -7,7 +7,9 @@ function* getSearchUsername(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
+    // send the action.payload as the params
+    // the config includes credentials which
+    // allow the server session to recognize the user
     let projectList = yield axios.get(
       `/api/newProject/searchUser/${action.payload}`,
       config

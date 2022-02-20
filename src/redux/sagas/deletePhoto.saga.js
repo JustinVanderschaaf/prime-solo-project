@@ -7,6 +7,9 @@ function* deletePhoto(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
+    // send the action.payload.photo as the params
+    // the config includes credentials which
+    // allow the server session to recognize the user
 
     yield axios.delete(`/api/images/${action.payload.photo}`, config);
 

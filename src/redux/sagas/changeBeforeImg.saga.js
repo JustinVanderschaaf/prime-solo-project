@@ -7,7 +7,10 @@ function* changeBeforeImg(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
+    // send the action.payload as the body
+    // the config includes credentials which
+    // allow the server session to recognize the user
+    //send action.payload.selectedProject.id as params
     yield axios.put(
       `/api/newProject/before/${action.payload.selectedProject.id}`,
       action.payload,

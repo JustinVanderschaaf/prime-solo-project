@@ -7,6 +7,8 @@ function* getCategories(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
+    // the config includes credentials which
+    // allow the server session to recognize the user
     let categoriesList = yield axios.get("/api/categories", config);
     yield put({
       type: "SET_CATEGORIES",

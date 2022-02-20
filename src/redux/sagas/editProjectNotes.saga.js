@@ -7,8 +7,15 @@ function* editProject(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
-    yield axios.put(`/api/newProject/${action.payload.id}`, action.payload);
+    // send the action.payload.id as the params
+    // send action.payload as the body
+    // the config includes credentials which
+    // allow the server session to recognize the user
+    yield axios.put(
+      `/api/newProject/${action.payload.id}`,
+      action.payload,
+      config
+    );
   } catch (error) {
     console.log("edit material failed", error);
   }

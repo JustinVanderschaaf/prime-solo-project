@@ -7,7 +7,9 @@ function* addMaterial(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
+    // send the action.payload as the body
+    // the config includes credentials which
+    // allow the server session to recognize the user
     yield axios.post("/api/materials", action.payload, config);
     yield put({
       type: "GET_MATERIALS",

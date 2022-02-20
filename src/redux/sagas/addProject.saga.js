@@ -9,7 +9,9 @@ function* addProject(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
+    // send the action.payload as the body
+    // the config includes credentials which
+    // allow the server session to recognize the user
     yield axios.post("/api/newProject", action.payload, config);
     console.log("action.payload new project", action.payload);
     yield put({

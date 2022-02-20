@@ -7,7 +7,10 @@ function* changeTitle(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
+    // send the action.payload as the body
+    // the config includes credentials which
+    // allow the server session to recognize the user
+    //send action.payload.project as params
     yield axios.put(
       `/api/newProject/title/${action.payload.project}`,
       action.payload,

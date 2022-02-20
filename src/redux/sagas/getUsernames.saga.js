@@ -8,6 +8,8 @@ function* getUsername(action) {
       withCredentials: true,
     };
 
+    // the config includes credentials which
+    // allow the server session to recognize the user
     let usernameList = yield axios.get(`/api/newProject/username`, config);
 
     yield put({

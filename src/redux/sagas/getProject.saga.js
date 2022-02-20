@@ -7,6 +7,9 @@ function* getProjects(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
+
+    // the config includes credentials which
+    // allow the server session to recognize the user
     let projectList = yield axios.get("/api/newProject", config);
 
     yield put({

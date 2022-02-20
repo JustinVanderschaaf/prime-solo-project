@@ -7,7 +7,9 @@ function* addPhoto(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-
+    // send the action.payload.formData as the body
+    // the config includes credentials which
+    // allow the server session to recognize the user
     yield axios.post("/api/images", action.payload.formData, config);
 
     yield put({
