@@ -14,10 +14,11 @@ function Footer() {
       <div>
         {" "}
         Check me out on <a href="//github.com/JustinVanderschaaf">gitHub</a>
+        {/* links for gitHub/LinkedIn */}
       </div>
       <div>
         {" "}
-        or on <a href="//www.linkedin.com/in/justin-vanderschaaf/">LinkIn</a>
+        or on <a href="//www.linkedin.com/in/justin-vanderschaaf/">LinkedIn</a>
       </div>
     </footer>
   );

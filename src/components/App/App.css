@@ -126,7 +126,7 @@ Alert
 /* --------------------------------------------------------------------------------
 Form Treatment
 -------------------------------------------------------------------------------- */
-
+/* Main Gallery List */
 .formPanel {
   box-sizing: border-box;
   width: 400px;
@@ -326,7 +326,8 @@ body {
   width: 100%;
   color: #e3e0cc;
 }
-
+/* Main Gallery List END */
+/* NEW project Page */
 .newForm1 {
   display: flex;
   margin-left: 15%;
@@ -435,7 +436,8 @@ input::-webkit-datetime-edit-fields-wrapper {
   height: 55px;
   background-color: #e0e2e4;
 }
-
+/* NEW project Page  END */
+/* inside project gallery */
 .galleryForm{
   display: flex;
   margin-left: 5%;
@@ -514,7 +516,8 @@ input::-webkit-datetime-edit-fields-wrapper {
   font-size: 40px;
   margin-left: 6.5%;
 }
-
+/* inside project gallery END*/
+/* Summary page */
 #table{
   
   color: #35495e;
@@ -597,6 +600,8 @@ input::-webkit-datetime-edit-fields-wrapper {
 .sumInput{
   margin-left: 60px;
 }
+/* Summary page ends */
+/* about page */
 .aboutContainer{
   border: 1px solid black;
   width: 80%;
@@ -618,6 +623,7 @@ input::-webkit-datetime-edit-fields-wrapper {
   margin-left: 20%;
   margin-right: 20%;
 }
+/* info page */
 .infoContainer{
   border: 1px solid black;
   width: 80%;

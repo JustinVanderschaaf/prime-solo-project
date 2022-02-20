@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route to get all Projects in DECS order to be listed in cards on main page
  */
 router.get("/", (req, res) => {
   pool
@@ -23,10 +23,8 @@ router.get("/", (req, res) => {
     });
 });
 
-// POST route code here
+// POST route to add new project saved to the logged in user
 router.post("/", (req, res, next) => {
-  console.log("asdklfaldjksfasdfadfs",req.user.id)
-  console.log("req.body.useraaaa",req.body.user)
   const user = req.user.id;
   const categoryId = req.body.categoryId;
   const date = req.body.date;
@@ -49,12 +47,6 @@ router.post("/", (req, res, next) => {
  */
 router.delete("/:id", (req, res) => {
   // endpoint functionality
-  console.log(
-    "this is req.params delete project",
-    req.params.id,
-    "and user is",
-    req.user
-  );
 
   const queryText = "DELETE FROM project WHERE id=$1";
   pool
@@ -68,7 +60,7 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-//after img
+//put to edit after img for ability to flip on main page
 router.put("/after/:id", (req, res) => {
   const sqlText = `UPDATE project
   SET after_img = $1
@@ -85,7 +77,7 @@ router.put("/after/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
-
+//put to edit before img for ability to flip on main page
 router.put("/before/:id", (req, res) => {
   const sqlText = `UPDATE project
   SET before_img = $1
@@ -102,16 +94,8 @@ router.put("/before/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
-
+//put to edit the title of project based on project id
 router.put("/title/:id", (req, res) => {
-  // Update this single student
-  console.log(
-    "this is the put router!!!!!",
-    req.params.id,
-    "and body",
-    req.body.newTitle
-  );
-
   const sqlText = `UPDATE project
   SET title = $1
   WHERE id = $2
@@ -131,8 +115,6 @@ router.put("/title/:id", (req, res) => {
 // GET route for search category
 
 router.get("/search/:id", (req, res, next) => {
-  console.log("EARCH REQ>BODY", req.params.id);
-
   const sqlText = `
   SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,project.after_img,project.before_img,"user".username FROM project
   JOIN "user"
@@ -149,16 +131,16 @@ router.get("/search/:id", (req, res, next) => {
       console.error("err in get project", err);
     });
 });
-
+// GET route for list of usernames to be used in search function
 router.get("/username", (req, res, next) => {
-  console.log("SEARCH USERNAME");
-
   pool
-    .query(   `
+    .query(
+      `
     SELECT username as label,
     id
     FROM "user"
-  `)
+  `
+    )
     .then((dbRes) => {
       res.send(dbRes.rows);
     })
@@ -167,10 +149,8 @@ router.get("/username", (req, res, next) => {
     });
 });
 
-//get route for search username
+//get route for search username based on the id
 router.get("/searchUser/:id", (req, res, next) => {
-  console.log("EARCH REQ>BODY", req.params.id);
-
   const sqlText = `
   SELECT project.id, project.user_id, project.category_id,project.date,project.budget,project.title,project.user_notes,project.after_img,project.before_img,"user".username FROM project
   JOIN "user"

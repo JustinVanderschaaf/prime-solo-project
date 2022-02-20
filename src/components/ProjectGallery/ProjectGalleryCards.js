@@ -19,6 +19,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function ProjectGalleryCards() {
   const dispatch = useDispatch();
+  //reducers from store/global
   const selectedProject = useSelector((store) => store.selectedProject);
   const projectImages = useSelector((store) => store.projectImageReducer);
   const user = useSelector((store) => store.user);
@@ -31,12 +32,12 @@ function ProjectGalleryCards() {
     color: theme.palette.text.secondary,
   }));
   //end MUI
+  //on page load get all project photos filtered by selected project id
   useEffect(() => {
     dispatch({ type: "GET_PROJECT_PHOTOS", payload: selectedProject.id });
   }, [selectedProject.before_img]);
-
+  //delete Image based on photo id with visual confirmation
   const removeImage = (photo) => {
-    console.log("delte", photo);
     let photoToRemove = {
       selectedProject: selectedProject,
       photo: photo.id,
@@ -61,7 +62,8 @@ function ProjectGalleryCards() {
       }
     });
   };
-
+  //Set img to the selected project before/After image based on selectedProject
+  //these photos will be displayed on main screen and can be toggled between each other
   const setBeforeImage = (photo) => {
     console.log("Change before photo id is", photo.url);
     let photoToBefore = {
@@ -88,13 +90,17 @@ function ProjectGalleryCards() {
           justifyContent="center"
           justifyContent="space-evenly"
         >
+          {/* map through all project images that have been filtered by selected projects
+          and display them into cards */}
           {projectImages.map((photo) => (
             <Grid key={photo.id}>
               <Item id="item">
                 <Card id="cards" sx={{ maxWidth: 220, minWidth: 220 }}>
+                  {/* conditional rendering only owner of project can perform actions */}
                   {user.id === selectedProject.user_id && (
                     <CardActions>
-                      <Button id="baBtn"
+                      <Button
+                        id="baBtn"
                         className={
                           photo.url === selectedProject.before_img
                             ? "selected-text"
@@ -105,7 +111,8 @@ function ProjectGalleryCards() {
                       >
                         Before
                       </Button>
-                      <Button id="baBtn"
+                      <Button
+                        id="baBtn"
                         className={
                           photo.url === selectedProject.after_img
                             ? "selected-text"
@@ -117,16 +124,14 @@ function ProjectGalleryCards() {
                         After
                       </Button>
                       <div onClick={() => removeImage(photo)}>
-                      <FontAwesomeIcon
-                icon={faTrashCan}
-                transform="grow-9 right-50 "
-                
-                
-              />
-              </div>
-                      
+                        <FontAwesomeIcon
+                          icon={faTrashCan}
+                          transform="grow-9 right-50 "
+                        />
+                      </div>
                     </CardActions>
                   )}
+                  {/* conditional rendering so guests can view the project without action*/}
                   {user.id !== selectedProject.user_id && (
                     <CardActions>
                       {selectedProject.username}'s {selectedProject.title}
@@ -134,7 +139,7 @@ function ProjectGalleryCards() {
                   )}
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt={photo.subtitle}
                     height="220"
                     image={`uploads/${photo.url}`}
                   />

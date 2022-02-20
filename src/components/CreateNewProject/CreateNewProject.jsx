@@ -15,17 +15,22 @@ import FormControl from "@mui/material/FormControl";
 
 const NewProject = () => {
   const dispatch = useDispatch();
+  //store reducers
   const categories = useSelector((store) => store.projectCategoriesReducer);
   const user = useSelector((store) => store.user);
+  //local state to be updated and sent to saga on form submit
   let [budget, setBudget] = useState("");
   let [title, setTitle] = useState("");
   let [categoryId, setCategoryId] = useState(0);
   let [projectDate, setProjectDate] = useState("");
   const history = useHistory();
+  //on page load get all projects to be displayed on main screen
+  //later used in selected project
   useEffect(() => {
     dispatch({ type: "GET_PROJECTS" });
   }, [categoryId]);
-
+  //On page load fetch all categories to be used in project creation dropdown
+  //to attach category to project and later for search bar
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORIES" });
   }, []);
@@ -37,6 +42,7 @@ const NewProject = () => {
     user: user.id,
     date: projectDate,
   };
+//send newly created project to DB then display it on the dom
   const saveProjectInformation = (event) => {
     event.preventDefault();
 
@@ -44,13 +50,13 @@ const NewProject = () => {
       type: "NEW_PROJECT",
       payload: projectData,
     });
-
+//set inputs back to empty
     setBudget("");
     setTitle("");
     setCategoryId(0);
     history.push("/user");
   };
-
+//cancel project on confirm bring back to home page on denied continue project creation
   const cancelProject = () => {
     Swal.fire({
       title: "Do you want to Cancel this project?",
@@ -99,6 +105,7 @@ const NewProject = () => {
               </InputLabel>
               <OutlinedInput
                 onKeyPress={(event) => {
+                  //validation only numbers can be inputted
                   if (!/[0-9]/.test(event.key)) {
                     event.preventDefault();
                   }

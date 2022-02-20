@@ -12,9 +12,10 @@ import Stack from "@mui/material/Stack";
 function ProjectGalleryMain() {
   const dispatch = useDispatch();
   const history = useHistory();
+  //reducers
   const selectedProject = useSelector((store) => store.selectedProject);
   const user = useSelector((store) => store.user);
-
+  //deletes entire selected project and all foreign keys associated with it after confirmation
   const deleteProject = () => {
     Swal.fire({
       title: "Are you sure you want to delete project?",
@@ -43,20 +44,21 @@ function ProjectGalleryMain() {
     <div className="bodyContainer">
       <ProjectGalleryCards />
       <div className="galleryForm">
-      {user.id === selectedProject.user_id && <ProjectGalleryForm />}
-      {user.id === selectedProject.user_id && (
-        <Stack direction="row" spacing={2}>
-        <Button onClick={deleteProject}
-          id="photoDelete"
-          type="button"
-          value="Delete"
-          variant="contained"
-        >
-          Delete Project
-        </Button>
-      </Stack>
-      )}
-       
+        {/* conditional rendering to allow owner only to see form and delete button */}
+        {user.id === selectedProject.user_id && <ProjectGalleryForm />}
+        {user.id === selectedProject.user_id && (
+          <Stack direction="row" spacing={2}>
+            <Button
+              onClick={deleteProject}
+              id="photoDelete"
+              type="button"
+              value="Delete"
+              variant="contained"
+            >
+              Delete Project
+            </Button>
+          </Stack>
+        )}
       </div>
     </div>
   );

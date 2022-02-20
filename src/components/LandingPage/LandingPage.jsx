@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./LandingPage.css";
 
-// CUSTOM COMPONENTS
+// CUSTOM COMPONENTS 
 import RegisterForm from "../RegisterForm/RegisterForm";
-
+//page for non logged in user to log in or register
 function LandingPage() {
   const [heading, setHeading] = useState("Welcome");
   const history = useHistory();

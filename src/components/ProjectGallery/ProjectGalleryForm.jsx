@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-// import ProjectGalleryCards from "./ProjectGalleryCards";
 import { useHistory } from "react-router-dom";
 
 //MUI
@@ -17,6 +16,7 @@ import Stack from "@mui/material/Stack";
 const ProjectGalleryForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  //reducers
   const user = useSelector((store) => store.user);
   const selectedProject = useSelector((store) => store.selectedProject);
   const projectImages = useSelector((store) => store.projectImageReducer);
@@ -37,10 +37,11 @@ const ProjectGalleryForm = () => {
   const itemToSend = {
     subTitle: selectedDescription,
   };
-
+//handing submit of form and file upload
   async function handleSubmit(event) {
     event.preventDefault();
-
+//appending id,description and file to form Data to be sent over in an object with selected project
+//form data will be req.file and selected project will be req.body
     const formData = new FormData();
     formData.append("projectId", selectedProject.id);
     formData.append("description", selectedDescription);

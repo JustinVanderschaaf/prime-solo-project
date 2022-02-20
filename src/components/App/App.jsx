@@ -7,12 +7,9 @@ import {
 } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
 import AboutPage from "../AboutPage/AboutPage";
 import ProjectGalleryMain from "../ProjectGallery/ProjectGalleryMain";
 import InfoPage from "../InfoPage/InfoPage";
@@ -20,11 +17,9 @@ import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import NewProject from "../CreateNewProject/CreateNewProject";
-import ProjectSummery from "../ProjectSummery/ProjectSummery"
+import ProjectSummery from "../ProjectSummery/ProjectSummery";
 import ProjectListCards from "../ProjectList/ProjectListCards";
-import UserProjectMain from "../ProjectSummery/UserProjectMain"
-
-
+import UserProjectMain from "../ProjectSummery/UserProjectMain";
 import "./App.css";
 
 function App() {
@@ -63,7 +58,6 @@ function App() {
             path="/user"
           >
             <ProjectListCards />
-            
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -128,7 +122,6 @@ function App() {
             ) : (
               // Otherwise, show the Landing page
               <LandingPage />
-
             )}
           </Route>
 

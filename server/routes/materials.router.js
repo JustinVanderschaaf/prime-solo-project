@@ -3,10 +3,11 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route to get all materials by project ID in ASC order
  */
 router.get("/:id", (req, res) => {
-  const queryText = "SELECT * FROM materials WHERE project_id=$1 ORDER BY on_hand ASC";
+  const queryText =
+    "SELECT * FROM materials WHERE project_id=$1 ORDER BY on_hand ASC";
   pool
     .query(queryText, [req.params.id])
 
@@ -18,10 +19,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//post route
+//post route to add new materials to selected project
 router.post("/", (req, res, next) => {
-  console.log("MATERIALS RE>BODY IS ", req.body);
-
   const project_id = req.body.selectedProject;
   const cost = req.body.cost;
   const location = req.body.location;
@@ -40,7 +39,7 @@ router.post("/", (req, res, next) => {
     });
 });
 
-//Delete route
+//Delete route to delete selected material from DB
 router.delete("/:id", (req, res) => {
   // endpoint functionality
 
@@ -56,7 +55,7 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-//PUT route
+//PUT route to edit the On hand value to !On hand value
 
 router.put("/:id", (req, res) => {
   // Update this single student

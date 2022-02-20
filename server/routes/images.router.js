@@ -26,7 +26,7 @@ const {
 const pool = require("../modules/pool");
 
 /**
- * Get all of the images in list
+ * Get all of the images in list where he project id is equal to id
  */
 router.get("/:id", (req, res) => {
   const queryText = "SELECT * FROM image WHERE project_id=$1";
@@ -89,90 +89,6 @@ router.delete("/:id", (req, res) => {
       console.log("Error completing delete images query", err);
       res.sendStatus(500);
     });
-});
-
-/**
- * Update an image if it's something the logged in user added
- */ //after Img
-// router.put("/after/:id", (req, res) => {
-//   // Update this single student
-//   console.log(
-//     "this is the put router!!!!!",
-//     req.params.id,
-//     "and body",
-//     req.body.selectedProject.id
-//   );
-
-//   const sqlText = `UPDATE image
-//   SET after_img = false
-//   WHERE project_Id = $1
-//   `;
-//   const secondSqlText = `UPDATE image
-//   SET after_img = true
-//   WHERE id = $2
-//   `;
-
-//   pool
-//     .query(sqlText, [req.body.selectedProject.id, req.params.id])
-//     .then((firstQueryRes) => {
-//       return pool.query(secondSqlText);
-//     })
-//     .then((secondQueryRes) => {
-//       res.sendStatus(204);
-//     })
-
-//     .catch((error) => {
-//       console.log(`Error making database query ${sqlText}`, error);
-//       res.sendStatus(500);
-//     });
-// });
-
-// //Before img
-// router.put("/before/:id", (req, res) => {
-//   // Update this single student
-//   console.log(
-//     "this is the put router!!!!!",
-//     req.params.id,
-//     "and body",
-//     req.body.selectedProject.id
-//   );
-
-//   const sqlText = `UPDATE image
-//   SET before_img = false
-//   WHERE project_Id = $1
-//   `;
-//   const secondSqlText = `UPDATE image
-//   SET before_img = true
-//   WHERE id = $1
-//   `;
-
-//   pool
-//     .query(sqlText, [req.body.selectedProject.id ])
-//     .then((firstQueryRes) => {
-//       return pool.query(secondSqlText, [req.params.id]);
-//     })
-//     .then((secondQueryRes) => {
-//       res.sendStatus(204);
-//     })
-//     .catch((error) => {
-//       console.log(`Error making database query ${sqlText}`, error);
-//       res.sendStatus(500);
-//     });
-// });
-
-/**
- * Return all users along with the total number of images
- * they have added to the shelf
- */
-router.get("/count", (req, res) => {
-  // endpoint functionality
-});
-
-/**
- * Return a specific image by id
- */
-router.get("/:id", (req, res) => {
-  // endpoint functionality
 });
 
 module.exports = router;
